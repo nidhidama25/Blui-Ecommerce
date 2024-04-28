@@ -42,6 +42,7 @@
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
+    "@swc/core": "^1.5.0",
     "@tailwindcss/line-clamp": "^0.4.0",
     "autoprefixer": "^10.4.7",
     "eslint": "8.19.0",
