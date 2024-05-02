@@ -7,8 +7,8 @@ import apiRequest from "../../../utils/apiRequest";
 import auth from "../../../utils/auth";
 import settings from "../../../utils/settings";
 import { fetchCart } from "../../store/Cart";
-import CheckProductIsExistsInFlashSale from "../Shared/CheckProductIsExistsInFlashSale";
 import ServeLangItem from "../Helpers/ServeLangItem";
+import CheckProductIsExistsInFlashSale from "../Shared/CheckProductIsExistsInFlashSale";
 
 export default function Cart({ className }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
@@ -18,7 +18,10 @@ export default function Cart({ className }) {
   const [getAllPrice, setGetAllPrice] = useState(null);
   const [totalPrice, setTotalPrice] = useState(null);
   useEffect(() => {
-    setTotalPrice( getAllPrice && getAllPrice.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr)))
+    setTotalPrice(
+      getAllPrice &&
+        getAllPrice.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr))
+    );
   }, [getAllPrice]);
   useEffect(() => {
     cart && setGetCarts(cart.cartProducts);
@@ -74,7 +77,7 @@ export default function Cart({ className }) {
           }
         })
       );
-    }else{
+    } else {
       setGetAllPrice(null);
     }
   }, [getCarts]);
@@ -243,7 +246,8 @@ export default function Cart({ className }) {
                 suppressHydrationWarning
                 className="text-[15px] font-500 text-qred "
               >
-                {currency_icon + (totalPrice ? parseFloat(totalPrice).toFixed(2) : 0)}
+                {currency_icon +
+                  (totalPrice ? parseFloat(totalPrice).toFixed(2) : 0)}
               </span>
             </div>
             <div className="product-action-btn">
@@ -255,7 +259,9 @@ export default function Cart({ className }) {
               <Link href="/checkout">
                 <div className="w-full h-[50px] cursor-pointer">
                   <div className="yellow-btn">
-                    <span className="text-sm">{ServeLangItem()?.Checkout_Now}</span>
+                    <span className="text-sm">
+                      {ServeLangItem()?.Checkout_Now}
+                    </span>
                   </div>
                 </div>
               </Link>

@@ -1,15 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+import settings from "../../../utils/settings";
 import BlogCard from "../Helpers/Cards/BlogCard";
 import DataIteration from "../Helpers/DataIteration";
+import PageTitle from "../Helpers/PageTitle";
+import ServeLangItem from "../Helpers/ServeLangItem";
+import SimpleSlider from "../Helpers/SliderCom";
 import FontAwesomeCom from "../Helpers/icons/FontAwesomeCom";
 import Star from "../Helpers/icons/Star";
-import PageTitle from "../Helpers/PageTitle";
-import SimpleSlider from "../Helpers/SliderCom";
 import Layout from "../Partials/Layout";
-import ServeLangItem from "../Helpers/ServeLangItem";
-import settings from "../../../utils/settings";
 export default function About({ aboutData }) {
   const settingTestimonial = {
     slidesToShow:
@@ -106,7 +106,7 @@ export default function About({ aboutData }) {
                   ></div>
                 </div>
 
-                <Link href="/contact" passHref>
+                <Link href="/contact" passHref legacyBehavior>
                   <a rel="noopener noreferrer">
                     <div className="w-[121px] h-10 mt-5 cursor-pointer">
                       <span className="yellow-btn">
@@ -246,7 +246,10 @@ export default function About({ aboutData }) {
                   <div className="flex space-x-5 rtl:space-x-reverse items-center">
                     <div>
                       <div>
-                        <FontAwesomeCom className="w-8 h-8 text-qblack" icon={item.icon} />
+                        <FontAwesomeCom
+                          className="w-8 h-8 text-qblack"
+                          icon={item.icon}
+                        />
                       </div>
                     </div>
                     <div>

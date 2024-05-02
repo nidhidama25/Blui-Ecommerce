@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
-import settings from "../../../../utils/settings";
 import { useRouter } from "next/router";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import auth from "../../../../utils/auth";
-import apiRequest from "../../../../utils/apiRequest";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import apiRequest from "../../../../utils/apiRequest";
+import auth from "../../../../utils/auth";
+import settings from "../../../../utils/settings";
 import { fetchCart } from "../../../store/Cart";
 import CheckProductIsExistsInFlashSale from "../../Shared/CheckProductIsExistsInFlashSale";
 import ServeLangItem from "../ServeLangItem";
@@ -166,6 +166,7 @@ export default function ProductCardRowStyleTwo({ className, datas }) {
                 query: { slug: datas.slug },
               }}
               passHref
+              legacyBehavior
             >
               <a rel="noopener noreferrer">
                 <p className="title mb-2 sm:text-[15px] text-[13px] font-600 text-qblack leading-[24px] line-clamp-1 hover:text-blue-600 cursor-pointer">

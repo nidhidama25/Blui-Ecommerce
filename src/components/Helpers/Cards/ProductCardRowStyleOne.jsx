@@ -11,14 +11,14 @@ import settings from "../../../../utils/settings";
 import { fetchCart } from "../../../store/Cart";
 import { fetchCompareProducts } from "../../../store/compareProduct";
 import { fetchWishlist } from "../../../store/wishlistData";
+import LoginContext from "../../Contexts/LoginContext";
 import CheckProductIsExistsInFlashSale from "../../Shared/CheckProductIsExistsInFlashSale";
 import ProductView from "../../SingleProductPage/ProductView";
+import ServeLangItem from "../ServeLangItem";
 import Compair from "../icons/Compair";
 import QuickViewIco from "../icons/QuickViewIco";
 import Star from "../icons/Star";
 import ThinLove from "../icons/ThinLove";
-import ServeLangItem from "../ServeLangItem";
-import LoginContext from "../../Contexts/LoginContext";
 const Redirect = () => {
   return (
     <div className="flex space-x-2 items-center">
@@ -95,15 +95,15 @@ export default function ProductCardRowStyleOne({ className, datas }) {
       token: auth() && auth().access_token,
       quantity: 1,
       variants:
-          getFirstVarients &&
-          getFirstVarients.length > 0 &&
-          getFirstVarients.map((v) =>
-              v ? parseInt(v.product_variant_id) : null
-          ),
+        getFirstVarients &&
+        getFirstVarients.length > 0 &&
+        getFirstVarients.map((v) =>
+          v ? parseInt(v.product_variant_id) : null
+        ),
       variantItems:
-          getFirstVarients &&
-          getFirstVarients.length > 0 &&
-          getFirstVarients.map((v) => (v ? v.id : null)),
+        getFirstVarients &&
+        getFirstVarients.length > 0 &&
+        getFirstVarients.map((v) => (v ? v.id : null)),
     };
     if (auth()) {
       if (varients) {
@@ -151,7 +151,10 @@ export default function ProductCardRowStyleOne({ className, datas }) {
         dispatch(fetchCart());
       }
     } else {
-      localStorage.setItem("data-hold", JSON.stringify({type:"add-to-cart",...data}));
+      localStorage.setItem(
+        "data-hold",
+        JSON.stringify({ type: "add-to-cart", ...data })
+      );
       loginPopupBoard.handlerPopup(true);
     }
   };
@@ -277,6 +280,7 @@ export default function ProductCardRowStyleOne({ className, datas }) {
                   query: { slug: datas.slug },
                 }}
                 passHref
+                legacyBehavior
               >
                 <a rel="noopener noreferrer">
                   <p className="title mb-2 sm:text-[15px] text-[13px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-blue-600 cursor-pointer">
@@ -371,7 +375,6 @@ export default function ProductCardRowStyleOne({ className, datas }) {
             type="button"
             onClick={() => productCompare(datas.id)}
           >
-
             <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white transition-all duration-300 ease-in-out items-center hover-bg-qyellow bg-primarygray rounded">
               <Compair className="fill-current" />
             </span>

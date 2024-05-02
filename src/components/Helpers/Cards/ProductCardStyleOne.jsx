@@ -1,4 +1,5 @@
 import axios from "axios";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
@@ -10,15 +11,14 @@ import settings from "../../../../utils/settings";
 import { fetchCart } from "../../../store/Cart";
 import { fetchCompareProducts } from "../../../store/compareProduct";
 import { fetchWishlist } from "../../../store/wishlistData";
+import LoginContext from "../../Contexts/LoginContext";
 import CheckProductIsExistsInFlashSale from "../../Shared/CheckProductIsExistsInFlashSale";
 import ProductView from "../../SingleProductPage/ProductView";
+import ServeLangItem from "../ServeLangItem";
 import Compair from "../icons/Compair";
 import QuickViewIco from "../icons/QuickViewIco";
 import Star from "../icons/Star";
 import ThinLove from "../icons/ThinLove";
-import Image from "next/image";
-import ServeLangItem from "../ServeLangItem";
-import LoginContext from "../../Contexts/LoginContext";
 
 const Redirect = () => {
   return (
@@ -127,15 +127,15 @@ export default function ProductCardStyleOne({ datas }) {
       token: auth() && auth().access_token,
       quantity: 1,
       variants:
-          getFirstVarients &&
-          getFirstVarients.length > 0 &&
-          getFirstVarients.map((v) =>
-              v ? parseInt(v.product_variant_id) : null
-          ),
+        getFirstVarients &&
+        getFirstVarients.length > 0 &&
+        getFirstVarients.map((v) =>
+          v ? parseInt(v.product_variant_id) : null
+        ),
       variantItems:
-          getFirstVarients &&
-          getFirstVarients.length > 0 &&
-          getFirstVarients.map((v) => (v ? v.id : null)),
+        getFirstVarients &&
+        getFirstVarients.length > 0 &&
+        getFirstVarients.map((v) => (v ? v.id : null)),
     };
     if (auth()) {
       if (varients) {
@@ -186,7 +186,10 @@ export default function ProductCardStyleOne({ datas }) {
         dispatch(fetchCart());
       }
     } else {
-      localStorage.setItem("data-hold", JSON.stringify({type:"add-to-cart",...data}));
+      localStorage.setItem(
+        "data-hold",
+        JSON.stringify({ type: "add-to-cart", ...data })
+      );
       loginPopupBoard.handlerPopup(true);
     }
   };
@@ -362,6 +365,7 @@ export default function ProductCardStyleOne({ datas }) {
           <Link
             href={{ pathname: "/single-product", query: { slug: datas.slug } }}
             passHref
+            legacyBehavior
           >
             <a rel="noopener noreferrer">
               <p className="title mb-2 text-[15px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-blue-600 cursor-pointer">

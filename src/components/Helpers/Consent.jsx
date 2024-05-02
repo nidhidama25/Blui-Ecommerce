@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 
-import { setCookie, hasCookie } from "cookies-next";
-import { useSelector } from "react-redux";
+import { hasCookie, setCookie } from "cookies-next";
 import Link from "next/link";
+import { useSelector } from "react-redux";
 import ServeLangItem from "./ServeLangItem";
 
 function Consent() {

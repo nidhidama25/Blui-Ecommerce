@@ -46,7 +46,7 @@ export default function Footer({ settings }) {
           <div className="lg:w-4/10 w-full mb-10 lg:mb-0">
             {/* logo area */}
             <div className="mb-14">
-              <Link href="/" passHref>
+              <Link href="/" passHref legacyBehavior>
                 <a>
                   {settings && (
                     <Image
@@ -183,7 +183,7 @@ export default function Footer({ settings }) {
             </span>
           </div>
           <div className="">
-            <Link href="#" passHref>
+            <Link href="#" passHref legacyBehavior>
               <a>
                 <Image
                   width="318"

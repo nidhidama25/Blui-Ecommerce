@@ -1,11 +1,11 @@
 import Link from "next/link";
-import React,{ useState } from "react";
-import Compair from "../../Helpers/icons/Compair";
-import ThinLove from "../../Helpers/icons/ThinLove";
-import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
-import FontAwesomeCom from "../../Helpers/icons/FontAwesomeCom";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import ServeLangItem from "../../Helpers/ServeLangItem";
+import Compair from "../../Helpers/icons/Compair";
+import FontAwesomeCom from "../../Helpers/icons/FontAwesomeCom";
+import ThinLove from "../../Helpers/icons/ThinLove";
 
 export default function Drawer({ className, open, action }) {
   const router = useRouter();
@@ -29,7 +29,9 @@ export default function Drawer({ className, open, action }) {
   return (
     <>
       <div
-        className={`drawer-wrapper w-full block lg:hidden h-full relative  ${className || ""}`}
+        className={`drawer-wrapper w-full block lg:hidden h-full relative  ${
+          className || ""
+        }`}
       >
         {open && (
           <div
@@ -205,10 +207,12 @@ export default function Drawer({ className, open, action }) {
             <div className="menu-item mt-5 w-full">
               <ul className="categories-list">
                 <li className="category-item">
-                  <Link href="#">
+                  <Link href="#" legacyBehavior>
                     <div className=" flex justify-between items-center px-5 h-12 bg-white hover-bg-qyellow transition-all duration-300 ease-in-out cursor-pointer">
                       <div className="flex items-center space-x-6">
-                        <span className="text-sm font-400 capitalize">{ServeLangItem()?.Pages}</span>
+                        <span className="text-sm font-400 capitalize">
+                          {ServeLangItem()?.Pages}
+                        </span>
                       </div>
                       <div>
                         <span>
@@ -284,7 +288,9 @@ export default function Drawer({ className, open, action }) {
                       <Link href="/faq">
                         <div className=" flex justify-between items-center px-5 h-12 bg-white hover-bg-qyellow transition-all duration-300 ease-in-out cursor-pointer">
                           <div className="flex items-center space-x-6">
-                            <span className="text-sm font-400 capitalize">{ServeLangItem()?.FAQ}</span>
+                            <span className="text-sm font-400 capitalize">
+                              {ServeLangItem()?.FAQ}
+                            </span>
                           </div>
                           <div>
                             <span>
@@ -367,27 +373,27 @@ export default function Drawer({ className, open, action }) {
                           <div>
                             <span>
                               <svg
-                                  width="6"
-                                  height="9"
-                                  viewBox="0 0 6 9"
-                                  fill="none"
-                                  xmlns="http://www.w3.org/2000/svg"
+                                width="6"
+                                height="9"
+                                viewBox="0 0 6 9"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
                               >
                                 <rect
-                                    x="1.49805"
-                                    y="0.818359"
-                                    width="5.78538"
-                                    height="1.28564"
-                                    transform="rotate(45 1.49805 0.818359)"
-                                    fill="#1D1D1D"
+                                  x="1.49805"
+                                  y="0.818359"
+                                  width="5.78538"
+                                  height="1.28564"
+                                  transform="rotate(45 1.49805 0.818359)"
+                                  fill="#1D1D1D"
                                 />
                                 <rect
-                                    x="5.58984"
-                                    y="4.90918"
-                                    width="5.78538"
-                                    height="1.28564"
-                                    transform="rotate(135 5.58984 4.90918)"
-                                    fill="#1D1D1D"
+                                  x="5.58984"
+                                  y="4.90918"
+                                  width="5.78538"
+                                  height="1.28564"
+                                  transform="rotate(135 5.58984 4.90918)"
+                                  fill="#1D1D1D"
                                 />
                               </svg>
                             </span>
@@ -396,51 +402,55 @@ export default function Drawer({ className, open, action }) {
                       </Link>
                     </li>
                     {customPages &&
-                        customPages.length > 0 &&
-                        customPages.map((item, i) => (
-                            // eslint-disable-next-line react/jsx-key
-                            <React.Fragment key={i}>
-                              <li className="category-item">
-                                <Link href={`/pages?custom=${item.slug}`} passHref>
-                                  <div className=" flex justify-between items-center px-5 h-12 bg-white hover-bg-qyellow transition-all duration-300 ease-in-out cursor-pointer">
-                                    <div className="flex items-center space-x-6">
+                      customPages.length > 0 &&
+                      customPages.map((item, i) => (
+                        // eslint-disable-next-line react/jsx-key
+                        <React.Fragment key={i}>
+                          <li className="category-item">
+                            <Link
+                              href={`/pages?custom=${item.slug}`}
+                              passHref
+                              legacyBehavior
+                            >
+                              <div className=" flex justify-between items-center px-5 h-12 bg-white hover-bg-qyellow transition-all duration-300 ease-in-out cursor-pointer">
+                                <div className="flex items-center space-x-6">
                                   <span className="text-sm font-400 capitalize capitalize ">
                                     {item.page_name}
                                   </span>
-                                    </div>
-                                    <div>
+                                </div>
+                                <div>
                                   <span>
                                     <svg
-                                        width="6"
-                                        height="9"
-                                        viewBox="0 0 6 9"
-                                        fill="none"
-                                        xmlns="http://www.w3.org/2000/svg"
+                                      width="6"
+                                      height="9"
+                                      viewBox="0 0 6 9"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
                                     >
                                       <rect
-                                          x="1.49805"
-                                          y="0.818359"
-                                          width="5.78538"
-                                          height="1.28564"
-                                          transform="rotate(45 1.49805 0.818359)"
-                                          fill="#1D1D1D"
+                                        x="1.49805"
+                                        y="0.818359"
+                                        width="5.78538"
+                                        height="1.28564"
+                                        transform="rotate(45 1.49805 0.818359)"
+                                        fill="#1D1D1D"
                                       />
                                       <rect
-                                          x="5.58984"
-                                          y="4.90918"
-                                          width="5.78538"
-                                          height="1.28564"
-                                          transform="rotate(135 5.58984 4.90918)"
-                                          fill="#1D1D1D"
+                                        x="5.58984"
+                                        y="4.90918"
+                                        width="5.78538"
+                                        height="1.28564"
+                                        transform="rotate(135 5.58984 4.90918)"
+                                        fill="#1D1D1D"
                                       />
                                     </svg>
                                   </span>
-                                    </div>
-                                  </div>
-                                </Link>
-                              </li>
-                            </React.Fragment>
-                        ))}
+                                </div>
+                              </div>
+                            </Link>
+                          </li>
+                        </React.Fragment>
+                      ))}
                   </ul>
                 </li>
 
@@ -448,7 +458,9 @@ export default function Drawer({ className, open, action }) {
                   <Link href="/about">
                     <div className="flex justify-between items-center px-5 h-12 bg-white hover-bg-qyellow transition-all duration-300 ease-in-out cursor-pointer">
                       <div className="flex items-center space-x-6">
-                        <span className="text-sm font-400 capitalize">{ServeLangItem()?.About}</span>
+                        <span className="text-sm font-400 capitalize">
+                          {ServeLangItem()?.About}
+                        </span>
                       </div>
                       <div>
                         <span>
@@ -485,7 +497,9 @@ export default function Drawer({ className, open, action }) {
                   <Link href="/Blogs">
                     <div className="flex justify-between items-center px-5 h-12 bg-white hover-bg-qyellow transition-all duration-300 ease-in-out cursor-pointer">
                       <div className="flex items-center space-x-6">
-                        <span className="text-sm font-400 capitalize">{ServeLangItem()?.blogs}</span>
+                        <span className="text-sm font-400 capitalize">
+                          {ServeLangItem()?.blogs}
+                        </span>
                       </div>
                       <div>
                         <span>
@@ -522,7 +536,9 @@ export default function Drawer({ className, open, action }) {
                   <Link href="/contact">
                     <div className="flex justify-between items-center px-5 h-12 bg-white hover-bg-qyellow transition-all duration-300 ease-in-out cursor-pointer">
                       <div className="flex items-center space-x-6">
-                        <span className="text-sm font-400 capitalize">Contact</span>
+                        <span className="text-sm font-400 capitalize">
+                          Contact
+                        </span>
                       </div>
                       <div>
                         <span>

@@ -40,7 +40,7 @@ export default function HeaderTwo({ className, drawerAction, settings }) {
             </svg>
           </div>
           <div>
-            <Link href="/" passHref>
+            <Link href="/" passHref legacyBehavior>
               <a>
                 {settings && (
                   <Image

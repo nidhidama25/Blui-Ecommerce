@@ -1,10 +1,10 @@
+import Image from "next/image";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import apiRequest from "../../../utils/apiRequest";
 import settings from "../../../utils/settings";
-import Link from "next/link";
-import Image from "next/image";
 import ServeLangItem from "../Helpers/ServeLangItem";
 export default function Ads() {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
@@ -60,9 +60,7 @@ export default function Ads() {
       <div>
         {ads && announcment && parseInt(announcment.status) === 1 && (
           <div className="w-full h-full flex fixed left-0 top-0 justify-center z-40 items-center ">
-            <div
-              className="w-full h-full fixed left-0 right-0 bg-black  bg-opacity-25"
-            ></div>
+            <div className="w-full h-full fixed left-0 right-0 bg-black  bg-opacity-25"></div>
             <div
               className="lg:w-[812px] md:w-[650px] w-[310px] md:h-[509px] relative z-50 bg-slate-700 ltr:md:pl-10 ltr:pl-3 rtl:md:pr-10 rtl:pr-3 pr-3 md:py-[108px] py-20 flex flex-col justify-end overflow-hidden"
               style={{
@@ -75,7 +73,7 @@ export default function Ads() {
             >
               <div>
                 <div className="logo mb-[20px]">
-                  <Link href="/" passHref>
+                  <Link href="/" passHref legacyBehavior>
                     <a>
                       <Image
                         width="152"
@@ -141,7 +139,10 @@ export default function Ads() {
                   {ServeLangItem()?.Subscribe}
                 </button>
               </div>
-              <button type="button" className="absolute ltr:right-5 rtl:left-5 top-5 cursor-pointer">
+              <button
+                type="button"
+                className="absolute ltr:right-5 rtl:left-5 top-5 cursor-pointer"
+              >
                 <svg
                   onClick={adsHandle}
                   viewBox="0 0 54 54"

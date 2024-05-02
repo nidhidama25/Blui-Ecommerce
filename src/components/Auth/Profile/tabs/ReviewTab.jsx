@@ -3,8 +3,8 @@ import Link from "next/link";
 import React from "react";
 import DateFormat from "../../../../../utils/DateFormat";
 import DataIteration from "../../../Helpers/DataIteration";
-import Star from "../../../Helpers/icons/Star";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
+import Star from "../../../Helpers/icons/Star";
 
 export default function ReviewTab({ className, reviews }) {
   return (
@@ -55,6 +55,7 @@ export default function ReviewTab({ className, reviews }) {
                             pathname: "/single-product",
                             query: { slug: datas.product.slug },
                           }}
+                          legacyBehavior
                         >
                           <p className="title mb-2 sm:text-[15px] text-[13px] font-600 text-qblack leading-[24px] line-clamp-1 hover:text-blue-600 cursor-pointer">
                             {datas.product.name}

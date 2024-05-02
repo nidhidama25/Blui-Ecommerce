@@ -40,7 +40,7 @@ export default function Header({ drawerAction, settings, contact }) {
             </svg>
           </div>
           <div className="w-[200px] h-full relative">
-            <Link href="/" passHref>
+            <Link href="/" passHref legacyBehavior>
               <a>
                 {settings && (
                   <Image
