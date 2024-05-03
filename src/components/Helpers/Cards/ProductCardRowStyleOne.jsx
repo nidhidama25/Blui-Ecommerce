@@ -234,203 +234,214 @@ export default function ProductCardRowStyleOne({ className, datas }) {
     };
   }, [quickViewModal]);
   return (
-    <div className="main-wrapper-card relative">
-      <div
-        data-aos="fade-left"
-        className={`product-row-card-style-one  w-full lg:h-[250px] h-[200px] bg-white group relative overflow-hidden ${
-          className || ""
-        }`}
-      >
-        <div className="flex space-x-5 items-center w-full h-full lg:p-[30px] sm:p-5 p-2">
-          <div className="lg:w-1/2 w-1/3 h-full relative transform scale-100 group-hover:scale-110 transition duration-300 ease-in-ou">
-            <Image
-              layout="fill"
-              objectFit="scale-down"
-              src={`${datas.image}`}
-              alt=""
-              className="w-full h-full object-contain"
-            />
-          </div>
-          <div className="flex-1 flex flex-col justify-center h-full">
-            <div>
-              {/* reviews */}
-              <div className="flex space-x-1 mb-3">
-                {Array.from(Array(datas.review), () => (
-                  <span key={datas.review + Math.random()}>
-                    <Star />
-                  </span>
-                ))}
-                {datas.review < 5 && (
-                  <>
-                    {Array.from(Array(5 - datas.review), () => (
-                      <span
-                        key={datas.review + Math.random()}
-                        className="text-gray-500"
-                      >
-                        <Star defaultValue={false} />
-                      </span>
-                    ))}
-                  </>
-                )}
-              </div>
-
-              <Link
-                href={{
-                  pathname: "/single-product",
-                  query: { slug: datas.slug },
-                }}
-                passHref
-                legacyBehavior
-              >
-                <a rel="noopener noreferrer">
-                  <p className="title mb-2 sm:text-[15px] text-[13px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-blue-600 cursor-pointer">
-                    {datas.title}
-                  </p>
-                </a>
-              </Link>
-              <p className="price mb-[26px]">
-                <span
-                  suppressHydrationWarning
-                  className={`main-price  font-600 text-[18px] ${
-                    offerPrice ? "line-through text-qgray" : "text-qred"
-                  }`}
-                >
-                  {offerPrice ? (
-                    <span>{currency_icon && currency_icon + price}</span>
-                  ) : (
-                    <>
-                      {isProductInFlashSale && (
-                        <span
-                          className={`line-through text-qgray font-500 text-[16px] mr-2`}
-                        >
-                          {currency_icon &&
-                            currency_icon + parseFloat(price).toFixed(2)}
-                        </span>
-                      )}
-                      <CheckProductIsExistsInFlashSale
-                        id={datas.id}
-                        price={price}
-                      />
-                    </>
-                  )}
-                </span>
-                {offerPrice && (
-                  <span
-                    suppressHydrationWarning
-                    className="offer-price text-qred font-600 text-[18px] ml-2"
-                  >
-                    <CheckProductIsExistsInFlashSale
-                      id={datas.id}
-                      price={offerPrice}
-                    />
-                  </span>
-                )}
-              </p>
-              <button
-                onClick={() => addToCart(datas.id)}
-                type="button"
-                className="w-[110px] h-[30px]"
-              >
-                <span className="yellow-btn">
-                  {ServeLangItem()?.Add_To_Cart}
-                </span>
-              </button>
-            </div>
-          </div>
-        </div>
-        {/* quick-access-btns */}
-        <div className="quick-access-btns flex flex-col space-y-2">
-          <button
-            className=" absolute group-hover:left-4 -left-10 top-5  transition-all ease-in-out"
-            type="button"
-            onClick={() => quickViewHandler(datas.slug)}
+    <Link
+      href={{
+        pathname: "/single-product",
+        query: { slug: datas.slug },
+      }}
+      passHref
+      legacyBehavior
+    >
+      <a className="card-link">
+        <div className="main-wrapper-card relative">
+          <div
+            data-aos="fade-left"
+            className={`product-row-card-style-one  w-full lg:h-[250px] h-[200px] bg-white group relative overflow-hidden ${
+              className || ""
+            }`}
           >
-            <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white items-center transition-all duration-300 ease-in-out hover-bg-qyellow bg-primarygray rounded">
-              <QuickViewIco className="fill-current" />
-            </span>
-          </button>
-          {!arWishlist ? (
-            <button
-              className=" absolute group-hover:left-4 -left-10 top-[60px] duration-300   transition-all ease-in-out"
-              type="button"
-              onClick={() => addToWishlist(datas.id)}
-            >
-              <span className="hover:bg-qyellow w-10 h-10 flex text-black hover:text-white justify-center items-center transition-all duration-300 ease-in-out hover-bg-qyellow bg-primarygray rounded">
-                <ThinLove className="fill-current" />
-              </span>
-            </button>
-          ) : (
-            <button
-              className=" absolute group-hover:left-4 -left-10 top-[60px] duration-300   transition-all ease-in-out"
-              type="button"
-              onClick={() => removeToWishlist(wishlisted && wishlisted.id)}
-            >
-              <span className="hover:bg-qyellow w-10 h-10 flex justify-center items-center bg-primarygray rounded">
-                <ThinLove fill={true} />
-              </span>
-            </button>
-          )}
-          <button
-            className=" absolute group-hover:left-4 -left-10 top-[107px]  transition-all duration-500 ease-in-out"
-            type="button"
-            onClick={() => productCompare(datas.id)}
-          >
-            <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white transition-all duration-300 ease-in-out items-center hover-bg-qyellow bg-primarygray rounded">
-              <Compair className="fill-current" />
-            </span>
-          </button>
-        </div>
-        {quickViewModal && quickViewData && (
-          <div className="quicke-view-wrapper w-full h-full flex fixed left-0 top-0 justify-center z-50 items-center ">
-            <div
-              onClick={() => setQuickView(!quickViewModal)}
-              className="w-full h-full fixed left-0 right-0 bg-black  bg-opacity-25"
-            ></div>
-            <div
-              data-aos="fade-up"
-              className="md:mx-10 xl:mt-[100px] rounded w-full bg-white relative lg:py-[40px] pt-[80px] pb-[40px] sm:px-[38px] px-3 md:mt-12 h-full overflow-y-scroll xl:overflow-hidden xl:mt-0 "
-              style={{ zIndex: "999" }}
-            >
-              <div className="w-full h-full overflow-y-scroll overflow-style-none">
-                <ProductView
-                  images={
-                    quickViewData.gellery.length > 0
-                      ? quickViewData.gellery
-                      : []
-                  }
-                  product={quickViewData.product}
+            <div className="flex space-x-5 items-center w-full h-full lg:p-[30px] sm:p-5 p-2">
+              <div className="lg:w-1/2 w-1/3 h-full relative transform scale-100 group-hover:scale-110 transition duration-300 ease-in-ou">
+                <Image
+                  layout="fill"
+                  objectFit="scale-down"
+                  src={`${datas.image}`}
+                  alt=""
+                  className="w-full h-full object-contain"
                 />
               </div>
-              <button
-                onClick={() => setQuickView(!quickViewModal)}
-                type="button"
-                className="absolute right-3 top-3"
-              >
-                <span className="text-red-500 w-12 h-12 flex justify-center items-center rounded border border-qred">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    className="w-10 h-10"
+              <div className="flex-1 flex flex-col justify-center h-full">
+                <div>
+                  {/* reviews */}
+                  <div className="flex space-x-1 mb-3">
+                    {Array.from(Array(datas.review), () => (
+                      <span key={datas.review + Math.random()}>
+                        <Star />
+                      </span>
+                    ))}
+                    {datas.review < 5 && (
+                      <>
+                        {Array.from(Array(5 - datas.review), () => (
+                          <span
+                            key={datas.review + Math.random()}
+                            className="text-gray-500"
+                          >
+                            <Star defaultValue={false} />
+                          </span>
+                        ))}
+                      </>
+                    )}
+                  </div>
+
+                  <Link
+                    href={{
+                      pathname: "/single-product",
+                      query: { slug: datas.slug },
+                    }}
+                    passHref
+                    legacyBehavior
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6 18L18 6M6 6l12 12"
-                    ></path>
-                  </svg>
+                    <a rel="noopener noreferrer">
+                      <p className="title mb-2 sm:text-[15px] text-[13px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-blue-600 cursor-pointer">
+                        {datas.title}
+                      </p>
+                    </a>
+                  </Link>
+                  <p className="price mb-[26px]">
+                    <span
+                      suppressHydrationWarning
+                      className={`main-price  font-600 text-[18px] ${
+                        offerPrice ? "line-through text-qgray" : "text-qred"
+                      }`}
+                    >
+                      {offerPrice ? (
+                        <span>{currency_icon && currency_icon + price}</span>
+                      ) : (
+                        <>
+                          {isProductInFlashSale && (
+                            <span
+                              className={`line-through text-qgray font-500 text-[16px] mr-2`}
+                            >
+                              {currency_icon &&
+                                currency_icon + parseFloat(price).toFixed(2)}
+                            </span>
+                          )}
+                          <CheckProductIsExistsInFlashSale
+                            id={datas.id}
+                            price={price}
+                          />
+                        </>
+                      )}
+                    </span>
+                    {offerPrice && (
+                      <span
+                        suppressHydrationWarning
+                        className="offer-price text-qred font-600 text-[18px] ml-2"
+                      >
+                        <CheckProductIsExistsInFlashSale
+                          id={datas.id}
+                          price={offerPrice}
+                        />
+                      </span>
+                    )}
+                  </p>
+                  <button
+                    onClick={() => addToCart(datas.id)}
+                    type="button"
+                    className="w-[110px] h-[30px]"
+                  >
+                    <span className="yellow-btn">
+                      {ServeLangItem()?.Add_To_Cart}
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </div>
+            {/* quick-access-btns */}
+            <div className="quick-access-btns flex flex-col space-y-2">
+              <button
+                className=" absolute group-hover:left-4 -left-10 top-5  transition-all ease-in-out"
+                type="button"
+                onClick={() => quickViewHandler(datas.slug)}
+              >
+                <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white items-center transition-all duration-300 ease-in-out hover-bg-qyellow bg-primarygray rounded">
+                  <QuickViewIco className="fill-current" />
+                </span>
+              </button>
+              {!arWishlist ? (
+                <button
+                  className=" absolute group-hover:left-4 -left-10 top-[60px] duration-300   transition-all ease-in-out"
+                  type="button"
+                  onClick={() => addToWishlist(datas.id)}
+                >
+                  <span className="hover:bg-qyellow w-10 h-10 flex text-black hover:text-white justify-center items-center transition-all duration-300 ease-in-out hover-bg-qyellow bg-primarygray rounded">
+                    <ThinLove className="fill-current" />
+                  </span>
+                </button>
+              ) : (
+                <button
+                  className=" absolute group-hover:left-4 -left-10 top-[60px] duration-300   transition-all ease-in-out"
+                  type="button"
+                  onClick={() => removeToWishlist(wishlisted && wishlisted.id)}
+                >
+                  <span className="hover:bg-qyellow w-10 h-10 flex justify-center items-center bg-primarygray rounded">
+                    <ThinLove fill={true} />
+                  </span>
+                </button>
+              )}
+              <button
+                className=" absolute group-hover:left-4 -left-10 top-[107px]  transition-all duration-500 ease-in-out"
+                type="button"
+                onClick={() => productCompare(datas.id)}
+              >
+                <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white transition-all duration-300 ease-in-out items-center hover-bg-qyellow bg-primarygray rounded">
+                  <Compair className="fill-current" />
                 </span>
               </button>
             </div>
+            {quickViewModal && quickViewData && (
+              <div className="quicke-view-wrapper w-full h-full flex fixed left-0 top-0 justify-center z-50 items-center ">
+                <div
+                  onClick={() => setQuickView(!quickViewModal)}
+                  className="w-full h-full fixed left-0 right-0 bg-black  bg-opacity-25"
+                ></div>
+                <div
+                  data-aos="fade-up"
+                  className="md:mx-10 xl:mt-[100px] rounded w-full bg-white relative lg:py-[40px] pt-[80px] pb-[40px] sm:px-[38px] px-3 md:mt-12 h-full overflow-y-scroll xl:overflow-hidden xl:mt-0 "
+                  style={{ zIndex: "999" }}
+                >
+                  <div className="w-full h-full overflow-y-scroll overflow-style-none">
+                    <ProductView
+                      images={
+                        quickViewData.gellery.length > 0
+                          ? quickViewData.gellery
+                          : []
+                      }
+                      product={quickViewData.product}
+                    />
+                  </div>
+                  <button
+                    onClick={() => setQuickView(!quickViewModal)}
+                    type="button"
+                    className="absolute right-3 top-3"
+                  >
+                    <span className="text-red-500 w-12 h-12 flex justify-center items-center rounded border border-qred">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        className="w-10 h-10"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M6 18L18 6M6 6l12 12"
+                        ></path>
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            )}
           </div>
-        )}
-      </div>
-      <span className="anim bottom"></span>
-      <span className="anim right"></span>
-      <span className="anim top"></span>
-      <span className="anim left"></span>
-    </div>
+          <span className="anim bottom"></span>
+          <span className="anim right"></span>
+          <span className="anim top"></span>
+          <span className="anim left"></span>
+        </div>
+      </a>
+    </Link>
   );
 }

@@ -210,147 +210,162 @@ export default function ProductCardRowStyleOneTwo({ className, datas }) {
     }
   };
   return (
-    <div
-      data-aos="fade-left"
-      className={`product-row-card-style-one-two w-full h-[250px] bg-white group relative overflow-hidden ${
-        className || ""
-      }`}
+    <Link
+      href={{
+        pathname: "/single-product",
+        query: { slug: datas.slug },
+      }}
+      passHref
+      legacyBehavior
     >
-      <div className="flex space-x-5 items-center w-full h-full p-[16px]">
-        <div className="w-1/3 h-full relative">
-          <Image
-            layout="fill"
-            objectFit="scale-down"
-            src={`${datas.image}`}
-            alt=""
-            className="w-full h-full object-contain"
-          />
-        </div>
-        <div className="flex-1 flex flex-col justify-center h-full">
-          <div>
-            <Link
-              href={{
-                pathname: "/single-product",
-                query: { slug: datas.slug },
-              }}
-              passHref
-              legacyBehavior
-            >
-              <a rel="noopener noreferrer">
-                <p className="title mb-2 sm:text-[20px] text-[15px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-blue-600 cursor-pointer">
-                  {datas.title}
+      <a className="card-link">
+        <div
+          data-aos="fade-left"
+          className={`product-row-card-style-one-two w-full h-[250px] bg-white group relative overflow-hidden ${
+            className || ""
+          }`}
+        >
+          <div className="flex space-x-5 items-center w-full h-full p-[16px]">
+            <div className="w-1/3 h-full relative">
+              <Image
+                layout="fill"
+                objectFit="scale-down"
+                src={`${datas.image}`}
+                alt=""
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <div className="flex-1 flex flex-col justify-center h-full">
+              <div>
+                <Link
+                  href={{
+                    pathname: "/single-product",
+                    query: { slug: datas.slug },
+                  }}
+                  passHref
+                  legacyBehavior
+                >
+                  <a rel="noopener noreferrer">
+                    <p className="title mb-2 sm:text-[20px] text-[15px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-blue-600 cursor-pointer">
+                      {datas.title}
+                    </p>
+                  </a>
+                </Link>
+                <p className="price flex space-x-2 items-center  mb-2.5">
+                  {offerPrice && (
+                    <span
+                      suppressHydrationWarning
+                      className="offer-price text-qred font-600 sm:text-[24px] text-base"
+                    >
+                      <CheckProductIsExistsInFlashSale
+                        price={offerPrice}
+                        id={datas.id}
+                      />
+                    </span>
+                  )}
+                  <span
+                    suppressHydrationWarning
+                    className={`main-price font-600 sm:text-[18px] text-base ${
+                      offerPrice ? "line-through text-qgray" : "text-qred"
+                    }`}
+                  >
+                    {offerPrice ? (
+                      <span>{currency_icon && currency_icon + price}</span>
+                    ) : (
+                      <CheckProductIsExistsInFlashSale
+                        id={datas.id}
+                        price={price}
+                      />
+                    )}
+                  </span>
                 </p>
-              </a>
-            </Link>
-            <p className="price flex space-x-2 items-center  mb-2.5">
-              {offerPrice && (
-                <span
-                  suppressHydrationWarning
-                  className="offer-price text-qred font-600 sm:text-[24px] text-base"
+                <button
+                  onClick={() => addToCart(datas.id)}
+                  type="button"
+                  className="w-[116px] h-[40px]"
                 >
-                  <CheckProductIsExistsInFlashSale
-                    price={offerPrice}
-                    id={datas.id}
-                  />
+                  <span className="yellow-btn">
+                    {ServeLangItem()?.Add_To_Cart}
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+          {/* quick-access-btns */}
+          <div className="quick-access-btns flex flex-col space-y-2 absolute group-hover:right-4 -right-10 top-[30px]  transition-all duration-300 ease-in-out">
+            <button type="button" onClick={() => quickViewHandler(datas.slug)}>
+              <span className="w-10 h-10 flex justify-center items-center bg-primarygray rounded">
+                <QuickViewIco />
+              </span>
+            </button>
+            {!arWishlist ? (
+              <button type="button" onClick={() => addToWishlist(datas.id)}>
+                <span className="w-10 h-10 flex justify-center items-center bg-[#CCECEB] rounded">
+                  <ThinLove />
                 </span>
-              )}
-              <span
-                suppressHydrationWarning
-                className={`main-price font-600 sm:text-[18px] text-base ${
-                  offerPrice ? "line-through text-qgray" : "text-qred"
-                }`}
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => removeToWishlist(wishlisted && wishlisted.id)}
               >
-                {offerPrice ? (
-                  <span>{currency_icon && currency_icon + price}</span>
-                ) : (
-                  <CheckProductIsExistsInFlashSale
-                    id={datas.id}
-                    price={price}
-                  />
-                )}
+                <span className="w-10 h-10 flex justify-center items-center bg-[#CCECEB] rounded">
+                  <ThinLove fill={true} />
+                </span>
+              </button>
+            )}
+            <button type="button" onClick={() => productCompare(datas.id)}>
+              <span className="w-10 h-10 flex justify-center items-center bg-[#CCECEB] rounded">
+                <Compair />
               </span>
-            </p>
-            <button
-              onClick={() => addToCart(datas.id)}
-              type="button"
-              className="w-[116px] h-[40px]"
-            >
-              <span className="yellow-btn">{ServeLangItem()?.Add_To_Cart}</span>
             </button>
           </div>
-        </div>
-      </div>
-      {/* quick-access-btns */}
-      <div className="quick-access-btns flex flex-col space-y-2 absolute group-hover:right-4 -right-10 top-[30px]  transition-all duration-300 ease-in-out">
-        <button type="button" onClick={() => quickViewHandler(datas.slug)}>
-          <span className="w-10 h-10 flex justify-center items-center bg-primarygray rounded">
-            <QuickViewIco />
-          </span>
-        </button>
-        {!arWishlist ? (
-          <button type="button" onClick={() => addToWishlist(datas.id)}>
-            <span className="w-10 h-10 flex justify-center items-center bg-[#CCECEB] rounded">
-              <ThinLove />
-            </span>
-          </button>
-        ) : (
-          <button
-            type="button"
-            onClick={() => removeToWishlist(wishlisted && wishlisted.id)}
-          >
-            <span className="w-10 h-10 flex justify-center items-center bg-[#CCECEB] rounded">
-              <ThinLove fill={true} />
-            </span>
-          </button>
-        )}
-        <button type="button" onClick={() => productCompare(datas.id)}>
-          <span className="w-10 h-10 flex justify-center items-center bg-[#CCECEB] rounded">
-            <Compair />
-          </span>
-        </button>
-      </div>
-      {quickViewModal && quickViewData && (
-        <div className="quicke-view-wrapper w-full h-full flex fixed left-0 top-0 justify-center z-50 items-center ">
-          <div
-            onClick={() => setQuickView(!quickViewModal)}
-            className="w-full h-full fixed left-0 right-0 bg-black  bg-opacity-25"
-          ></div>
-          <div
-            data-aos="fade-up"
-            className="md:mx-10 w-full bg-white relative py-[40px] sm:px-[38px] px-3 relative md:mt-12 h-full overflow-y-scroll xl:overflow-hidden xl:h-auto xl:mt-0"
-            style={{ zIndex: "999" }}
-          >
-            <ProductView
-              images={
-                quickViewData.gellery.length > 0 ? quickViewData.gellery : []
-              }
-              product={quickViewData.product}
-            />
-            <button
-              onClick={() => setQuickView(!quickViewModal)}
-              type="button"
-              className="absolute right-3 top-3"
-            >
-              <span className="text-red-500 w-12 h-12 flex justify-center items-center rounded border border-qred">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-10 h-10"
+          {quickViewModal && quickViewData && (
+            <div className="quicke-view-wrapper w-full h-full flex fixed left-0 top-0 justify-center z-50 items-center ">
+              <div
+                onClick={() => setQuickView(!quickViewModal)}
+                className="w-full h-full fixed left-0 right-0 bg-black  bg-opacity-25"
+              ></div>
+              <div
+                data-aos="fade-up"
+                className="md:mx-10 w-full bg-white relative py-[40px] sm:px-[38px] px-3 relative md:mt-12 h-full overflow-y-scroll xl:overflow-hidden xl:h-auto xl:mt-0"
+                style={{ zIndex: "999" }}
+              >
+                <ProductView
+                  images={
+                    quickViewData.gellery.length > 0
+                      ? quickViewData.gellery
+                      : []
+                  }
+                  product={quickViewData.product}
+                />
+                <button
+                  onClick={() => setQuickView(!quickViewModal)}
+                  type="button"
+                  className="absolute right-3 top-3"
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M6 18L18 6M6 6l12 12"
-                  ></path>
-                </svg>
-              </span>
-            </button>
-          </div>
+                  <span className="text-red-500 w-12 h-12 flex justify-center items-center rounded border border-qred">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="w-10 h-10"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      ></path>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+          )}
         </div>
-      )}
-    </div>
+      </a>
+    </Link>
   );
 }

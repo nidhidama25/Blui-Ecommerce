@@ -144,76 +144,87 @@ export default function ProductCardRowStyleTwo({ className, datas }) {
     }
   }, [websiteSetup]);
   return (
-    <div
-      data-aos="fade-up"
-      className={`product-card-row-two w-full  ${className || ""}`}
+    <Link
+      href={{
+        pathname: "/single-product",
+        query: { slug: datas.slug },
+      }}
+      passHref
+      legacyBehavior
     >
-      <div className="w-full h-[105px] bg-white border border-primarygray px-5 ">
-        <div className="w-full h-full flex space-x-5 justify-center items-center">
-          <div className="w-[75px] h-full relative">
-            <Image
-              layout="fill"
-              objectFit="scale-down"
-              src={`${datas.image}`}
-              alt=""
-              className="w-full h-full object-contain"
-            />
-          </div>
-          <div className="flex-1 h-full flex flex-col justify-center">
-            <Link
-              href={{
-                pathname: "/single-product",
-                query: { slug: datas.slug },
-              }}
-              passHref
-              legacyBehavior
-            >
-              <a rel="noopener noreferrer">
-                <p className="title mb-2 sm:text-[15px] text-[13px] font-600 text-qblack leading-[24px] line-clamp-1 hover:text-blue-600 cursor-pointer">
-                  {datas.title}
-                </p>
-              </a>
-            </Link>
-
-            <p className="price">
-              <span
-                suppressHydrationWarning
-                className={`main-price  font-600 text-[18px] ${
-                  offerPrice ? "line-through text-qgray" : "text-qred"
-                }`}
-              >
-                {offerPrice ? (
-                  <span>{currency_icon && currency_icon + price}</span>
-                ) : (
-                  <>
-                    {isProductInFlashSale && (
-                      <span className="line-through text-qgray font-500 text-base mr-2">
-                        {currency_icon &&
-                          currency_icon + parseFloat(price).toFixed(2)}
-                      </span>
-                    )}
-                    <CheckProductIsExistsInFlashSale
-                      id={datas.id}
-                      price={price}
-                    />
-                  </>
-                )}
-              </span>
-              {offerPrice && (
-                <span
-                  suppressHydrationWarning
-                  className="offer-price text-qred font-600 text-[18px] ml-2"
+      <a className="card-link">
+        <div
+          data-aos="fade-up"
+          className={`product-card-row-two w-full  ${className || ""}`}
+        >
+          <div className="w-full h-[105px] bg-white border border-primarygray px-5 ">
+            <div className="w-full h-full flex space-x-5 justify-center items-center">
+              <div className="w-[75px] h-full relative">
+                <Image
+                  layout="fill"
+                  objectFit="scale-down"
+                  src={`${datas.image}`}
+                  alt=""
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="flex-1 h-full flex flex-col justify-center">
+                <Link
+                  href={{
+                    pathname: "/single-product",
+                    query: { slug: datas.slug },
+                  }}
+                  passHref
+                  legacyBehavior
                 >
-                  <CheckProductIsExistsInFlashSale
-                    id={datas.id}
-                    price={offerPrice}
-                  />
-                </span>
-              )}
-            </p>
+                  <a rel="noopener noreferrer">
+                    <p className="title mb-2 sm:text-[15px] text-[13px] font-600 text-qblack leading-[24px] line-clamp-1 hover:text-blue-600 cursor-pointer">
+                      {datas.title}
+                    </p>
+                  </a>
+                </Link>
+
+                <p className="price">
+                  <span
+                    suppressHydrationWarning
+                    className={`main-price  font-600 text-[18px] ${
+                      offerPrice ? "line-through text-qgray" : "text-qred"
+                    }`}
+                  >
+                    {offerPrice ? (
+                      <span>{currency_icon && currency_icon + price}</span>
+                    ) : (
+                      <>
+                        {isProductInFlashSale && (
+                          <span className="line-through text-qgray font-500 text-base mr-2">
+                            {currency_icon &&
+                              currency_icon + parseFloat(price).toFixed(2)}
+                          </span>
+                        )}
+                        <CheckProductIsExistsInFlashSale
+                          id={datas.id}
+                          price={price}
+                        />
+                      </>
+                    )}
+                  </span>
+                  {offerPrice && (
+                    <span
+                      suppressHydrationWarning
+                      className="offer-price text-qred font-600 text-[18px] ml-2"
+                    >
+                      <CheckProductIsExistsInFlashSale
+                        id={datas.id}
+                        price={offerPrice}
+                      />
+                    </span>
+                  )}
+                </p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </div>
+      </a>
+    </Link>
   );
 }
