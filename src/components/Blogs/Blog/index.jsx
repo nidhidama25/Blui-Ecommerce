@@ -281,7 +281,7 @@ export default function Blog({ details }) {
                             <Image
                               layout="fill"
                               src={`${
-                                process.env.NEXT_PUBLIC_BASE_URL + "public_html/public/uploads/custom-images" + post.blog.image
+                                process.env.NEXT_PUBLIC_BASE_URL + post.blog.image
                               }`}
                               alt="blog"
                               className="w-full h-full object-cover"
