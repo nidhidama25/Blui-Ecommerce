@@ -277,17 +277,13 @@ export default function Blog({ details }) {
                           key={post.blog_id}
                           className="flex space-x-5 rtl:space-x-reverse"
                         >
-                          <div className="w-[85px] h-[92px]  overflow-hidden rounded relative">
+                          <div className="w-[85px] h-[92px] overflow-hidden rounded relative">
                             <Image
                               layout="fill"
-                              src={`${
-<<<<<<< HEAD
+                              src={
                                 process.env.NEXT_PUBLIC_BASE_URL +
                                 post.blog.image
-=======
-                                process.env.NEXT_PUBLIC_BASE_URL + post.blog.image
->>>>>>> e8cad1e4d04f20c0cf37030f92ee0ad0446a572b
-                              }`}
+                              }
                               alt="blog"
                               className="w-full h-full object-cover"
                             />
