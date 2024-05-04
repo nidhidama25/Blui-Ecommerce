@@ -1,11 +1,11 @@
 // import Link from "next/link";
-import { useState, useEffect, useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 // import axios from "axios";
 import { useRouter } from "next/router";
-import ServeLangItem from "../ServeLangItem";
-import LoginContext from "../../Contexts/LoginContext";
 import auth from "../../../../utils/auth";
+import LoginContext from "../../Contexts/LoginContext";
+import ServeLangItem from "../ServeLangItem";
 
 export default function SearchBox({ className }) {
   const router = useRouter();
@@ -50,7 +50,7 @@ export default function SearchBox({ className }) {
   const searchHandler = () => {
     if (auth()) {
       if (searchKey !== "") {
-         if (selectedCat) {
+        if (selectedCat) {
           router.push({
             pathname: "/search",
             query: { search: searchKey, category: selectedCat.slug },
@@ -61,7 +61,7 @@ export default function SearchBox({ className }) {
             query: { search: searchKey },
           });
         }
-      }  else if (searchKey === "" && selectedCat) {
+      } else if (searchKey === "" && selectedCat) {
         router.push({
           pathname: "/products",
           query: { category: selectedCat.slug },
@@ -77,12 +77,12 @@ export default function SearchBox({ className }) {
   return (
     <>
       <div
-        className={`w-full h-full flex items-center  border border-qgray-border bg-white  ${
+        className={`w-full h-full flex items-center  border border-qgray-border bg-white rounded-md  ${
           className || ""
         }`}
       >
-        <div className="flex-1 bg-red-500 h-full">
-          <div className="h-full">
+        <div className="flex-1 bg-red-500 h-full rounded-md">
+          <div className="h-full border border-gray-400 ">
             <input
               value={searchKey}
               onKeyDown={(e) => e.key === "Enter" && searchHandler()}
@@ -93,7 +93,7 @@ export default function SearchBox({ className }) {
             />
           </div>
         </div>
-        <div className="w-[1px] h-[22px] bg-qgray-border"></div>
+        <div className="w-[1px] h-[22px] border-gray-400 rounded-md"></div>
         <div className="flex-1 flex items-center px-4 relative">
           <button
             onClick={() => setToggleCat(!toggleCat)}
@@ -217,7 +217,7 @@ export default function SearchBox({ className }) {
         {/*</div>*/}
         <button
           onClick={searchHandler}
-          className="search-btn w-[93px]  h-full text-sm font-600 "
+          className="search-btn w-[93px] h-full text-sm font-600 rounded-full bg-blue-900 text-white"
           type="button"
         >
           {ServeLangItem()?.Search}
