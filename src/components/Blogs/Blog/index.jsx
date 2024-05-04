@@ -281,8 +281,12 @@ export default function Blog({ details }) {
                             <Image
                               layout="fill"
                               src={`${
+<<<<<<< HEAD
                                 process.env.NEXT_PUBLIC_BASE_URL +
                                 post.blog.image
+=======
+                                process.env.NEXT_PUBLIC_BASE_URL + post.blog.image
+>>>>>>> e8cad1e4d04f20c0cf37030f92ee0ad0446a572b
                               }`}
                               alt="blog"
                               className="w-full h-full object-cover"

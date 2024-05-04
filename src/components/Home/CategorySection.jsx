@@ -41,7 +41,7 @@ function CategorySection({ sectionTitle, categories }) {
                               layout="fill"
                               objectFit="scale-down"
                               src={
-                                process.env.NEXT_PUBLIC_BASE_URL + "public_html/public/uploads/custom-images" + item.image
+                                process.env.NEXT_PUBLIC_BASE_URL + item.image
                               }
                               alt=""
                             />
