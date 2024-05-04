@@ -12,10 +12,10 @@ import BestSellers from "./BestSellers";
 import BrandSection from "./BrandSection";
 import CampaignCountDown from "./CampaignCountDown";
 // import ProductsAds from "./ProductsAds";
-import TwoColumnAds from "./ProductAds/TwoColumnAds";
+import CategorySection from "./CategorySection";
 import OneColumnAdsOne from "./ProductAds/OneColumnAdsOne";
 import OneColumnAdsTwo from "./ProductAds/OneColumnAdsTwo";
-import CategorySection from "./CategorySection";
+import TwoColumnAds from "./ProductAds/TwoColumnAds";
 
 export default function Home({ homepageData }) {
   const getsectionTitles = homepageData.section_title;
@@ -45,15 +45,7 @@ export default function Home({ homepageData }) {
     <>
       <Layout childrenClasses="pt-[30px] pb-[60px]">
         <Ads />
-        {homepage && homepage.sliders.length>0&& (
-          <Banner
-            images={homepage.sliders}
-            services={homepage.services}
-            sidebarImgOne={homepage.sliderBannerOne && parseInt(homepage.sliderBannerOne.status)===1? homepage.sliderBannerOne:null}
-            sidebarImgTwo={homepage.sliderBannerTwo && parseInt(homepage.sliderBannerTwo.status)===1? homepage.sliderBannerTwo:null}
-            className="banner-wrapper md:mb-[60px] mb-[30px]"
-          />
-        )}
+
         {homepage && (
           <CategorySection
             categories={homepage.homepage_categories}
@@ -98,7 +90,8 @@ export default function Home({ homepageData }) {
           >
             <SectionStyleTwo
               products={
-                homepage.topRatedProducts.length&& homepage.topRatedProducts.length > 0
+                homepage.topRatedProducts.length &&
+                homepage.topRatedProducts.length > 0
                   ? homepage.topRatedProducts
                   : []
               }
@@ -120,8 +113,18 @@ export default function Home({ homepageData }) {
 
         {homepage && (
           <TwoColumnAds
-            bannerOne={homepage.twoColumnBannerOne && parseInt(homepage.twoColumnBannerOne.status)===1?homepage.twoColumnBannerOne:null}
-            bannerTwo={homepage.twoColumnBannerTwo && parseInt(homepage.twoColumnBannerTwo.status)===1?homepage.twoColumnBannerTwo:null}
+            bannerOne={
+              homepage.twoColumnBannerOne &&
+              parseInt(homepage.twoColumnBannerOne.status) === 1
+                ? homepage.twoColumnBannerOne
+                : null
+            }
+            bannerTwo={
+              homepage.twoColumnBannerTwo &&
+              parseInt(homepage.twoColumnBannerTwo.status) === 1
+                ? homepage.twoColumnBannerTwo
+                : null
+            }
           />
         )}
         {homepage && (
@@ -146,7 +149,16 @@ export default function Home({ homepageData }) {
             className="category-products md:mb-[60px] mb-[30px]"
           />
         )}
-        {homepage && <OneColumnAdsOne data={homepage.singleBannerOne && parseInt(homepage.singleBannerOne.status)===1?homepage.singleBannerOne:null} />}
+        {homepage && (
+          <OneColumnAdsOne
+            data={
+              homepage.singleBannerOne &&
+              parseInt(homepage.singleBannerOne.status) === 1
+                ? homepage.singleBannerOne
+                : null
+            }
+          />
+        )}
         {homepage && (
           <SectionStyleThree
             products={
@@ -168,7 +180,14 @@ export default function Home({ homepageData }) {
         {homepage && (
           <div className="w-full text-white md:mb-[60px] mb-[30px]">
             <div className="container-x mx-auto">
-              <OneColumnAdsTwo data={homepage.singleBannerTwo && parseInt(homepage.singleBannerTwo.status)===1?homepage.singleBannerTwo:null} />
+              <OneColumnAdsTwo
+                data={
+                  homepage.singleBannerTwo &&
+                  parseInt(homepage.singleBannerTwo.status) === 1
+                    ? homepage.singleBannerTwo
+                    : null
+                }
+              />
             </div>
           </div>
         )}
@@ -181,6 +200,9 @@ export default function Home({ homepageData }) {
             seeMoreUrl={`/products?highlight=best_product`}
             className="category-products md:mb-[60px] mb-[30px]"
           />
+        )}
+        {homepage && homepage.sliders.length > 0 && homepage.services && (
+          <Banner services={homepage.services} />
         )}
       </Layout>
     </>
