@@ -52,7 +52,7 @@ export default function SectionStyleOne({
           className={`section-style-one ${className || ""}`}
         >
           <ViewMoreTitle categoryTitle={sectionTitle} seeMoreUrl={seeMoreUrl}>
-            <div className="products-section w-full">
+            <div className="products-section w-full p-10">
               <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-[30px] gap-5">
                 <div className="category-card hidden xl:block w-full">
                   <CategoryCard

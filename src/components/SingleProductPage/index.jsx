@@ -113,7 +113,7 @@ export default function SingleProductPage({ details }) {
       <Layout childrenClasses="pt-0 pb-0">
         <>
           <div className=" w-full">
-            <div className="single-product-wrapper p-10 w-full flex flex-row m-5 ">
+            <div className="single-product-wrapper p-10 w-full flex flex-col lg:flex-row m-5 ">
               <div className="product-view-main-wrapper  bg-white pt-[30px] w-full">
                 <div className="breadcrumb-wrapper w-full ">
                   <div className="container-x mx-auto">
@@ -140,9 +140,9 @@ export default function SingleProductPage({ details }) {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col">
+              <div className="flex ">
                 <div
-                  className="product-des-wrapper p-10 w-full relative pb-[60px]"
+                  className="product-des-wrapper  w-full relative pb-[60px]"
                   ref={reviewElement}
                 >
                   <div className="tab-buttons w-full mb-10 mt-5 sm:mt-0">
@@ -259,39 +259,39 @@ export default function SingleProductPage({ details }) {
                     </div>
                   </div>
                 </div>
-                {relatedProducts.length > 0 && (
-                  <div className="related-product w-full bg-white">
-                    <div className="container-x mx-auto">
-                      <div className="w-full py-[60px]">
-                        <h1 className="sm:text-3xl text-xl font-600 text-qblacktext leading-none mb-[30px]">
-                          {ServeLangItem()?.Related_Product}
-                        </h1>
-                        <div
-                          data-aos="fade-up"
-                          className="grid grid-cols-2 p-20 gap-5"
-                        >
-                          <DataIteration
-                            datas={relatedProducts}
-                            startLength={0}
-                            endLength={
-                              relatedProducts.length > 4
-                                ? 4
-                                : relatedProducts.length
-                            }
-                          >
-                            {({ datas }) => (
-                              <div key={datas.id} className="item">
-                                <ProductCardStyleOne datas={datas} />
-                              </div>
-                            )}
-                          </DataIteration>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
+            {relatedProducts.length > 0 && (
+              <div className="related-product w-full bg-white">
+                <div className="container-x mx-auto">
+                  <div className="w-full py-[60px]">
+                    <h1 className="sm:text-3xl text-xl font-600 text-qblacktext leading-none mb-[30px]">
+                      {ServeLangItem()?.Related_Product}
+                    </h1>
+                    <div
+                      data-aos="fade-up"
+                      className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-3 grid-cols-1 xl:gap-[30px] gap-5"
+                    >
+                      <DataIteration
+                        datas={relatedProducts}
+                        startLength={0}
+                        endLength={
+                          relatedProducts.length > 4
+                            ? 4
+                            : relatedProducts.length
+                        }
+                      >
+                        {({ datas }) => (
+                          <div key={datas.id} className="item">
+                            <ProductCardStyleOne datas={datas} />
+                          </div>
+                        )}
+                      </DataIteration>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
           {report && (
             <div className="w-full h-full flex fixed left-0 top-0 justify-center z-50 items-center">

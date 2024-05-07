@@ -465,7 +465,7 @@ export default function ProductView({
                 {more ? "See Less" : "See More"}
               </button>
             </div>
-            <div className="p-3 bg-qyellowlow/10 flex items-center space-x-2 mb-[30px] w-fit">
+            {/* <div className="p-3 bg-qyellowlow/10 flex items-center space-x-2 mb-[30px] w-fit">
               <span className="text-base font-bold text-qblack">
                 {ServeLangItem()?.Availability} :
               </span>
@@ -474,7 +474,7 @@ export default function ProductView({
                   ? `${product.qty} Products Available`
                   : `Products not Available`}
               </span>
-            </div>
+            </div> */}
 
             {/*<div data-aos="fade-up" className="colors mb-[30px]">*/}
             {/*  <span className="text-sm font-normal uppercase text-qgray mb-[14px] inline-block">*/}
@@ -625,6 +625,15 @@ export default function ProductView({
                     </span>
                   </button>
                 )}
+              </div>
+              <div className="flex-1 h-full">
+                <button
+                  onClick={addToCard}
+                  type="button"
+                  className="black-btn text-sm font-semibold w-full h-full"
+                >
+                  {ServeLangItem()?.Add_To_Cart}
+                </button>
               </div>
               <div className="flex-1 h-full">
                 <button
