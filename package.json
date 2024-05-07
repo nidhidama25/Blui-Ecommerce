@@ -18,6 +18,7 @@
     "aos": "^3.0.0-beta.6",
     "axios": "^1.6.8",
     "cookies-next": "^2.1.1",
+    "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "emoji-picker-react": "^4.4.7",
     "javascript-time-ago": "^2.5.9",

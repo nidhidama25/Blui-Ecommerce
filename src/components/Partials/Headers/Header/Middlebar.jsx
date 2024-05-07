@@ -13,6 +13,7 @@ import Compair from "../../../Helpers/icons/Compair";
 import ThinBag from "../../../Helpers/icons/ThinBag";
 import ThinLove from "../../../Helpers/icons/ThinLove";
 import ThinPeople from "../../../Helpers/icons/ThinPeople";
+import Multivendor from "../../../Shared/Multivendor";
 export default function Middlebar({ className, settings }) {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -66,8 +67,8 @@ export default function Middlebar({ className, settings }) {
                 </a>
               </Link>
             </div>
-            <div className="w-[517px] h-[44px]">
-              <SearchBox className="search-com" />
+            <div className="w-[517px] h-[44px] rounded-md">
+              <SearchBox className="search-com rounded-md" />
             </div>
             <div className="flex space-x-6 rtl:space-x-reverse items-center relative">
               <div className="compaire relative">
@@ -206,6 +207,56 @@ export default function Middlebar({ className, settings }) {
                     </div>
                   </div>
                 </>
+              )}
+              {Multivendor() === 1 && (
+                <li>
+                  <Link href="seller-terms-condition" passHref legacyBehavior>
+                    <a rel="noopener noreferrer">
+                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                        {ServeLangItem()?.Seller_terms_and_conditions}
+                      </span>
+                    </a>
+                  </Link>
+                </li>
+              )}
+              {Multivendor() === 1 && (
+                <div className="become-seller-btn">
+                  <Link href="/become-seller" passHref legacyBehavior>
+                    <a rel="noopener noreferrer">
+                      <div className=" w-[161px] h-[40px] flex justify-center items-center cursor-pointer">
+                        <div className="flex rtl:space-x-reverse space-x-2 items-center">
+                          <span className="text-sm font-600">
+                            {ServeLangItem()?.Become_seller}
+                          </span>
+                          <span className="transform rtl:rotate-180 fill-current ">
+                            <svg
+                              width="6"
+                              height="10"
+                              viewBox="0 0 6 10"
+                              fill="none"
+                              xmlns="http://www.w3.org/2000/svg"
+                              className="fill-current"
+                            >
+                              <rect
+                                x="1.08984"
+                                width="6.94106"
+                                height="1.54246"
+                                transform="rotate(45 1.08984 0)"
+                              />
+                              <rect
+                                x="6"
+                                y="4.9082"
+                                width="6.94106"
+                                height="1.54246"
+                                transform="rotate(135 6 4.9082)"
+                              />
+                            </svg>
+                          </span>
+                        </div>
+                      </div>
+                    </a>
+                  </Link>
+                </div>
               )}
             </div>
           </div>

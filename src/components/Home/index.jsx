@@ -7,7 +7,6 @@ import SectionStyleTwo from "../Helpers/SectionStyleTwo";
 import ViewMoreTitle from "../Helpers/ViewMoreTitle";
 import Layout from "../Partials/Layout";
 import Ads from "./Ads";
-import Banner from "./Banner";
 import BestSellers from "./BestSellers";
 import BrandSection from "./BrandSection";
 import CampaignCountDown from "./CampaignCountDown";
@@ -16,7 +15,7 @@ import CategorySection from "./CategorySection";
 import OneColumnAdsOne from "./ProductAds/OneColumnAdsOne";
 import OneColumnAdsTwo from "./ProductAds/OneColumnAdsTwo";
 import TwoColumnAds from "./ProductAds/TwoColumnAds";
-
+import Services from "./Services";
 export default function Home({ homepageData }) {
   const getsectionTitles = homepageData.section_title;
   const [sectionTitles, setSectionTitles] = useState(null);
@@ -45,7 +44,25 @@ export default function Home({ homepageData }) {
     <>
       <Layout childrenClasses="pt-[30px] pb-[60px]">
         <Ads />
-
+        {/* {homepage && homepage.sliders.length > 0 && (
+          <Banner
+            images={homepage.sliders}
+            services={homepage.services}
+            sidebarImgOne={
+              homepage.sliderBannerOne &&
+              parseInt(homepage.sliderBannerOne.status) === 1
+                ? homepage.sliderBannerOne
+                : null
+            }
+            sidebarImgTwo={
+              homepage.sliderBannerTwo &&
+              parseInt(homepage.sliderBannerTwo.status) === 1
+                ? homepage.sliderBannerTwo
+                : null
+            }
+            className="banner-wrapper md:mb-[60px] mb-[30px]"
+          />
+        )} */}
         {homepage && (
           <CategorySection
             categories={homepage.homepage_categories}
@@ -201,8 +218,8 @@ export default function Home({ homepageData }) {
             className="category-products md:mb-[60px] mb-[30px]"
           />
         )}
-        {homepage && homepage.sliders.length > 0 && homepage.services && (
-          <Banner services={homepage.services} />
+        {homepage && homepage.services && (
+          <Services services={homepage.services} />
         )}
       </Layout>
     </>

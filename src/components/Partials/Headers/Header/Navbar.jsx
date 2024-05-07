@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
@@ -32,7 +33,7 @@ export default function Navbar({ className }) {
             <div className="category-and-nav  xl:rtl:space-x-reverse space-x-7 rtl:space-x-reverse space-x-3 items-center"> */}
           <div className="nav w-full justify-center">
             <ul className="nav-wrapper flex xl:space-x-10 rtl:space-x-reverse space-x-5 justify-center">
-              <li className="px-30">
+              <li>
                 <span className="flex items-center text-sm font-600 cursor-pointer text-qblack  px-15">
                   <span>{ServeLangItem()?.Shop}</span>
                   <span className="ml-1.5 ">

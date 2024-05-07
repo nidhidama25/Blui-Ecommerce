@@ -5,7 +5,7 @@ const instance = axios.create({
   headers: {
     "content-Type": "application/json",
     Accept: "application/json",
-      'X-Requested-With': 'XMLHttpRequest'
+    "X-Requested-With": "XMLHttpRequest",
   },
 });
 export default {
@@ -120,17 +120,17 @@ export default {
       url: `user/address?token=${token}`,
       data,
     }),
-    editAddress: (id, token) =>
-        instance({
-            method: "GET",
-            url: `user/address/${id}?token=${token}`,
-        }),
-    updateAddress: (id, token, data) =>
-        instance({
-            method: "PUT",
-            url: `user/address/${id}?token=${token}`,
-            data,
-        }),
+  editAddress: (id, token) =>
+    instance({
+      method: "GET",
+      url: `user/address/${id}?token=${token}`,
+    }),
+  updateAddress: (id, token, data) =>
+    instance({
+      method: "PUT",
+      url: `user/address/${id}?token=${token}`,
+      data,
+    }),
   incrementQyt: (id, token) =>
     instance({
       method: "GET",
@@ -222,9 +222,9 @@ export default {
       method: "GET",
       url: `blog/${slug}`,
     }),
-    deleteUser: (token) =>
-        instance({
-            method: "DELETE",
-            url: `user/remove-account?token=${token}`,
-        }),
+  deleteUser: (token) =>
+    instance({
+      method: "DELETE",
+      url: `user/remove-account?token=${token}`,
+    }),
 };
