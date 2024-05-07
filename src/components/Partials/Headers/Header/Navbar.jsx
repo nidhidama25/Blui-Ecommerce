@@ -31,7 +31,7 @@ export default function Navbar({ className }) {
         <div className="w-full h-full  justify-center">
           {/* <div className="w-full h-full justify-between items-center">
             <div className="category-and-nav  xl:rtl:space-x-reverse space-x-7 rtl:space-x-reverse space-x-3 items-center"> */}
-          <div className="nav w-full justify-center">
+          <div className="nav w-full justify-center item-center">
             <ul className="nav-wrapper flex xl:space-x-10 rtl:space-x-reverse space-x-5 justify-center">
               <li>
                 <span className="flex items-center text-sm font-600 cursor-pointer text-qblack  px-15">
