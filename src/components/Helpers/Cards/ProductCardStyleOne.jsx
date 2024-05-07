@@ -262,19 +262,29 @@ export default function ProductCardStyleOne({ datas }) {
       legacyBehavior
     >
       <a className="card-link">
-        <div className="main-wrapper-card relative">
+        <div className="main-wrapper-card relative rounded-md">
           <div
-            className="product-card-one w-full h-[445px] bg-white relative group overflow-hidden"
+            className="product-card-one w-full h-[475px] bg-white relative group overflow-hidden"
             style={{ boxShadow: "0px 15px 64px 0px rgba(0, 0, 0, 0.05)" }}
           >
-            <div className="product-card-img w-full h-[300px] -mt-2">
-              <div
-                className="w-full h-full relative flex justify-center items-center transform scale-100 group-hover:scale-110 transition duration-300 ease-in-out"
-                // style={{
-                //   background: `url(${datas.image}) no-repeat center`,
-                //   backgroundSize: "contain",
-                // }}
+            <div className="p-3 bg-qblue-white m-2 rounded-lg h-20">
+              <Link
+                href={{
+                  pathname: "/single-product",
+                  query: { slug: datas.slug },
+                }}
+                passHref
+                legacyBehavior
               >
+                <a rel="noopener noreferrer">
+                  <p className="title mb-2 text-[15px] font-600 text-custom-blue leading-[24px] line-clamp-2 hover:text-blue-600 cursor-pointer">
+                    {datas.title}
+                  </p>
+                </a>
+              </Link>
+            </div>
+            <div className="product-card-img w-full h-[300px] -mt-2 rounded-md">
+              <div className="w-full h-full relative flex justify-center rounded-md items-center transform scale-100 group-hover:scale-110 transition duration-300 ease-in-out">
                 <Image
                   layout="fill"
                   objectFit="scale-down"
@@ -283,55 +293,15 @@ export default function ProductCardStyleOne({ datas }) {
                   onLoadingComplete={() => loadImg(datas.image)}
                   className="w-full h-full object-contain"
                 />
-                {/* product available progress */}
-                {/*{datas.campaingn_product && (*/}
-                {/*  <>*/}
-                {/*    <div className="px-[30px] absolute left-0 top-3 w-full">*/}
-                {/*      <div className="progress-title flex justify-between ">*/}
-                {/*        <p className="text-xs text-qblack font-400 leading-6">*/}
-                {/*          Prodcuts Available*/}
-                {/*        </p>*/}
-                {/*        <span className="text-sm text-qblack font-600 leading-6">*/}
-                {/*          {datas.cam_product_available}*/}
-                {/*        </span>*/}
-                {/*      </div>*/}
-                {/*      <div className="progress w-full h-[5px] rounded-[22px] bg-primarygray relative overflow-hidden">*/}
-                {/*        <div*/}
-                {/*          style={{*/}
-                {/*            width: `${*/}
-                {/*              datas.campaingn_product ? 100 - available : 0*/}
-                {/*            }%`,*/}
-                {/*          }}*/}
-                {/*          className="h-full absolute left-0 top-0 bg-qyellow"*/}
-                {/*        ></div>*/}
-                {/*      </div>*/}
-                {/*    </div>*/}
-                {/*  </>*/}
-                {/*)}*/}
-
-                {/* product type */}
-                {/*{datas.product_type && !datas.campaingn_product && (*/}
-                {/*  <div className="product-type absolute right-[14px] top-[17px]">*/}
-                {/*    <span*/}
-                {/*      className={`text-[9px] font-700 leading-none py-[6px] px-3 uppercase text-white rounded-full tracking-wider ${*/}
-                {/*        datas.product_type === "popular"*/}
-                {/*          ? "bg-[#19CC40]"*/}
-                {/*          : "bg-qyellow"*/}
-                {/*      }`}*/}
-                {/*    >*/}
-                {/*      {datas.product_type}*/}
-                {/*    </span>*/}
-                {/*  </div>*/}
-                {/*)}*/}
               </div>
             </div>
-            <div className="product-card-details px-[30px] pb-[30px] relative pt-2">
+            <div className="bg-custom-blue rounded-md product-card-details pb-[30px] relative pt-2">
               {/* add to card button */}
-              <div className="absolute w-full h-10 px-[30px] left-0 top-40 group-hover:top-[85px] transition-all duration-300 ease-in-out">
+              <div className="absolute w-full h-10 px-[30px] left-0 top-40 group-hover:top-[10px] transition-all duration-300 ease-in-out">
                 <button
                   onClick={() => addToCart(datas.id)}
                   type="button"
-                  className="yellow-btn group relative w-full h-full flex shadow  justify-center items-center overflow-hidden"
+                  className="bg-qblue-white rounded-xl group relative w-full h-full flex shadow  justify-center items-center overflow-hidden"
                 >
                   <div className="btn-content flex items-center space-x-3 rtl:space-x-reverse relative z-10">
                     <span>
@@ -351,7 +321,48 @@ export default function ProductCardStyleOne({ datas }) {
                   <div className="bg-shape w-full h-full absolute  bg-qblack"></div>
                 </button>
               </div>
-              <div className="reviews flex space-x-[1px] mb-3">
+
+              <div className="px-[30px]">
+                <p className="price">
+                  <span
+                    suppressHydrationWarning
+                    className={`main-price  font-600 text-[18px] ${
+                      offerPrice ? "line-through text-qgray" : "text-qred"
+                    }`}
+                  >
+                    {offerPrice ? (
+                      <span>{currency_icon && currency_icon + price}</span>
+                    ) : (
+                      <>
+                        {isProductInFlashSale && (
+                          <span
+                            className={`line-through text-qgray font-500 text-[16px] mr-2`}
+                          >
+                            {currency_icon &&
+                              currency_icon + parseFloat(price).toFixed(2)}
+                          </span>
+                        )}
+                        <CheckProductIsExistsInFlashSale
+                          id={datas.id}
+                          price={price}
+                        />
+                      </>
+                    )}
+                  </span>
+                  {offerPrice && (
+                    <span
+                      suppressHydrationWarning
+                      className="offer-price text-qred font-600 text-[18px] ml-2"
+                    >
+                      <CheckProductIsExistsInFlashSale
+                        id={datas.id}
+                        price={offerPrice}
+                      />
+                    </span>
+                  )}
+                </p>
+              </div>
+              <div className="reviews flex space-x-[1px] m-4 pl-3">
                 {Array.from(Array(datas.review), () => (
                   <span key={datas.review + Math.random()}>
                     <Star />
@@ -370,59 +381,6 @@ export default function ProductCardStyleOne({ datas }) {
                   </>
                 )}
               </div>
-
-              <Link
-                href={{
-                  pathname: "/single-product",
-                  query: { slug: datas.slug },
-                }}
-                passHref
-                legacyBehavior
-              >
-                <a rel="noopener noreferrer">
-                  <p className="title mb-2 text-[15px] font-600 text-qblack leading-[24px] line-clamp-2 hover:text-blue-600 cursor-pointer">
-                    {datas.title}
-                  </p>
-                </a>
-              </Link>
-              <p className="price">
-                <span
-                  suppressHydrationWarning
-                  className={`main-price  font-600 text-[18px] ${
-                    offerPrice ? "line-through text-qgray" : "text-qred"
-                  }`}
-                >
-                  {offerPrice ? (
-                    <span>{currency_icon && currency_icon + price}</span>
-                  ) : (
-                    <>
-                      {isProductInFlashSale && (
-                        <span
-                          className={`line-through text-qgray font-500 text-[16px] mr-2`}
-                        >
-                          {currency_icon &&
-                            currency_icon + parseFloat(price).toFixed(2)}
-                        </span>
-                      )}
-                      <CheckProductIsExistsInFlashSale
-                        id={datas.id}
-                        price={price}
-                      />
-                    </>
-                  )}
-                </span>
-                {offerPrice && (
-                  <span
-                    suppressHydrationWarning
-                    className="offer-price text-qred font-600 text-[18px] ml-2"
-                  >
-                    <CheckProductIsExistsInFlashSale
-                      id={datas.id}
-                      price={offerPrice}
-                    />
-                  </span>
-                )}
-              </p>
             </div>
             {/* quick-access-btns */}
             <div className="quick-access-btns flex flex-col space-y-2">

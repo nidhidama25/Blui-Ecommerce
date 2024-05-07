@@ -35,7 +35,7 @@ export default function SectionStyleThreeHomeTwo({
                 endLength={showProducts}
               >
                 {({ datas }) => (
-                  <div data-aos="fade-up" key={datas.id} className="item">
+                  <div data-aos="fade-up" key={datas.id} className="item ">
                     <ProductCardStyleOneTwo datas={datas} />
                   </div>
                 )}

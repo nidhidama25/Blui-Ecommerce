@@ -246,7 +246,7 @@ export default function ProductCardRowStyleOne({ className, datas }) {
         <div className="main-wrapper-card relative">
           <div
             data-aos="fade-left"
-            className={`product-row-card-style-one  w-full lg:h-[250px] h-[200px] bg-white group relative overflow-hidden ${
+            className={`product-row-card-style-one  w-full lg:h-[250px] h-[200px]  group relative overflow-hidden ${
               className || ""
             }`}
           >
@@ -260,7 +260,7 @@ export default function ProductCardRowStyleOne({ className, datas }) {
                   className="w-full h-full object-contain"
                 />
               </div>
-              <div className="flex-1 flex flex-col justify-center h-full">
+              <div className="flex-1 flex flex-col justify-center h-full bg-custom-blue rounded-md p-4 ">
                 <div>
                   {/* reviews */}
                   <div className="flex space-x-1 mb-3">
@@ -338,9 +338,9 @@ export default function ProductCardRowStyleOne({ className, datas }) {
                   <button
                     onClick={() => addToCart(datas.id)}
                     type="button"
-                    className="w-[110px] h-[30px]"
+                    className="w-[110px] h-[30px] bg-qblue-white"
                   >
-                    <span className="yellow-btn">
+                    <span className="yellow-btn bg-qblue-white">
                       {ServeLangItem()?.Add_To_Cart}
                     </span>
                   </button>
@@ -350,7 +350,7 @@ export default function ProductCardRowStyleOne({ className, datas }) {
             {/* quick-access-btns */}
             <div className="quick-access-btns flex flex-col space-y-2">
               <button
-                className=" absolute group-hover:left-4 -left-10 top-5  transition-all ease-in-out"
+                className=" absolute group-hover:left-4 -left-10 top-5  transition-all ease-in-out bg-qblue-white"
                 type="button"
                 onClick={() => quickViewHandler(datas.slug)}
               >
