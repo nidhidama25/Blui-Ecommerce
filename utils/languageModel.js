@@ -30,7 +30,7 @@ export default function languageModel() {
         Aadhar_Card_Number: "Aadhar Card Number",
         Full_Name: "Full Name",
         Referral_Code: "Referral Code",
-        Name: "Name",
+        Name: "Your Name",
         // Add more labels as needed
       };
 

@@ -122,6 +122,11 @@ function LoginWidget({ redirect = true, loginActionPopup, notVerifyHandler }) {
   }, []);
   return (
     <div className="w-full">
+      <div className="">
+        <p className="text-md font-bold p-5 ">
+          Save 50 % On <div></div> Your First Order
+        </p>
+      </div>
       <div className="input-area">
         <div className="input-item mb-5">
           <InputCom
