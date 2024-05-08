@@ -127,16 +127,17 @@ function LoginWidget({ redirect = true, loginActionPopup, notVerifyHandler }) {
           Save 50 % On <div></div> Your First Order
         </p>
       </div>
-      <div className="input-area">
-        <div className="input-item mb-5">
+      <div className="input-area rounded-lg">
+        <div className="input-item mb-5 rounded-lg">
           <InputCom
             placeholder={ServeLangItem()?.Name}
             label={ServeLangItem()?.Name + "*"}
             name="name"
             type="text"
-            inputClasses="h-[50px]"
+            inputClasses="h-[50px] "
             inputHandler={(e) => setName(e.target.value)}
             value={name}
+            className="rounded-lg"
           />
         </div>
         <div className="input-item mb-5">
