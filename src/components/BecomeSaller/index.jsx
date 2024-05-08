@@ -220,15 +220,26 @@ function BecomeSaller() {
                   </div>
                   <div className="mb-5">
                     <InputCom
-                      placeholder={ServeLangItem()?.Referral_Code}
-                      label={ServeLangItem()?.Referral_Code}
-                      name="referralCode"
-                      type="text"
-                      inputClasses="h-[50px]"
-                      value={referralCode}
-                      inputHandler={(e) => setReferralCode(e.target.value)}
+                      placeholder={ServeLangItem()?.Referral_Code} // Placeholder text for the input field
+                      label={ServeLangItem()?.Referral_Code} // Label text for the input field (without the star)
+                      name="referralCode" // Name attribute for the input field
+                      type="text" // Type of the input field (text, email, etc.)
+                      inputClasses="h-[50px]" // CSS classes for styling the input field
+                      value={referralCode} // Value of the input field (controlled component)
+                      inputHandler={(e) => setReferralCode(e.target.value)} // Handler function for input change
+                      error={
+                        !!(errors && Object.hasOwn(errors, "referralCode"))
+                      } // Error state for the input field
                     />
+                    {errors && Object.hasOwn(errors, "referralCode") ? (
+                      <span className="text-sm mt-1 text-qred">
+                        {errors.referralCode[0]}
+                      </span>
+                    ) : (
+                      ""
+                    )}
                   </div>
+
                   <div className="mb-5">
                     <InputCom
                       placeholder={ServeLangItem()?.Password}
