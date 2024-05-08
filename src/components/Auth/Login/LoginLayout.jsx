@@ -1,6 +1,6 @@
+import Image from "next/image";
 import React from "react";
 import Layout from "../../Partials/Layout";
-import Image from "next/image";
 
 function LoginLayout({ imgThumb, children }) {
   return (
