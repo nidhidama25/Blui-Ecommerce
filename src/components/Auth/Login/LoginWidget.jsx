@@ -123,8 +123,8 @@ function LoginWidget({ redirect = true, loginActionPopup, notVerifyHandler }) {
   return (
     <div className="w-full">
       <div className="">
-        <p className="text-md font-bold p-5 ">
-          Save 50 % On <div></div> Your First Order
+        <p className="text-md text-center font-bold p-5 ">
+          % <div></div>Save 50 % On <div></div> Your First Order
         </p>
       </div>
       <div className="input-area rounded-lg">
