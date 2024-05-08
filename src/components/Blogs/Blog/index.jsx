@@ -98,9 +98,7 @@ export default function Blog({ details }) {
                 <div className="img w-full h-[457px] relative">
                   <Image
                     layout="fill"
-                    src={`${
-                      process.env.NEXT_PUBLIC_BASE_URL + details.blog.image
-                    }`}
+                    src={process.env.NEXT_PUBLIC_BASE_URL + details.blog.image}
                     alt="blog"
                     className="w-full h-full object-cover"
                   />
