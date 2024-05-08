@@ -46,7 +46,7 @@ export default function Header({ drawerAction, settings, contact }) {
                   <Image
                     layout="fill"
                     objectFit="scale-down"
-                    src={`${process.env.NEXT_PUBLIC_BASE_URL + settings.logo}`}
+                    src= "https://blui.in/uploads/website-images/ibrahim-khalil-2022-01-30-02-48-50-5743.jpg"
                     alt="logo"
                   />
                 )}
