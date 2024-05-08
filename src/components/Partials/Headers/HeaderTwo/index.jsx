@@ -46,7 +46,7 @@ export default function HeaderTwo({ className, drawerAction, settings }) {
                   <Image
                     width="152"
                     height="36"
-                    src= "https://blui.in/uploads/website-images/ibrahim-khalil-2022-01-30-02-48-50-5743.jpg"
+                    src={`${process.env.NEXT_PUBLIC_BASE_URL + settings.logo}`}                    
                     alt="logo"
                   />
                 )}
