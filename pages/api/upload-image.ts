@@ -1,6 +1,6 @@
 import fs from 'fs';
-import path from 'path';
 import { NextApiRequest, NextApiResponse } from 'next';
+import path from 'path';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
