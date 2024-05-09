@@ -436,10 +436,10 @@ export default function ProductCardRowStyleOne({ className, datas }) {
               </div>
             )}
           </div>
-          <span className="anim bottom"></span>
+          {/* <span className="anim bottom"></span>
           <span className="anim right"></span>
           <span className="anim top"></span>
-          <span className="anim left"></span>
+          <span className="anim left"></span> */}
         </div>
       </a>
     </Link>
