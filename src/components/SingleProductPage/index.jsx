@@ -113,7 +113,7 @@ export default function SingleProductPage({ details }) {
       <Layout childrenClasses="pt-0 pb-0">
         <>
           <div className=" w-full">
-            <div className="single-product-wrapper p-10 w-full flex flex-col lg:flex-row m-5 ">
+            <div className="single-product-wrapper p-10 w-full flex flex-col lg:flex-col m-5 ">
               <div className="product-view-main-wrapper  bg-white pt-[30px] w-full">
                 <div className="breadcrumb-wrapper w-full ">
                   <div className="container-x mx-auto">

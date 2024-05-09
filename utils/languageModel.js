@@ -31,6 +31,7 @@ export default function languageModel() {
         Full_Name: "Full Name",
         Referral_Code: "Referral Code",
         Name: "Your Name",
+        Buy_Now: "Buy Now",
         // Add more labels as needed
       };
 

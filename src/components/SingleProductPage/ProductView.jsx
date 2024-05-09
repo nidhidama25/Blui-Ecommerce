@@ -109,26 +109,6 @@ export default function ProductView({
   }, [getFirstVarients, varients]);
 
   useEffect(() => {
-    // if (varients) {
-    //   const prices = varients.map((v) =>
-    //     v.active_variant_items.length > 0 ? v.active_variant_items[0].price : 0
-    //   );
-    //   const sumPrice = parseInt(
-    //     prices.reduce((prev, curr) => parseInt(prev) + parseInt(curr), 0) +
-    //       parseInt(product.price)
-    //   );
-    //   setPrice(sumPrice);
-    //
-    //   if (product.offer_price) {
-    //     const sumOfferPrice = parseInt(
-    //       prices.reduce((prev, curr) => parseInt(prev) + parseInt(curr), 0) +
-    //         parseInt(product.offer_price)
-    //     );
-    //     setOffer(sumOfferPrice);
-    //   }
-    // } else {
-    //   setPrice(product && product.price);
-    // }
     if (varients) {
       const prices = varients.map((v) =>
         v.active_variant_items.length > 0 && v.active_variant_items[0].price
@@ -299,11 +279,11 @@ export default function ProductView({
       loginPopupBoard.handlerPopup(true);
     }
   };
-
+  const [tab, setTab] = useState("des");
   return (
     <>
       <div
-        className={`product-view w-full lg:flex flex-col justify-between ${
+        className={`product-view w-full lg:flex flex-row justify-between ${
           className || ""
         }`}
       >
@@ -370,7 +350,7 @@ export default function ProductView({
             {product.brand && (
               <span
                 data-aos="fade-up"
-                className="text-qgray text-xs font-normal uppercase tracking-wider mb-2 inline-block"
+                className="text-custom-blue text-2xl font-bold  uppercase tracking-wider mb-2 inline-block"
               >
                 {product.brand.name}
               </span>
@@ -378,7 +358,7 @@ export default function ProductView({
 
             <p
               data-aos="fade-up"
-              className="text-xl font-medium text-qblack mb-4"
+              className="text-xl font-small text-black mb-4"
             >
               {product.name}
             </p>
@@ -387,9 +367,6 @@ export default function ProductView({
               className="flex space-x-[10px] items-center mb-6"
             >
               <div className="flex">
-                {/*{Array.from(Array(parseInt(product.averageRating)), () => (*/}
-                {/*  <Star />*/}
-                {/*))}*/}
                 {Array.from(Array(parseInt(product.averageRating)), () => (
                   <span key={parseInt(product.averageRating) + Math.random()}>
                     <Star />
@@ -417,7 +394,7 @@ export default function ProductView({
             </div>
             <div
               data-aos="fade-up"
-              className="flex space-x-2 items-baseline mb-7"
+              className="flex space-x-2 items-baseline mb-2"
             >
               <span
                 suppressHydrationWarning
@@ -448,7 +425,7 @@ export default function ProductView({
                 </span>
               )}
             </div>
-
+            <div className="border-t border-black mb-2"></div>
             <div data-aos="fade-up" className="mb-[30px]">
               <div
                 className={`text-qgray text-sm text-normal  leading-7 ${
@@ -465,44 +442,7 @@ export default function ProductView({
                 {more ? "See Less" : "See More"}
               </button>
             </div>
-            {/* <div className="p-3 bg-qyellowlow/10 flex items-center space-x-2 mb-[30px] w-fit">
-              <span className="text-base font-bold text-qblack">
-                {ServeLangItem()?.Availability} :
-              </span>
-              <span className="text-base font-bold text-qyellow">
-                {product.qty !== "0"
-                  ? `${product.qty} Products Available`
-                  : `Products not Available`}
-              </span>
-            </div> */}
 
-            {/*<div data-aos="fade-up" className="colors mb-[30px]">*/}
-            {/*  <span className="text-sm font-normal uppercase text-qgray mb-[14px] inline-block">*/}
-            {/*    COLOR*/}
-            {/*  </span>*/}
-
-            {/*  <div className="flex space-x-4 items-center">*/}
-            {/*    {productsImg &&*/}
-            {/*      productsImg.length > 0 &&*/}
-            {/*      productsImg.map((img) => (*/}
-            {/*        <div key={img.id}>*/}
-            {/*          {img.color && img.color !== "" && (*/}
-            {/*            <button*/}
-            {/*              onClick={() => changeImgHandler(img.src)}*/}
-            {/*              type="button"*/}
-            {/*              style={{ "--tw-ring-color": `${img.color}` }}*/}
-            {/*              className="w-[20px] h-[20px]  rounded-full focus:ring-2  ring-offset-2 flex justify-center items-center"*/}
-            {/*            >*/}
-            {/*              <span*/}
-            {/*                style={{ background: `${img.color}` }}*/}
-            {/*                className="w-[20px] h-[20px] block rounded-full border"*/}
-            {/*              ></span>*/}
-            {/*            </button>*/}
-            {/*          )}*/}
-            {/*        </div>*/}
-            {/*      ))}*/}
-            {/*  </div>*/}
-            {/*</div>*/}
             {varients.length > 0 &&
               varients.map((item) => (
                 <div
@@ -547,12 +487,6 @@ export default function ProductView({
                                 </svg>
                               </span>
                             </div>
-                            {/*<div className="flex space-x-10 items-center">*/}
-                            {/*<span className="text-[13px] text-qblack">*/}
-                            {/*  3”W x 3”D x 7”H*/}
-                            {/*</span>*/}
-                            {/*  */}
-                            {/*</div>*/}
                           </>
                         )}
                       </Selectbox>
@@ -585,25 +519,6 @@ export default function ProductView({
                 </div>
               </div>
               <div className="w-[60px] h-full flex justify-center items-center border border-qgray-border">
-                {/*<button type="button">*/}
-                {/*  <span>*/}
-                {/*    <svg*/}
-                {/*        width="24"*/}
-                {/*        height="24"*/}
-                {/*        viewBox="0 0 24 24"*/}
-                {/*        fill="none"*/}
-                {/*        xmlns="http://www.w3.org/2000/svg"*/}
-                {/*    >*/}
-                {/*      <path*/}
-                {/*          d="M17 1C14.9 1 13.1 2.1 12 3.7C10.9 2.1 9.1 1 7 1C3.7 1 1 3.7 1 7C1 13 12 22 12 22C12 22 23 13 23 7C23 3.7 20.3 1 17 1Z"*/}
-                {/*          stroke="#D5D5D5"*/}
-                {/*          strokeWidth="2"*/}
-                {/*          strokeMiterlimit="10"*/}
-                {/*          strokeLinecap="square"*/}
-                {/*      />*/}
-                {/*    </svg>*/}
-                {/*  </span>*/}
-                {/*</button>*/}
                 {!arWishlist ? (
                   <button
                     type="button"
@@ -626,22 +541,24 @@ export default function ProductView({
                   </button>
                 )}
               </div>
-              <div className="flex-1 h-full">
+            </div>
+            <div className="flex flex-row">
+              <div className=" h-full">
                 <button
                   onClick={addToCard}
                   type="button"
-                  className="black-btn text-sm font-semibold w-full h-full"
+                  className="black-btn text-sm font-semibold w-[150px] rounded-lg p-2 m-2 bg-custom-blue h-full"
                 >
                   {ServeLangItem()?.Add_To_Cart}
                 </button>
               </div>
-              <div className="flex-1 h-full">
+              <div className=" h-full">
                 <button
                   onClick={addToCard}
                   type="button"
-                  className="black-btn text-sm font-semibold w-full h-full"
+                  className="black-btn text-sm font-semibold w-[150px] m-2 rounded-lg p-2 bg-custom-blue h-full"
                 >
-                  {ServeLangItem()?.Add_To_Cart}
+                  {ServeLangItem()?.Buy_Now}
                 </button>
               </div>
             </div>
@@ -755,22 +672,6 @@ export default function ProductView({
                     </svg>
                   </span>
                 </TwitterShareButton>
-                {/*<Link href="#">*/}
-                {/*  <span className="cursor-pointer">*/}
-                {/*    <svg*/}
-                {/*      width="16"*/}
-                {/*      height="16"*/}
-                {/*      viewBox="0 0 16 16"*/}
-                {/*      fill="none"*/}
-                {/*      xmlns="http://www.w3.org/2000/svg"*/}
-                {/*    >*/}
-                {/*      <path*/}
-                {/*        d="M8 0C3.6 0 0 3.6 0 8C0 11.4 2.1 14.3 5.1 15.4C5 14.8 5 13.8 5.1 13.1C5.2 12.5 6 9.1 6 9.1C6 9.1 5.8 8.7 5.8 8C5.8 6.9 6.5 6 7.3 6C8 6 8.3 6.5 8.3 7.1C8.3 7.8 7.9 8.8 7.6 9.8C7.4 10.6 8 11.2 8.8 11.2C10.2 11.2 11.3 9.7 11.3 7.5C11.3 5.6 9.9 4.2 8 4.2C5.7 4.2 4.4 5.9 4.4 7.7C4.4 8.4 4.7 9.1 5 9.5C5 9.7 5 9.8 5 9.9C4.9 10.2 4.8 10.7 4.8 10.8C4.8 10.9 4.7 11 4.5 10.9C3.5 10.4 2.9 9 2.9 7.8C2.9 5.3 4.7 3 8.2 3C11 3 13.1 5 13.1 7.6C13.1 10.4 11.4 12.6 8.9 12.6C8.1 12.6 7.3 12.2 7.1 11.7C7.1 11.7 6.7 13.2 6.6 13.6C6.4 14.3 5.9 15.2 5.6 15.7C6.4 15.9 7.2 16 8 16C12.4 16 16 12.4 16 8C16 3.6 12.4 0 8 0Z"*/}
-                {/*        fill="#E12828"*/}
-                {/*      />*/}
-                {/*    </svg>*/}
-                {/*  </span>*/}
-                {/*</Link>*/}
               </div>
             </div>
             {seller && (
