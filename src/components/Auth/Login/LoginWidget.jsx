@@ -131,7 +131,7 @@ function LoginWidget({ redirect = true, loginActionPopup, notVerifyHandler }) {
         </p>
       </div>
       <div className="input-area rounded-lg">
-        <div className="input-item mb-5">
+        <div className="input-item mb-5 mt-3">
           <InputCom
             placeholder={ServeLangItem()?.Email_or_Phone + " (+Country Code)"}
             label={ServeLangItem()?.Email_or_Phone + "*"}
