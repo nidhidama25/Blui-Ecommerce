@@ -123,23 +123,14 @@ function LoginWidget({ redirect = true, loginActionPopup, notVerifyHandler }) {
   return (
     <div className="w-full">
       <div className="">
-        <p className="text-md text-center font-bold p-5 ">
-          % <div></div>Save 50 % On <div></div> Your First Order
+        <h1 className="text-md text-center text-3xl font-bold p-5 ">
+          Save 50 % On <div></div> Your First Order
+        </h1>
+        <p className="text-sm px-6">
+          Subscribe our newsletter to follow the news about our presh products
         </p>
       </div>
       <div className="input-area rounded-lg">
-        <div className="input-item mb-5 rounded-lg">
-          <InputCom
-            placeholder={ServeLangItem()?.Name}
-            label={ServeLangItem()?.Name + "*"}
-            name="name"
-            type="text"
-            inputClasses="h-[50px] "
-            inputHandler={(e) => setName(e.target.value)}
-            value={name}
-            className="rounded-lg"
-          />
-        </div>
         <div className="input-item mb-5">
           <InputCom
             placeholder={ServeLangItem()?.Email_or_Phone + " (+Country Code)"}
