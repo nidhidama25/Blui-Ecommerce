@@ -113,7 +113,7 @@ export default function SingleProductPage({ details }) {
       <Layout childrenClasses="pt-0 pb-0">
         <>
           <div className=" w-full">
-            <div className="single-product-wrapper p-10 w-full flex flex-col lg:flex-col m-5 ">
+            <div className="single-product-wrapper p-10 w-full flex flex-col lg:flex-col m-5 bg-white ">
               <div className="product-view-main-wrapper  bg-white pt-[30px] w-full">
                 <div className="breadcrumb-wrapper w-full ">
                   <div className="container-x mx-auto">
@@ -128,7 +128,7 @@ export default function SingleProductPage({ details }) {
                     />
                   </div>
                 </div>
-                <div className="w-full bg-white pb-[60px]">
+                <div className="w-full bg-white">
                   <div className="container-x mx-auto">
                     {/*key name spelling not correct (gellery)*/}
                     <ProductView
@@ -140,9 +140,9 @@ export default function SingleProductPage({ details }) {
                   </div>
                 </div>
               </div>
-              <div className="flex ">
+              <div className="flex justify-end ">
                 <div
-                  className="product-des-wrapper  w-full relative pb-[60px]"
+                  className="product-des-wrapper  w-[500px]   relative right-40 p-2 "
                   ref={reviewElement}
                 >
                   <div className="tab-buttons w-full mb-10 mt-5 sm:mt-0">

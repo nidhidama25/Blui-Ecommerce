@@ -67,8 +67,8 @@ export default function Footer({ settings }) {
               <a>
                 {settings && (
                   <Image
-                    width="153"
-                    height="44"
+                    width="70"
+                    height="34"
                     objectFit="scale-down"
                     src={`${process.env.NEXT_PUBLIC_BASE_URL + settings.logo}`}
                     alt="logo"

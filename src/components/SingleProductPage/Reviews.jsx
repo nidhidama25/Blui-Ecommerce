@@ -106,15 +106,6 @@ export default function Reviews({ comments }) {
               </div>
             ))}
         </div>
-        {/* load comments */}
-        {/*<div className="w-full flex justify-center">*/}
-        {/*  <button*/}
-        {/*    type="button"*/}
-        {/*    className="black-btn w-[300px] h-[50px] text-sm font-semibold"*/}
-        {/*  >*/}
-        {/*    Load More*/}
-        {/*  </button>*/}
-        {/*</div>*/}
       </div>
     </div>
   );

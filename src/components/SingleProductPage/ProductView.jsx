@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FacebookShareButton, TwitterShareButton } from "react-share";
 import { toast } from "react-toastify";
@@ -17,8 +17,7 @@ import ServeLangItem from "../Helpers/ServeLangItem";
 import Star from "../Helpers/icons/Star";
 import ThinLove from "../Helpers/icons/ThinLove";
 import CheckProductIsExistsInFlashSale from "../Shared/CheckProductIsExistsInFlashSale";
-
-const Redirect = () => {
+const Redirect = (details) => {
   return (
     <div className="flex space-x-2 items-center">
       <span className="text-sm text-gray-500">
@@ -38,8 +37,10 @@ export default function ProductView({
   images = [],
   product,
   seller,
+  details,
 }) {
   const router = useRouter();
+  const reviewElement = useRef(null);
   const dispatch = useDispatch();
   const [more, setMore] = useState(false);
   const productsImg = images && images.length > 0 && images;
@@ -51,6 +52,32 @@ export default function ProductView({
         v.active_variant_items.length > 0 ? v.active_variant_items[0] : {}
       )
   );
+
+  //review
+  const [subject, setSubject] = useState("");
+  const [description, setDescription] = useState("");
+  const [reportErrors, setReportErrors] = useState(null);
+  const [comments, setComments] = useState([]);
+  useEffect(() => {
+    if (!comments) {
+      const reviews =
+        details &&
+        details.productReviews.length > 0 &&
+        details.productReviews.map((review) => {
+          return {
+            id: review.id,
+            author: review.user.name,
+            comments: review.review,
+            review: parseInt(review.rating),
+            replys: null,
+            image: review.user.image
+              ? process.env.NEXT_PUBLIC_BASE_URL + review.user.image
+              : null,
+          };
+        });
+      setComments(reviews);
+    }
+  }, [comments]);
   const [price, setPrice] = useState(null);
   const [offerPrice, setOffer] = useState(null);
   const [src, setSrc] = useState(product.thumb_image);
@@ -547,7 +574,7 @@ export default function ProductView({
                 <button
                   onClick={addToCard}
                   type="button"
-                  className="black-btn text-sm font-semibold w-[150px] rounded-lg p-2 m-2 bg-custom-blue h-full"
+                  className=" text-sm text-qblue-white font-semibold w-[150px] rounded-lg py-2 mr-3  bg-custom-blue h-full"
                 >
                   {ServeLangItem()?.Add_To_Cart}
                 </button>
@@ -556,7 +583,7 @@ export default function ProductView({
                 <button
                   onClick={addToCard}
                   type="button"
-                  className="black-btn text-sm font-semibold w-[150px] m-2 rounded-lg p-2 bg-custom-blue h-full"
+                  className=" text-sm text-qblue-white font-semibold w-[150px]  rounded-lg p-2 bg-custom-blue h-full"
                 >
                   {ServeLangItem()?.Buy_Now}
                 </button>
@@ -620,7 +647,6 @@ export default function ProductView({
               <span className="text-qblack text-[13px] mr-[17px] inline-block">
                 {ServeLangItem()?.Share_This}
               </span>
-
               <div className="flex space-x-5 items-center">
                 <FacebookShareButton
                   url={`${
@@ -717,6 +743,48 @@ export default function ProductView({
                 </button>
               </div>
             )}
+            {/* <div
+              className="product-detail-des mb-10"
+              dangerouslySetInnerHTML={{
+                __html: details.product.long_description,
+              }}
+            ></div>
+            {details.specifications && details.specifications.length > 0 && (
+              <div className="product-specifications">
+                <h6 className="text-[20px] font-bold mb-4">
+                  {ServeLangItem()?.Features} :
+                </h6>
+                <ul className="">
+                  {details.specifications.map((item, i) => (
+                    <li
+                      key={i}
+                      className=" leading-9 flex space-x-3 items-center"
+                    >
+                      <span className="text-qblack font-medium capitalize">
+                        {" "}
+                        {item.key.key}:
+                      </span>
+                      <span className="font-normal text-qgray">
+                        {item.specification}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )} */}
+            {/* <div className="product-reviews">
+              <div data-aos="fade-up" className="w-full tab-content-item">
+                <h6 className="text-[20px] font-bold text-qblack mb-2">
+                  {ServeLangItem()?.Reviews}
+                </h6>
+                
+                <div className="w-full">
+                  <Reviews
+                    comments={comments.length > 0 && comments.slice(0, 2)}
+                  />
+                </div>
+              </div>
+            </div> */}
           </div>
         </div>
       </div>

@@ -304,7 +304,7 @@ export default function Navbar({ className }) {
               </div>
             </div>
             {Multivendor() === 1 && (
-              <div className="become-seller-btn">
+              <div className=" bg-qblue-white rounded-md">
                 <Link href="/become-seller" passHref legacyBehavior>
                   <a rel="noopener noreferrer">
                     <div className=" w-[161px] h-[40px] flex justify-center items-center cursor-pointer">
