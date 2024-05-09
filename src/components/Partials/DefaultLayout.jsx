@@ -264,7 +264,7 @@ export default function DefaultLayout({ children }) {
                       </div>
                     </div>
 
-                    <div className="flex-grow-0 lg:w-[450px] rounded-md w-full lg:h-[670px] h-full bg-white flex flex-col justify-center sm:p-10 p-5 border border-[#E0E0E0] relative z-40">
+                    <div className="flex-grow-0 w-[450px] rounded-md  lg:h-[670px] h-full bg-white flex flex-col justify-center sm:p-10 p-5 border border-[#E0E0E0] relative z-40">
                       <div
                         onClick={() => getLoginContexts.handlerPopup(false)}
                         className="absolute right-5 top-1 cursor-pointer"
