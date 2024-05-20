@@ -9,7 +9,7 @@ function CategorySection({ sectionTitle, categories }) {
         <div className="bg-qblue-white p-20 rounded-md w-full md:grid xl:grid-cols-3 md:grid-cols-3 grid-cols-1 gap-[30px] md:flex md:flex-row w-70 h-70">
           {/* Add the following div for the Trending Category heading */}
           <div className="col-span-3 text-center p-5">
-            <h2 className="text-2xl font-semibold text-gray-800">
+            <h2 className="text-3xl font-extrabold text-gray-800">
               Trending Category
             </h2>
           </div>

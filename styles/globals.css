@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: "Inter";
   src: url("../public/assets/fonts/Inter-Black.ttf");
   font-weight: 900;
@@ -42,7 +42,7 @@
   font-family: "Inter";
   src: url("../public/assets/fonts/Inter-Thin.ttf");
   font-weight: 100;
-}
+} */
 
 @tailwind base;
 @tailwind components;
@@ -54,6 +54,9 @@
     --primary-color: blue;
     --secondary-color: red;
   }
+  html {
+    @apply font-sans;
+  }
 }
 *,
 *:before,
@@ -63,7 +66,6 @@
   padding: 0;
 }
 html {
-  font-family: "Inter", sans-serif;
   background-color: #f8f8f8;
 }
 body {

@@ -17,6 +17,7 @@ import ServeLangItem from "../Helpers/ServeLangItem";
 import Star from "../Helpers/icons/Star";
 import ThinLove from "../Helpers/icons/ThinLove";
 import CheckProductIsExistsInFlashSale from "../Shared/CheckProductIsExistsInFlashSale";
+import Reviews from "./Reviews";
 const Redirect = (details) => {
   return (
     <div className="flex space-x-2 items-center">
@@ -743,48 +744,21 @@ export default function ProductView({
                 </button>
               </div>
             )}
-            {/* <div
-              className="product-detail-des mb-10"
-              dangerouslySetInnerHTML={{
-                __html: details.product.long_description,
-              }}
-            ></div>
-            {details.specifications && details.specifications.length > 0 && (
-              <div className="product-specifications">
-                <h6 className="text-[20px] font-bold mb-4">
-                  {ServeLangItem()?.Features} :
-                </h6>
-                <ul className="">
-                  {details.specifications.map((item, i) => (
-                    <li
-                      key={i}
-                      className=" leading-9 flex space-x-3 items-center"
-                    >
-                      <span className="text-qblack font-medium capitalize">
-                        {" "}
-                        {item.key.key}:
-                      </span>
-                      <span className="font-normal text-qgray">
-                        {item.specification}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )} */}
-            {/* <div className="product-reviews">
+
+            <div className="product-reviews">
               <div data-aos="fade-up" className="w-full tab-content-item">
-                <h6 className="text-[20px] font-bold text-qblack mb-2">
+                <h6 className="text-[20px] font-bold text-custom-blue mb-2">
                   {ServeLangItem()?.Reviews}
                 </h6>
-                
+
                 <div className="w-full">
+                  {console.log("Comments data:", comments)}
                   <Reviews
                     comments={comments.length > 0 && comments.slice(0, 2)}
                   />
                 </div>
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

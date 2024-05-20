@@ -1,5 +1,4 @@
 import { useState } from "react";
-import FontAwesomeCom from "../Helpers/icons/FontAwesomeCom";
 import CategoryCard from "./Cards/CategoryCard";
 import ProductCardStyleOne from "./Cards/ProductCardStyleOne";
 import DataIteration from "./DataIteration";
@@ -12,7 +11,7 @@ export default function SectionStyleOne({
   seeMoreUrl,
   categories = [],
   products = [],
-  services = [],
+
   categoryBackground,
 }) {
   const [selectedId, setId] = useState(
@@ -49,11 +48,11 @@ export default function SectionStyleOne({
       {categories.length > 0 && products.length > 0 && (
         <div
           data-aos="fade-up"
-          className={`section-style-one ${className || ""}`}
+          className={`section-style-one mx-10 ${className || ""}`}
         >
           <ViewMoreTitle categoryTitle={sectionTitle} seeMoreUrl={seeMoreUrl}>
             <div className="products-section w-full p-10">
-              <div className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-[30px] gap-5">
+              <div className="grid xl:grid-cols-5 lg:grid-cols-4 sm:grid-cols-3 grid-cols-2 xl:gap-[30px] gap-5">
                 <div className="category-card hidden xl:block w-full">
                   <CategoryCard
                     moreUrl={seeMoreUrl}
@@ -72,14 +71,21 @@ export default function SectionStyleOne({
                       datas={filterProducts}
                       startLength={0}
                       endLength={
-                        filterProducts.length > 3 ? 3 : filterProducts.length
+                        filterProducts.length >= 4 ? 4 : filterProducts.length
                       }
                     >
-                      {({ datas }) => (
-                        <div key={datas.id} className="item">
-                          <ProductCardStyleOne datas={datas} />
-                        </div>
-                      )}
+                      {({ datas }) => {
+                        console.log("filterProducts:", filterProducts);
+                        console.log(
+                          "Number of products to render:",
+                          datas.length
+                        );
+                        return (
+                          <div key={datas.id} className="item">
+                            <ProductCardStyleOne datas={datas} />
+                          </div>
+                        );
+                      }}
                     </DataIteration>
                   )
                 ) : (
@@ -92,30 +98,6 @@ export default function SectionStyleOne({
           </ViewMoreTitle>
         </div>
       )}
-      <div
-        data-aos="fade-up"
-        className="best-services w-full bg-white flex flex-col space-y-10 lg:space-y-0 lg:flex-row lg:justify-between lg:items-center lg:h-[110px] px-10 lg:py-0 py-10"
-      >
-        {services.map((service) => (
-          <div key={service.id} className="item">
-            <div className="flex space-x-5 rtl:space-x-reverse items-center">
-              <div>
-                <span className="w-10 h-10 text-qyellow">
-                  <FontAwesomeCom className="w-8 h-8" icon={service.icon} />
-                </span>
-              </div>
-              <div>
-                <p className="text-black text-[15px] font-700 tracking-wide mb-1">
-                  {service.title}
-                </p>
-                <p className="text-sm text-qgray line-clamp-1">
-                  {service.description}
-                </p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
     </>
   );
 }

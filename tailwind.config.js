@@ -31,6 +31,12 @@ module.exports = {
       scale: {
         60: "0.6",
       },
+      fontFamily: {
+        sans: ["Roboto", "Arial", "sans-serif"],
+      },
+      backgroundImage: {
+        "custom-image": "url('/public/assets/images/brand-10.pngs')",
+      },
     },
   },
   variants: {
