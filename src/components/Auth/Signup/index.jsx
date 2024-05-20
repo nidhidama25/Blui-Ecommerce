@@ -33,18 +33,18 @@ export default function Signup() {
         <div className="container-x mx-auto">
           <div className="lg:flex items-center justify-center w-full lg:min-h-[700px]">
             {verify ? (
-              <div className="lg:w-[450px] w-full lg:h-[550px] bg-white flex flex-col justify-center sm:p-10 p-5 border border-[#E0E0E0]">
+              <div className="lg:w-[450px] w-full lg:h-[600px] bg-white flex flex-col justify-center sm:p-10 p-5 border border-[#E0E0E0]">
                 <VerifyWidget />
               </div>
             ) : signupView ? (
-              <div className="lg:w-[450px] w-full lg:h-[550px] bg-white flex flex-col justify-center sm:p-10 p-5 border border-[#E0E0E0]">
+              <div className="lg:w-[450px] w-full lg:h-[600px] bg-white flex flex-col justify-center sm:p-10 p-5 border border-[#E0E0E0]">
                 <SignupWidget />
               </div>
             ) : (
               ""
             )}
             <div className="flex justify-center hidden lg:block">
-              <div className="relative w-[450px] h-[550px] text-qblue-white rounded-md p-10">
+              <div className="relative w-[450px] h-[600px] text-qblue-white rounded-md p-10">
                 <div className="absolute inset-0 -z-10">
                   <Image
                     src={bgblue}
