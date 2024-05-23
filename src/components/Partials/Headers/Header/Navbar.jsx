@@ -2,15 +2,17 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
+import Arrow from "../../../Helpers/icons/Arrow";
 import Multivendor from "../../../Shared/Multivendor";
 export default function Navbar({ className }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
   const categoryList = websiteSetup && websiteSetup.payload.productCategories;
-  const mageMenuList = websiteSetup && websiteSetup.payload.megaMenuCategories;
+  const megaMenuList = websiteSetup && websiteSetup.payload.megaMenuCategories;
   const megaMenuBanner = websiteSetup && websiteSetup.payload.megaMenuBanner;
   const customPages = websiteSetup && websiteSetup.payload.customPages;
   const [categoryToggle, setToggle] = useState(false);
   const [subCatHeight, setHeight] = useState(null);
+
   const handler = () => {
     setToggle(!categoryToggle);
   };
@@ -27,158 +29,1461 @@ export default function Navbar({ className }) {
             <div className="category-and-nav flex flex-grow  items-center">
               <div className="nav w-full">
                 <ul className="nav-wrapper justify-center flex xl:space-x-12  w-full">
-                  {/* <li>
+                  <li>
                     <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
-                      <span>{ServeLangItem()?.Shop}</span>
+                      <span>{ServeLangItem()?.Men}</span>
                       <span className="ml-1.5 ">
                         <Arrow className="fill-current" />
                       </span>
                     </span>
                     <div className="sub-menu w-full absolute left-0 top-[60px]">
                       <div
-                        className="mega-menu-wrapper w-full bg-white p-[30px] flex justify-between items-center "
+                        className="mega-menu-wrapper w-full bg-white  flex justify-between items-center "
                         style={{
                           minHeight: "295px",
-                          boxShadow: "0px 15px 50px 0px rgba(0, 0, 0, 0.14)",
+                          boxShadow: "0px 15px 20px 0px rgba(0, 0, 0, 0.14)",
                         }}
                       >
-                        <div className="categories-wrapper flex-1 h-full flex justify-around -ml-[70px]">
-                          {mageMenuList &&
-                            mageMenuList.slice(0, 3).map((megaItem) => (
-                              <div key={megaItem.id}>
-                                <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
-                                    {megaItem.category.name}
-                                  </h1>
-                                </div>
-                                <div className="category-items">
-                                  <ul className="flex flex-col space-y-2">
-                                    {megaItem.sub_categories.length > 0 &&
-                                      megaItem.sub_categories.map((subItem) => (
-                                        <li key={subItem.id}>
-                                          <Link
-                                            href={{
-                                              pathname: "/products",
-                                              query: {
-                                                sub_category:
-                                                  subItem.sub_category &&
-                                                  subItem.sub_category.slug,
-                                              },
-                                            }}
-                                            passHref
-                                            legacyBehavior
-                                          >
-                                            <a rel="noopener noreferrer">
-                                              <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
-                                                {subItem.sub_category &&
-                                                  subItem.sub_category.name}
-                                              </span>
-                                            </a>
-                                          </Link>
-                                        </li>
-                                      ))}
-                                  </ul>
-                                </div>
-                              </div>
-                            ))}
-                        </div>
-                        {megaMenuBanner &&
-                          parseInt(megaMenuBanner.status) === 1 && (
-                            <div
-                              style={{
-                                backgroundImage: `url(${
-                                  process.env.NEXT_PUBLIC_BASE_URL +
-                                  megaMenuBanner.image
-                                })`,
-                                backgroundSize: "contain",
-                                backgroundRepeat: "no-repeat",
-                              }}
-                              className="thumbnil w-[348px] h-[235px] relative flex items-center ltr:pl-[40px] rtl:pr-[40px] group"
-                            >
-                              <div className="flex flex-col justify-between">
-                                <div>
-                                  <div className=" mb-[10px]">
-                                    <span className="text-qblack uppercase text-xs font-semibold">
-                                      {megaMenuBanner.title_one}
-                                    </span>
-                                  </div>
-                                  <div className="mb-[30px]">
-                                    <h1 className="w-[160px] text-[24px] leading-[32px] text-qblack font-semibold">
-                                      {megaMenuBanner.title_two}
-                                    </h1>
-                                  </div>
-                                </div>
-                                <div className="w-[90px]">
+                        <div className="categories-wrapper flex-1 h-full flex m-11">
+                          {/* Hardcoded subcategories */}
+                          <div className="px-10">
+                            <div className="category">
+                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                Topwear
+                              </h1>
+                            </div>
+                            <div className="category-items">
+                              <ul className="flex flex-col space-y-2">
+                                <li>
                                   <Link
-                                    href={{
-                                      pathname: "/products",
-                                      query: {
-                                        category: megaMenuBanner.product_slug,
-                                      },
-                                    }}
+                                    href="/products?sub_category=t-shirts"
                                     passHref
                                     legacyBehavior
                                   >
                                     <a rel="noopener noreferrer">
-                                      <div className="cursor-pointer w-full relative  ">
-                                        <div className="inline-flex  rtl:space-x-reverse space-x-1.5 items-center relative z-20">
-                                          <span className="text-sm text-qblack font-medium leading-[30px]">
-                                            {ServeLangItem()?.Shop_Now}
-                                          </span>
-                                          <span className="leading-[30px]">
-                                            <svg
-                                              className={`transform rtl:rotate-180 fill-current`}
-                                              width="7"
-                                              height="11"
-                                              viewBox="0 0 7 11"
-                                              fill="none"
-                                              xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                              <rect
-                                                x="2.08984"
-                                                y="0.636719"
-                                                width="6.94219"
-                                                height="1.54271"
-                                                transform="rotate(45 2.08984 0.636719)"
-                                              />
-                                              <rect
-                                                x="7"
-                                                y="5.54492"
-                                                width="6.94219"
-                                                height="1.54271"
-                                                transform="rotate(135 7 5.54492)"
-                                              />
-                                            </svg>
-                                          </span>
-                                        </div>
-                                        <div className="w-[82px] transition-all duration-300 ease-in-out group-hover:h-4 h-[0px] bg-qyellow absolute left-0 bottom-0 z-10"></div>
-                                      </div>
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        T-Shirts
+                                      </span>
                                     </a>
                                   </Link>
-                                </div>
-                              </div>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Shirts
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Sweaters
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Jackets
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Blazers & Coats
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Suits
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Raincoat
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Kurtas
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                              </ul>
                             </div>
-                          )}
+                          </div>
+                          <div className="px-10">
+                            <div className="category">
+                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                Bottomwear
+                              </h1>
+                            </div>
+                            <div className="category-items">
+                              <ul className="flex flex-col space-y-2">
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=t-shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Jeans
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Trousers
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Track Pant
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Shorts
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Dhotis
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <div className="category">
+                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[3px]">
+                                    Innerwear
+                                  </h1>
+                                </div>
+                                <div className="category-items">
+                                  <ul className="flex flex-col space-y-1">
+                                    <li>
+                                      <Link
+                                        href="/products?sub_category=t-shirts"
+                                        passHref
+                                        legacyBehavior
+                                      >
+                                        <a rel="noopener noreferrer">
+                                          <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                            Underwears
+                                          </span>
+                                        </a>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link
+                                        href="/products?sub_category=shirts"
+                                        passHref
+                                        legacyBehavior
+                                      >
+                                        <a rel="noopener noreferrer">
+                                          <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                            Boxers
+                                          </span>
+                                        </a>
+                                      </Link>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div className="px-10">
+                            <div className="category">
+                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                Accessories
+                              </h1>
+                            </div>
+                            <div className="category-items">
+                              <ul className="flex flex-col space-y-2">
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=t-shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Belt
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Wallets
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Perfumes
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <div className="category">
+                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[3px]">
+                                    Ethnic Wear
+                                  </h1>
+                                </div>
+                                <div className="category-items">
+                                  <ul className="flex flex-col space-y-2">
+                                    <li>
+                                      <Link
+                                        href="/products?sub_category=t-shirts"
+                                        passHref
+                                        legacyBehavior
+                                      >
+                                        <a rel="noopener noreferrer">
+                                          <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                            Kurta Sets
+                                          </span>
+                                        </a>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link
+                                        href="/products?sub_category=shirts"
+                                        passHref
+                                        legacyBehavior
+                                      >
+                                        <a rel="noopener noreferrer">
+                                          <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                            Ethnic Jackets
+                                          </span>
+                                        </a>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link
+                                        href="/products?sub_category=shirts"
+                                        passHref
+                                        legacyBehavior
+                                      >
+                                        <a rel="noopener noreferrer">
+                                          <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                            Sherwanis
+                                          </span>
+                                        </a>
+                                      </Link>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </ul>
+                            </div>
+                          </div>
+                          <div className="px-10">
+                            <div className="category">
+                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                Footwear
+                              </h1>
+                            </div>
+                            <div className="category-items">
+                              <ul className="flex flex-col space-y-2">
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=t-shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Men Casual Shoes
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Men Sports Shoes
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Men Formal Shoes
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Loafers
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Sandels & Floaters
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Slippers & Slides
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <div className="category">
+                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                    Sunglasses
+                                  </h1>
+                                </div>
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div className="px-10">
+                            <div className="category">
+                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                Personal Care & Grooming
+                              </h1>
+                            </div>
+                            <div className="category-items">
+                              <ul className="flex flex-col space-y-2">
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=t-shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Trimmers
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Beard Oil
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Beard Cream & Gel
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <div className="category">
+                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                    Jewellery
+                                  </h1>
+                                </div>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Chain
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Bracelet
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Ring
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div className="px-10">
+                            <div className="category">
+                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                Watches & Straps
+                              </h1>
+                            </div>
+                            <div className="category-items">
+                              <ul className="flex flex-col space-y-2">
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=t-shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Watches
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Smartwatch
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Straps
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <div className="category">
+                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[3px]">
+                                    Gadgets
+                                  </h1>
+                                </div>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Smartwatch
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Fitness Gadgets
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Headphones
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Speakers
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div className="px-10">
+                            <div className="category">
+                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                Fashion Accessories
+                              </h1>
+                            </div>
+                            <div className="category-items">
+                              <ul className="flex flex-col space-y-2">
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=t-shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Deodorants
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Ties & Cufflinks
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Gift Sets
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Caps & Hats
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Mufflers & Gloves
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                  </li> */}
-                  <li>
-                    <Link href="/" passHref legacyBehavior>
-                      <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
-                          <span>{ServeLangItem()?.Men}</span>
-                        </span>
-                      </a>
-                    </Link>
                   </li>
+
                   <li>
-                    <Link href="/" passHref legacyBehavior>
-                      <a rel="noopener noreferrer">
-                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
-                          <span>{ServeLangItem()?.Women}</span>
-                        </span>
-                      </a>
-                    </Link>
+                    <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                      <span>{ServeLangItem()?.Women}</span>
+                      <span className="ml-1.5 ">
+                        <Arrow className="fill-current" />
+                      </span>
+                    </span>
+                    <div className="sub-menu w-full absolute left-0 top-[60px]">
+                      <div
+                        className="mega-menu-wrapper w-full bg-white  flex justify-between items-center "
+                        style={{
+                          minHeight: "295px",
+                          boxShadow: "0px 15px 20px 0px rgba(0, 0, 0, 0.14)",
+                        }}
+                      >
+                        <div className="categories-wrapper flex-1 h-full flex m-11">
+                          {/* Hardcoded subcategories */}
+                          <div className="px-10">
+                            <div className="category">
+                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                Indian & Fashion Wear
+                              </h1>
+                            </div>
+                            <div className="category-items">
+                              <ul className="flex flex-col space-y-2">
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=t-shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Dress
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Skirts & Plazzos
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Leggings, Salwar & Chudidars
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Dupattas & Shawls
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Jackets
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <div className="category">
+                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                    Bags & More
+                                  </h1>
+                                </div>
+                                <div className="category-items">
+                                  <ul className="flex flex-col space-y-2">
+                                    <li>
+                                      <Link
+                                        href="/products?sub_category=t-shirts"
+                                        passHref
+                                        legacyBehavior
+                                      >
+                                        <a rel="noopener noreferrer">
+                                          <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                            Backpacks
+                                          </span>
+                                        </a>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link
+                                        href="/products?sub_category=shirts"
+                                        passHref
+                                        legacyBehavior
+                                      >
+                                        <a rel="noopener noreferrer">
+                                          <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                            Handbags
+                                          </span>
+                                        </a>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link
+                                        href="/products?sub_category=pants"
+                                        passHref
+                                        legacyBehavior
+                                      >
+                                        <a rel="noopener noreferrer">
+                                          <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                            Slingbags
+                                          </span>
+                                        </a>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link
+                                        href="/products?sub_category=pants"
+                                        passHref
+                                        legacyBehavior
+                                      >
+                                        <a rel="noopener noreferrer">
+                                          <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                            Purse
+                                          </span>
+                                        </a>
+                                      </Link>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div className="px-10">
+                            <div className="category">
+                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                Western Wear
+                              </h1>
+                            </div>
+                            <div className="category-items">
+                              <ul className="flex flex-col space-y-2">
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=t-shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Tops
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Tshirts
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Jeans
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Trousers & Capris
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Shorts
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Playsuits
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Sweaters
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Coats
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Blazers & Waistcoats
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div className="px-10">
+                            <div className="category">
+                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                Footwear
+                              </h1>
+                            </div>
+                            <div className="category-items">
+                              <ul className="flex flex-col space-y-2">
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=t-shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Flats
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Heels & Sandals
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Shoes
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Slippers & Flipflops
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+
+                                <div className="category">
+                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                    Sports & Active Wear
+                                  </h1>
+                                </div>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Sport Topwear
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Sport Bottomwear
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Sport Footwear
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+
+                          <div className="px-10">
+                            <div className="category">
+                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                Lingerie & Sleepwear
+                              </h1>
+                            </div>
+                            <div className="category-items">
+                              <ul className="flex flex-col space-y-2">
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=t-shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Bra
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Panties
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Shapewear
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=t-shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Swimwear
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=t-shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Camisoles & Thermals
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <div className="category">
+                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                    Gadgets
+                                  </h1>
+                                </div>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Smartwatch
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Fitness Gadgets
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Headphones
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Speakers
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                          <div className="px-10">
+                            <div className="category">
+                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                Beauty & Personal Care
+                              </h1>
+                            </div>
+                            <div className="category-items">
+                              <ul className="flex flex-col space-y-2">
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=t-shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Makeup
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Skincare
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Beauty Kit
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Lipsticks
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Fragrances
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Sarees
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <div className="category">
+                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                    Kurtis & Kurta
+                                  </h1>
+                                </div>
+                                <div className="category">
+                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                    Lehengha
+                                  </h1>
+                                </div>
+                              </ul>
+                            </div>
+                          </div>
+                          <div className="px-10">
+                            <div className="category">
+                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                Jewellery
+                              </h1>
+                            </div>
+                            <div className="category-items">
+                              <ul className="flex flex-col space-y-2">
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=t-shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Jewellery Sets
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=shirts"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Necklaces
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Earrings
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Rings
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Mangalsutras
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Bangles
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                                <li>
+                                  <Link
+                                    href="/products?sub_category=pants"
+                                    passHref
+                                    legacyBehavior
+                                  >
+                                    <a rel="noopener noreferrer">
+                                      <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
+                                        Mala
+                                      </span>
+                                    </a>
+                                  </Link>
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </li>
 
                   <li>
@@ -312,45 +1617,6 @@ export default function Navbar({ className }) {
                 </ul>
               </div>
             </div>
-            {/* {Multivendor() === 1 && (
-              <div className=" bg-qblue-white rounded-md">
-                <Link href="/become-seller" passHref legacyBehavior>
-                  <a rel="noopener noreferrer">
-                    <div className=" w-[161px] h-[40px] flex justify-center items-center cursor-pointer">
-                      <div className="flex rtl:space-x-reverse space-x-2 items-center">
-                        <span className="text-sm font-600">
-                          {ServeLangItem()?.Become_seller}
-                        </span>
-                        <span className="transform rtl:rotate-180 fill-current ">
-                          <svg
-                            width="6"
-                            height="10"
-                            viewBox="0 0 6 10"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="fill-current"
-                          >
-                            <rect
-                              x="1.08984"
-                              width="6.94106"
-                              height="1.54246"
-                              transform="rotate(45 1.08984 0)"
-                            />
-                            <rect
-                              x="6"
-                              y="4.9082"
-                              width="6.94106"
-                              height="1.54246"
-                              transform="rotate(135 6 4.9082)"
-                            />
-                          </svg>
-                        </span>
-                      </div>
-                    </div>
-                  </a>
-                </Link>
-              </div>
-            )} */}
           </div>
         </div>
       </div>
