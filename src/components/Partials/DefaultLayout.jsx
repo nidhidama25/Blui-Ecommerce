@@ -22,6 +22,7 @@ import LoginContext from "../Contexts/LoginContext";
 import Consent from "../Helpers/Consent";
 import ServeLangItem from "../Helpers/ServeLangItem";
 import MessageWidget from "../MessageWidget";
+import bgblue from "/public/assets/images/bgblue.png";
 import comma from "/public/assets/images/comma.png";
 export default function DefaultLayout({ children }) {
   const router = useRouter();
@@ -240,8 +241,17 @@ export default function DefaultLayout({ children }) {
                 >
                   <div className="justufy-center items-center w-full h-full fixed left-0 top-0 bg-black bg-opacity-50"></div>
                   <div className="  flex flex-row items-stretch rounded-lg">
-                    <div className="flex justify-center hidden lg:block ">
-                      <div className=" w-[450px] h-[670px] text-qblue-white rounded-md p-10 bg-custom-blue">
+                    <div className="flex justify-center hidden lg:block">
+                      <div className="relative w-[450px] h-[600px] text-qblue-white rounded-md p-10">
+                        <div className="absolute inset-0 -z-10">
+                          <Image
+                            src={bgblue}
+                            layout="fill"
+                            objectFit="cover"
+                            quality={100}
+                            alt="Background"
+                          />
+                        </div>
                         <div className="flex flex-col items-center mt-10 justify-center text-[26px] leading-[44.2px] font-medium">
                           <div className="flex items-center justify-center mb-4 pt-12">
                             <Image

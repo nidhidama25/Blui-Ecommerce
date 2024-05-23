@@ -11,7 +11,7 @@ export default function TopBar({ className, contact }) {
   return (
     <>
       <div
-        className={`w-full bg-white h-10 border-b border-qgray-border ${
+        className={`w-full p-7 bg-white h-10 border-b border-qgray-border ${
           className || ""
         }`}
       >
@@ -102,58 +102,13 @@ export default function TopBar({ className, contact }) {
                     {contact && contact.email}
                   </span>
                 </div>
-                {/*<div className="country-select flex space-x-1 items-center">*/}
-                {/*  <div>*/}
-                {/*    <Image*/}
-                {/*      src={`/assets/images/country-logo-16x16.png`}*/}
-                {/*      width="16"*/}
-                {/*      height="16"*/}
-                {/*      alt="country logo"*/}
-                {/*      className="overflow-hidden rounded-full"*/}
-                {/*    />*/}
-                {/*  </div>*/}
-                {/*  <Selectbox*/}
-                {/*    className="w-fit"*/}
-                {/*    defaultValue="United State"*/}
-                {/*    datas={[*/}
-                {/*      { id: 1, name: "United State" },*/}
-                {/*      { id: 2, name: "Bangladesh" },*/}
-                {/*      { id: 3, name: "India" },*/}
-                {/*    ]}*/}
-                {/*  />*/}
-                {/*  <div>*/}
-                {/*    <Arrow className="fill-current qblack" />*/}
-                {/*  </div>*/}
-                {/*</div>*/}
-                {/*<div className="currency-select flex space-x-1 items-center">*/}
-                {/*  <Selectbox*/}
-                {/*    defaultValue="USD"*/}
-                {/*    className="w-fit"*/}
-                {/*    datas={[*/}
-                {/*      { id: 1, name: "USD" },*/}
-                {/*      { id: 2, name: "BDT" },*/}
-                {/*    ]}*/}
-                {/*  />*/}
-                {/*  <Arrow className="fill-current qblack" />*/}
-                {/*</div>*/}
-                {/*<div className="language-select flex space-x-1 items-center">*/}
-                {/*  <Selectbox*/}
-                {/*    defaultValue="Bangla"*/}
-                {/*    className="w-fit"*/}
-                {/*    datas={[*/}
-                {/*      { id: 1, name: "Bangla" },*/}
-                {/*      { id: 2, name: "English" },*/}
-                {/*    ]}*/}
-                {/*  />*/}
-                {/*  <Arrow className="fill-current qblack" />*/}
-                {/*</div>*/}
               </div>
             </div>
             {Multivendor() === 1 && (
-              <div className="block lg:hidden">
+              <div className="block ">
                 <Link href="/become-seller" passHref legacyBehavior>
                   <a rel="noopener noreferrer">
-                    <span className="text-xs leading-6 text-qblack px-3 py-1 bg-qyellow font-medium font-500 cursor-pointer">
+                    <span className="text-sm leading-6 text-qblack px-5 py-2 bg-qyellow  font-500 cursor-pointer rounded-md">
                       {ServeLangItem()?.Become_seller}
                     </span>
                   </a>

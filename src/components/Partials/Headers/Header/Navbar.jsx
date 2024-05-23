@@ -2,7 +2,6 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
-import Arrow from "../../../Helpers/icons/Arrow";
 import Multivendor from "../../../Shared/Multivendor";
 export default function Navbar({ className }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
@@ -23,12 +22,12 @@ export default function Navbar({ className }) {
       }`}
     >
       <div className="container-x mx-auto h-full">
-        <div className="w-full h-full relative">
+        <div className="w-full h-full ">
           <div className="w-full h-full flex justify-between items-center">
-            <div className="category-and-nav flex xl:rtl:space-x-reverse space-x-7 rtl:space-x-reverse space-x-3 items-center">
-              <div className="nav">
-                <ul className="nav-wrapper flex xl:space-x-10 rtl:space-x-reverse space-x-5">
-                  <li>
+            <div className="category-and-nav flex flex-grow  items-center">
+              <div className="nav w-full">
+                <ul className="nav-wrapper justify-center flex xl:space-x-12  w-full">
+                  {/* <li>
                     <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
                       <span>{ServeLangItem()?.Shop}</span>
                       <span className="ml-1.5 ">
@@ -162,53 +161,83 @@ export default function Navbar({ className }) {
                           )}
                       </div>
                     </div>
+                  </li> */}
+                  <li>
+                    <Link href="/" passHref legacyBehavior>
+                      <a rel="noopener noreferrer">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                          <span>{ServeLangItem()?.Men}</span>
+                        </span>
+                      </a>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/" passHref legacyBehavior>
+                      <a rel="noopener noreferrer">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                          <span>{ServeLangItem()?.Women}</span>
+                        </span>
+                      </a>
+                    </Link>
                   </li>
 
                   <li>
-                    <Link href="/sellers" passHref legacyBehavior>
+                    <Link href="/" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
                         <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
-                          <span>{ServeLangItem()?.Sellers}</span>
+                          <span>{ServeLangItem()?.Kids}</span>
                         </span>
                       </a>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/blogs" passHref legacyBehavior>
+                    <Link href="/" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
                         <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
-                          <span className="capitalize">
-                            {ServeLangItem()?.blogs}
-                          </span>
+                          <span>{ServeLangItem()?.Kitchen}</span>
                         </span>
                       </a>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/about" passHref legacyBehavior>
+                    <Link href="/" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
                         <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
-                          <span>{ServeLangItem()?.About}</span>
+                          <span>{ServeLangItem()?.Health}</span>
+                        </span>
+                      </a>
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link href="/" passHref legacyBehavior>
+                      <a rel="noopener noreferrer">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                          <span>{ServeLangItem()?.Bags}</span>
                         </span>
                       </a>
                     </Link>
                   </li>
                   <li>
-                    <Link href="/contact" passHref legacyBehavior>
+                    <Link href="/" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
                         <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
-                          <span>{ServeLangItem()?.Contact}</span>
+                          <span>{ServeLangItem()?.Jewellery}</span>
                         </span>
                       </a>
                     </Link>
                   </li>
+                  <li>
+                    <Link href="/" passHref legacyBehavior>
+                      <a rel="noopener noreferrer">
+                        <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
+                          <span>{ServeLangItem()?.Electronics}</span>
+                        </span>
+                      </a>
+                    </Link>
+                  </li>
+
                   <li className="relative">
-                    <span className="flex items-center text-sm font-600 cursor-pointer text-qblack ">
-                      <span>{ServeLangItem()?.Pages}</span>
-                      <span className="ml-1.5 ">
-                        <Arrow className="fill-current" />
-                      </span>
-                    </span>
                     <div className="sub-menu w-[220px] absolute left-0 top-[60px]">
                       <div
                         className="w-full bg-white flex justify-between items-center "
@@ -273,26 +302,6 @@ export default function Navbar({ className }) {
                                     </a>
                                   </Link>
                                 </li>
-                                {customPages &&
-                                  customPages.length > 0 &&
-                                  customPages.map((item, i) => (
-                                    // eslint-disable-next-line react/jsx-key
-                                    <React.Fragment key={i}>
-                                      <li>
-                                        <Link
-                                          href={`/pages?custom=${item.slug}`}
-                                          passHref
-                                          legacyBehavior
-                                        >
-                                          <a rel="noopener noreferrer">
-                                            <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
-                                              {item.page_name}
-                                            </span>
-                                          </a>
-                                        </Link>
-                                      </li>
-                                    </React.Fragment>
-                                  ))}
                               </ul>
                             </div>
                           </div>
@@ -303,7 +312,7 @@ export default function Navbar({ className }) {
                 </ul>
               </div>
             </div>
-            {Multivendor() === 1 && (
+            {/* {Multivendor() === 1 && (
               <div className=" bg-qblue-white rounded-md">
                 <Link href="/become-seller" passHref legacyBehavior>
                   <a rel="noopener noreferrer">
@@ -341,7 +350,7 @@ export default function Navbar({ className }) {
                   </a>
                 </Link>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>

@@ -32,6 +32,14 @@ export default function languageModel() {
         Referral_Code: "Referral Code",
         Name: "Your Name",
         Buy_Now: "Buy Now",
+        Kitchen: "Home & Kitchen",
+        Health: "Beauty & Health",
+        Bags: "Bags & Footwear",
+        Women: "Women",
+        Men: "Men",
+        Kids: "Kids",
+        Jewellery: "Jewellery",
+        Electronics: "Electronics",
         // Add more labels as needed
       };
 
