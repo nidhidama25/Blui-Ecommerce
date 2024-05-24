@@ -4328,7 +4328,7 @@ export default function Navbar({ className }) {
                   </li>
                   <li>
                     <span className="flex items-center text-md font-400 cursor-pointer text-black ">
-                      <span>{ServeLangItem()?.Jewellery}</span>
+                      <span>{ServeLangItem()?.Electronics}</span>
                       <span className="ml-1.5 ">
                         <Arrow className="fill-current" />
                       </span>
