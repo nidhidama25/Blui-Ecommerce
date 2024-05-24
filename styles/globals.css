@@ -1,59 +1,9 @@
-/* @font-face {
-  font-family: "Inter";
-  src: url("../public/assets/fonts/Inter-Black.ttf");
-  font-weight: 900;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("../public/assets/fonts/Inter-Bold.ttf");
-  font-weight: 700;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("../public/assets/fonts/Inter-ExtraBold.ttf");
-  font-weight: 800;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("../public/assets/fonts/Inter-ExtraLight.ttf");
-  font-weight: 200;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("../public/assets/fonts/Inter-Light.ttf");
-  font-weight: 300;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("../public/assets/fonts/Inter-Medium.ttf");
-  font-weight: 500;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("../public/assets/fonts/Inter-Regular.ttf");
-  font-weight: 400;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("../public/assets/fonts/Inter-SemiBold.ttf");
-  font-weight: 600;
-}
-@font-face {
-  font-family: "Inter";
-  src: url("../public/assets/fonts/Inter-Thin.ttf");
-  font-weight: 100;
-} */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /*TODO:  ========= default ========= */
 @layer base {
-  :root {
-    --primary-color: blue;
-    --secondary-color: red;
-  }
   html {
     @apply font-sans;
   }
@@ -66,7 +16,7 @@
   padding: 0;
 }
 html {
-  background-color: #f8f8f8;
+  background-color: white;
 }
 body {
   margin: 0;
@@ -436,17 +386,17 @@ body {
   border-color: rgb(var(--primary-color));
 }
 .nav-widget-wrapper .nav .nav-wrapper li {
-  @apply text-qblacktext;
+  @apply text-black;
 }
 .quomodo-shop-nav-bar.nav-widget-wrapper {
-  background: rgb(var(--primary-color));
+  background: white;
 }
 .nav-widget-wrapper .become-seller-btn {
-  @apply text-white bg-qblack;
+  @apply text-black;
 }
 
 .nav-widget-wrapper .category-dropdown .categories-list .category-item {
-  @apply bg-white text-qblack;
+  @apply bg-white text-black;
 }
 .nav-widget-wrapper .category-dropdown .categories-list .category-item:hover {
   background: rgb(var(--primary-color));
@@ -458,7 +408,7 @@ body {
   .sub-category-lvl-two
   ul
   li.category-item {
-  @apply bg-white text-qblack;
+  @apply bg-white text-black;
 }
 .nav-widget-wrapper
   .category-dropdown
