@@ -2,7 +2,6 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
-import Arrow from "../../../Helpers/icons/Arrow";
 import Multivendor from "../../../Shared/Multivendor";
 export default function Navbar({ className }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
@@ -32,9 +31,6 @@ export default function Navbar({ className }) {
                   <li>
                     <span className="flex items-center text-md font-400 cursor-pointer text-black ">
                       <span>{ServeLangItem()?.Men}</span>
-                      <span className="ml-1.5 ">
-                        <Arrow className="fill-current" />
-                      </span>
                     </span>
                     <div className="sub-menu w-full absolute left-0 top-[60px]">
                       <div
@@ -753,9 +749,6 @@ export default function Navbar({ className }) {
                   <li>
                     <span className="flex items-center text-md font-400 cursor-pointer text-black ">
                       <span>{ServeLangItem()?.Women}</span>
-                      <span className="ml-1.5 ">
-                        <Arrow className="fill-current" />
-                      </span>
                     </span>
                     <div className="sub-menu w-full absolute left-0 top-[60px]">
                       <div
@@ -1489,9 +1482,6 @@ export default function Navbar({ className }) {
                   <li>
                     <span className="flex items-center text-md font-400 cursor-pointer text-black ">
                       <span>{ServeLangItem()?.Kids}</span>
-                      <span className="ml-1.5 ">
-                        <Arrow className="fill-current" />
-                      </span>
                     </span>
                     <div className="sub-menu w-full absolute left-0 top-[60px]">
                       <div
@@ -2118,9 +2108,6 @@ export default function Navbar({ className }) {
                   <li>
                     <span className="flex items-center text-md font-400 cursor-pointer text-black ">
                       <span>{ServeLangItem()?.Kitchen}</span>
-                      <span className="ml-1.5 ">
-                        <Arrow className="fill-current" />
-                      </span>
                     </span>
                     <div className="sub-menu w-full absolute left-0 top-[60px]">
                       <div
@@ -2877,9 +2864,6 @@ export default function Navbar({ className }) {
                   <li>
                     <span className="flex items-center text-md font-400 cursor-pointer text-black ">
                       <span>{ServeLangItem()?.Health}</span>
-                      <span className="ml-1.5 ">
-                        <Arrow className="fill-current" />
-                      </span>
                     </span>
                     <div className="sub-menu w-full absolute left-0 top-[60px]">
                       <div
@@ -3634,9 +3618,6 @@ export default function Navbar({ className }) {
                   <li>
                     <span className="flex items-center text-md font-400 cursor-pointer text-black ">
                       <span>{ServeLangItem()?.Bags}</span>
-                      <span className="ml-1.5 ">
-                        <Arrow className="fill-current" />
-                      </span>
                     </span>
                     <div className="sub-menu w-full absolute left-0 top-[60px]">
                       <div
@@ -4154,9 +4135,6 @@ export default function Navbar({ className }) {
                   <li>
                     <span className="flex items-center text-md font-400 cursor-pointer text-black ">
                       <span>{ServeLangItem()?.Jewellery}</span>
-                      <span className="ml-1.5 ">
-                        <Arrow className="fill-current" />
-                      </span>
                     </span>
                     <div className="sub-menu w-full absolute left-0 top-[60px]">
                       <div
@@ -4329,9 +4307,6 @@ export default function Navbar({ className }) {
                   <li>
                     <span className="flex items-center text-md font-400 cursor-pointer text-black ">
                       <span>{ServeLangItem()?.Electronics}</span>
-                      <span className="ml-1.5 ">
-                        <Arrow className="fill-current" />
-                      </span>
                     </span>
                     <div className="sub-menu w-full absolute left-0 top-[60px]">
                       <div

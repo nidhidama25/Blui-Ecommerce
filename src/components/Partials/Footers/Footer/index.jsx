@@ -85,33 +85,6 @@ export default function Footer({ settings }) {
             <p className="text-[#9A9A9A] text-[15px] w-[247px] leading-[28px]">
               {footerContent && footerContent.about_us}
             </p>
-            {/*<p className="text-[#9A9A9A] text-[15px] w-[247px] leading-[28px]">*/}
-            {/*  {footerContent && footerContent.email ? footerContent.email : ""}*/}
-            {/*</p>*/}
-            {/*<p className="text-[#9A9A9A] text-[15px] w-[247px] leading-[28px]">*/}
-            {/*  {footerContent && footerContent.address*/}
-            {/*    ? footerContent.address*/}
-            {/*    : ""}*/}
-            {/*</p>*/}
-            {/*<div>*/}
-            {/*  <ul className="flex flex-col space-y-4 ">*/}
-            {/*    <li>*/}
-            {/*      <Link href="/tracking-order">*/}
-            {/*        <span className="text-[#9A9A9A] text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">*/}
-            {/*          Track Order*/}
-            {/*        </span>*/}
-            {/*      </Link>*/}
-            {/*    </li>*/}
-            {/*    <li>*/}
-            {/*      <Link href="/faq">*/}
-            {/*        <span className="text-[#9A9A9A] text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">*/}
-            {/*          Support*/}
-            {/*        </span>*/}
-            {/*      </Link>*/}
-            {/*    </li>*/}
-            {/*    */}
-            {/*  </ul>*/}
-            {/*</div>*/}
           </div>
           <div className="flex-1 lg:flex">
             <div className="lg:w-1/3 w-full mb-10 lg:mb-0">
