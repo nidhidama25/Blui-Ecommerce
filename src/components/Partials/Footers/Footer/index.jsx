@@ -59,10 +59,10 @@ export default function Footer({ settings }) {
 
   return (
     <footer className="footer-section-wrapper bg-[#1A1A1A] text-white print:hidden">
-      <div className="container-x block mx-auto pt-[56px]">
-        <div className="w-full flex flex-col items-center mb-[50px]">
+      <div className="container-x block mx-auto pt-[30px]">
+        <div className="w-full flex flex-col items-center mb-[30px]">
           {/* logo area */}
-          <div className="mb-[40px]">
+          <div className="mb-[30px]">
             <Link href="/" passHref legacyBehavior>
               <a>
                 {settings && (
@@ -82,7 +82,7 @@ export default function Footer({ settings }) {
         <div className="lg:flex justify-between mb-[50px]">
           <div className="lg:w-[424px]  ml-0 w-full mb-10 lg:mb-0">
             <h1 className="text-[18] font-500 mb-5">About Us</h1>
-            <p className=" text-[15px] w-[247px] leading-[28px]">
+            <p className=" text-[15px] w-[247px] leading-[28px] text-qblack">
               {footerContent && footerContent.about_us}
             </p>
           </div>
@@ -96,7 +96,7 @@ export default function Footer({ settings }) {
                     </h6>
                   </div>
                   <div>
-                    <ul className="flex flex-col space-y-4 ">
+                    <ul className="flex flex-col space-y-2 text-qblack ">
                       {firstCol.col_links.length > 0 &&
                         firstCol.col_links.map((item, i) => (
                           <li key={i}>
@@ -124,7 +124,7 @@ export default function Footer({ settings }) {
                       </h6>
                     </div>
                     <div>
-                      <ul className="flex flex-col space-y-4 ">
+                      <ul className="flex flex-col space-y-2 text-qblack ">
                         {secondCol.col_links.length > 0 &&
                           secondCol.col_links.map((item, i) => (
                             <li key={i}>
@@ -153,7 +153,7 @@ export default function Footer({ settings }) {
                       </h6>
                     </div>
                     <div>
-                      <ul className="flex flex-col space-y-4 ">
+                      <ul className="flex flex-col space-y-2 text-qblack ">
                         {thirdCol.col_links.length > 0 &&
                           thirdCol.col_links.map((item, i) => (
                             <li key={i}>
