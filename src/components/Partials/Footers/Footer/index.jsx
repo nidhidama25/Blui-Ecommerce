@@ -58,7 +58,7 @@ export default function Footer({ settings }) {
   });
 
   return (
-    <footer className="footer-section-wrapper bg-white print:hidden">
+    <footer className="footer-section-wrapper bg-[#1A1A1A] text-white print:hidden">
       <div className="container-x block mx-auto pt-[56px]">
         <div className="w-full flex flex-col items-center mb-[50px]">
           {/* logo area */}
@@ -81,8 +81,8 @@ export default function Footer({ settings }) {
         </div>
         <div className="lg:flex justify-between mb-[50px]">
           <div className="lg:w-[424px]  ml-0 w-full mb-10 lg:mb-0">
-            <h1 className="text-[18] font-500 text-[#2F2F2F] mb-5">About Us</h1>
-            <p className="text-[#9A9A9A] text-[15px] w-[247px] leading-[28px]">
+            <h1 className="text-[18] font-500 mb-5">About Us</h1>
+            <p className=" text-[15px] w-[247px] leading-[28px]">
               {footerContent && footerContent.about_us}
             </p>
           </div>
@@ -91,7 +91,7 @@ export default function Footer({ settings }) {
               {firstCol && (
                 <>
                   <div className="mb-5">
-                    <h6 className="text-[18] font-500 text-[#2F2F2F]">
+                    <h6 className="text-[18] font-500 ">
                       {firstCol.columnTitle}
                     </h6>
                   </div>
@@ -102,7 +102,7 @@ export default function Footer({ settings }) {
                           <li key={i}>
                             <Link href={item.link} passHref legacyBehavior>
                               <a rel="noopener noreferrer">
-                                <span className="text-[#9A9A9A] text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
+                                <span className=" text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
                                   {item.title}
                                 </span>
                               </a>
@@ -119,7 +119,7 @@ export default function Footer({ settings }) {
                 {secondCol && (
                   <>
                     <div className="mb-5">
-                      <h6 className="text-[18] font-500 text-[#2F2F2F]">
+                      <h6 className="text-[18] font-500 ">
                         {secondCol.columnTitle}
                       </h6>
                     </div>
@@ -130,7 +130,7 @@ export default function Footer({ settings }) {
                             <li key={i}>
                               <Link href={item.link} passHref legacyBehavior>
                                 <a rel="noopener noreferrer">
-                                  <span className="text-[#9A9A9A] text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
+                                  <span className=" text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
                                     {item.title}
                                   </span>
                                 </a>
@@ -148,7 +148,7 @@ export default function Footer({ settings }) {
                 {thirdCol && (
                   <>
                     <div className="mb-5">
-                      <h6 className="text-[18] font-500 text-[#2F2F2F]">
+                      <h6 className="text-[18] font-500">
                         {thirdCol.columnTitle}
                       </h6>
                     </div>
@@ -159,7 +159,7 @@ export default function Footer({ settings }) {
                             <li key={i}>
                               <Link href={item.link} passHref legacyBehavior>
                                 <a rel="noopener noreferrer">
-                                  <span className="text-[#9A9A9A] text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
+                                  <span className=" text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
                                     {item.title}
                                   </span>
                                 </a>
