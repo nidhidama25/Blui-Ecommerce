@@ -3,6 +3,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import FontAwesomeCom from "../../../Helpers/icons/FontAwesomeCom";
+import Apple from "/public/assets/images/App Store.png";
+import Google from "/public/assets/images/Google Play.png";
+import applepay from "/public/images/icons/ApplePay.png";
+import cart from "/public/images/icons/Cart.png";
+import dis from "/public/images/icons/Method=Discover.png";
+import master from "/public/images/icons/Method=Mastercard.png";
+import visa from "/public/images/icons/Method=Visa.png";
 export default function Footer({ settings }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
   const [firstCol, setFirstCol] = useState(null);
@@ -80,14 +87,14 @@ export default function Footer({ settings }) {
           <div className="w-full h-[1px] bg-[#E9E9E9]"></div>
         </div>
         <div className="lg:flex justify-between mb-[50px]">
-          <div className="lg:w-[424px]  ml-0 w-full mb-10 lg:mb-0">
+          <div className="lg:w-[424px] ml-0 w-full mb-10 lg:mb-0">
             <h1 className="text-[18] font-500 mb-5">About Us</h1>
-            <p className=" text-[15px] w-[247px] leading-[28px] text-qblack">
+            <p className="text-[15px] w-[247px] leading-[28px] text-qblack">
               {footerContent && footerContent.about_us}
             </p>
           </div>
           <div className="flex-1 lg:flex">
-            <div className="lg:w-1/3 w-full mb-10 lg:mb-0">
+            <div className="lg:w-1/4 w-full mb-10 lg:mb-0">
               {firstCol && (
                 <>
                   <div className="mb-5">
@@ -96,13 +103,13 @@ export default function Footer({ settings }) {
                     </h6>
                   </div>
                   <div>
-                    <ul className="flex flex-col space-y-2 text-qblack ">
+                    <ul className="flex flex-col text-qblack space-y-2">
                       {firstCol.col_links.length > 0 &&
                         firstCol.col_links.map((item, i) => (
                           <li key={i}>
                             <Link href={item.link} passHref legacyBehavior>
                               <a rel="noopener noreferrer">
-                                <span className=" text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
+                                <span className="text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
                                   {item.title}
                                 </span>
                               </a>
@@ -114,23 +121,52 @@ export default function Footer({ settings }) {
                 </>
               )}
             </div>
-            <div className="lg:w-1/3 lg:flex lg:flex-col items-center w-full mb-10 lg:mb-0 ">
+            <div className="lg:w-1/4 lg:flex lg:flex-col items-center w-full mb-10 lg:mb-0">
               <div>
                 {secondCol && (
                   <>
                     <div className="mb-5">
-                      <h6 className="text-[18] font-500 ">
+                      <h6 className="text-[18] font-500">
                         {secondCol.columnTitle}
                       </h6>
                     </div>
                     <div>
-                      <ul className="flex flex-col space-y-2 text-qblack ">
+                      <ul className="flex flex-col text-qblack space-y-2">
                         {secondCol.col_links.length > 0 &&
                           secondCol.col_links.map((item, i) => (
                             <li key={i}>
                               <Link href={item.link} passHref legacyBehavior>
                                 <a rel="noopener noreferrer">
-                                  <span className=" text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
+                                  <span className="text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
+                                    {item.title}
+                                  </span>
+                                </a>
+                              </Link>
+                            </li>
+                          ))}
+                      </ul>
+                    </div>
+                  </>
+                )}
+              </div>
+            </div>
+            <div className="lg:w-1/4 lg:flex lg:flex-col items-center w-full mb-10 lg:mb-0">
+              <div>
+                {thirdCol && (
+                  <>
+                    <div className="mb-5">
+                      <h6 className="text-[18] font-500">
+                        {thirdCol.columnTitle}
+                      </h6>
+                    </div>
+                    <div>
+                      <ul className="flex flex-col text-qblack space-y-2">
+                        {thirdCol.col_links.length > 0 &&
+                          thirdCol.col_links.map((item, i) => (
+                            <li key={i}>
+                              <Link href={item.link} passHref legacyBehavior>
+                                <a rel="noopener noreferrer">
+                                  <span className="text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
                                     {item.title}
                                   </span>
                                 </a>
@@ -145,35 +181,42 @@ export default function Footer({ settings }) {
             </div>
             <div className="lg:w-1/3 lg:flex lg:flex-col items-center w-full mb-10 lg:mb-0">
               <div>
-                {thirdCol && (
-                  <>
-                    <div className="mb-5">
-                      <h6 className="text-[18] font-500">
-                        {thirdCol.columnTitle}
-                      </h6>
-                    </div>
-                    <div>
-                      <ul className="flex flex-col space-y-2 text-qblack ">
-                        {thirdCol.col_links.length > 0 &&
-                          thirdCol.col_links.map((item, i) => (
-                            <li key={i}>
-                              <Link href={item.link} passHref legacyBehavior>
-                                <a rel="noopener noreferrer">
-                                  <span className=" text-[15px] hover:text-qblack border-b border-transparent hover:border-qblack cursor-pointer capitalize">
-                                    {item.title}
-                                  </span>
-                                </a>
-                              </Link>
-                            </li>
-                          ))}
-                      </ul>
-                    </div>
-                  </>
-                )}
+                <div className="mb-5">
+                  <h6 className="text-[18] font-500">
+                    Download Our Mobile App
+                  </h6>
+                </div>
+                <div className="flex flex-row space-x-4">
+                  <a
+                    href="https://play.google.com/store"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src={Google}
+                      alt="Download on Google Play"
+                      width={120}
+                      height={20}
+                    />
+                  </a>
+                  <a
+                    href="https://www.apple.com/app-store/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <Image
+                      src={Apple}
+                      alt="Download on the App Store"
+                      width={120}
+                      height={20}
+                    />
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
+
         <div
           className="bottom-bar border-t border-qgray-border lg:h-[82px] flex lg:flex-row flex-col-reverse
          justify-between items-center"
@@ -197,25 +240,59 @@ export default function Footer({ settings }) {
                 : ""}
             </span>
           </div>
-          {footerContent && footerContent.payment_image ? (
-            <div className="mt-2 lg:mt-0">
-              <Link href="#" passHref legacyBehavior>
-                <a>
-                  <Image
-                    width="318"
-                    height="28"
-                    src={`${
-                      process.env.NEXT_PUBLIC_BASE_URL +
-                      footerContent.payment_image
-                    }`}
-                    alt="payment-getways"
-                  />
-                </a>
-              </Link>
-            </div>
-          ) : (
-            ""
-          )}
+          <div className="mt-2 lg:mt-0 flex flex-row space-x-4">
+            <Link href="#" passHref legacyBehavior>
+              <a>
+                <Image
+                  width={40}
+                  height={40}
+                  src={applepay}
+                  alt="payment-gateways"
+                  className="pt-1"
+                />
+              </a>
+            </Link>
+            <Link href="#" passHref legacyBehavior>
+              <a>
+                <Image
+                  width={40}
+                  height={40}
+                  src={visa}
+                  alt="payment-gateways"
+                />
+              </a>
+            </Link>
+            <Link href="#" passHref legacyBehavior>
+              <a>
+                <Image
+                  width={40}
+                  height={40}
+                  src={dis}
+                  alt="payment-gateways"
+                />
+              </a>
+            </Link>
+            <Link href="#" passHref legacyBehavior>
+              <a>
+                <Image
+                  width={40}
+                  height={40}
+                  src={master}
+                  alt="payment-gateways"
+                />
+              </a>
+            </Link>
+            <Link href="#" passHref legacyBehavior>
+              <a>
+                <Image
+                  width={50}
+                  height={50}
+                  src={cart}
+                  alt="payment-gateways"
+                />
+              </a>
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
