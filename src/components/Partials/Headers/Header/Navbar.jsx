@@ -44,7 +44,7 @@ export default function Navbar({ className }) {
                           {/* Hardcoded subcategories */}
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Topwear
                               </h1>
                             </div>
@@ -160,7 +160,7 @@ export default function Navbar({ className }) {
                           </div>
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Bottomwear
                               </h1>
                             </div>
@@ -232,7 +232,7 @@ export default function Navbar({ className }) {
                                   </Link>
                                 </li>
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[3px]">
+                                  <h1 className="text-[13px] font-500 text-black uppercase mb-[3px]">
                                     Innerwear
                                   </h1>
                                 </div>
@@ -272,7 +272,7 @@ export default function Navbar({ className }) {
 
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Accessories
                               </h1>
                             </div>
@@ -318,7 +318,7 @@ export default function Navbar({ className }) {
                                   </Link>
                                 </li>
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[3px]">
+                                  <h1 className="text-[13px] font-500 text-black uppercase mb-[3px]">
                                     Ethnic Wear
                                   </h1>
                                 </div>
@@ -370,7 +370,7 @@ export default function Navbar({ className }) {
                           </div>
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Footwear
                               </h1>
                             </div>
@@ -455,7 +455,7 @@ export default function Navbar({ className }) {
                                   </Link>
                                 </li>
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                  <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                     Sunglasses
                                   </h1>
                                 </div>
@@ -465,7 +465,7 @@ export default function Navbar({ className }) {
 
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Personal Care & Grooming
                               </h1>
                             </div>
@@ -511,7 +511,7 @@ export default function Navbar({ className }) {
                                   </Link>
                                 </li>
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                  <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                     Jewellery
                                   </h1>
                                 </div>
@@ -559,7 +559,7 @@ export default function Navbar({ className }) {
                           </div>
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Watches & Straps
                               </h1>
                             </div>
@@ -605,7 +605,7 @@ export default function Navbar({ className }) {
                                   </Link>
                                 </li>
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[3px]">
+                                  <h1 className="text-[13px] font-500 text-black uppercase mb-[3px]">
                                     Gadgets
                                   </h1>
                                 </div>
@@ -666,7 +666,7 @@ export default function Navbar({ className }) {
                           </div>
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Fashion Accessories
                               </h1>
                             </div>
@@ -762,7 +762,7 @@ export default function Navbar({ className }) {
                           {/* Hardcoded subcategories */}
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Indian & Fashion Wear
                               </h1>
                             </div>
@@ -835,7 +835,7 @@ export default function Navbar({ className }) {
                                   </Link>
                                 </li>
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                  <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                     Bags & More
                                   </h1>
                                 </div>
@@ -901,7 +901,7 @@ export default function Navbar({ className }) {
 
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Western Wear
                               </h1>
                             </div>
@@ -1031,7 +1031,7 @@ export default function Navbar({ className }) {
                           </div>
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Footwear
                               </h1>
                             </div>
@@ -1091,7 +1091,7 @@ export default function Navbar({ className }) {
                                 </li>
 
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                  <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                     Sports & Active Wear
                                   </h1>
                                 </div>
@@ -1140,7 +1140,7 @@ export default function Navbar({ className }) {
 
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Lingerie & Sleepwear
                               </h1>
                             </div>
@@ -1212,7 +1212,7 @@ export default function Navbar({ className }) {
                                   </Link>
                                 </li>
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                  <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                     Gadgets
                                   </h1>
                                 </div>
@@ -1273,7 +1273,7 @@ export default function Navbar({ className }) {
                           </div>
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Beauty & Personal Care
                               </h1>
                             </div>
@@ -1359,12 +1359,12 @@ export default function Navbar({ className }) {
                                   </Link>
                                 </li>
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                  <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                     Kurtis & Kurta
                                   </h1>
                                 </div>
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                  <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                     Lehengha
                                   </h1>
                                 </div>
@@ -1373,7 +1373,7 @@ export default function Navbar({ className }) {
                           </div>
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Jewellery
                               </h1>
                             </div>
@@ -1495,7 +1495,7 @@ export default function Navbar({ className }) {
                           {/* Hardcoded subcategories */}
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Boys Clothing
                               </h1>
                             </div>
@@ -1678,7 +1678,7 @@ export default function Navbar({ className }) {
 
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Girls Clothing
                               </h1>
                             </div>
@@ -1847,7 +1847,7 @@ export default function Navbar({ className }) {
                           </div>
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Footwear
                               </h1>
                             </div>
@@ -1964,7 +1964,7 @@ export default function Navbar({ className }) {
 
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Toys & Games
                               </h1>
                             </div>
@@ -2036,7 +2036,7 @@ export default function Navbar({ className }) {
                                   </Link>
                                 </li>
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                  <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                     Kids Accessories
                                   </h1>
                                 </div>
@@ -2093,7 +2093,7 @@ export default function Navbar({ className }) {
                                   </Link>
                                 </li>
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                  <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                     Home & Bath
                                   </h1>
                                 </div>
@@ -2121,7 +2121,7 @@ export default function Navbar({ className }) {
                           {/* Hardcoded subcategories */}
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Home Decor
                               </h1>
                             </div>
@@ -2278,7 +2278,7 @@ export default function Navbar({ className }) {
 
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Kitchen & Appliances
                               </h1>
                             </div>
@@ -2395,7 +2395,7 @@ export default function Navbar({ className }) {
                           </div>
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Bed & Furnishing
                               </h1>
                             </div>
@@ -2525,7 +2525,7 @@ export default function Navbar({ className }) {
 
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Bath
                               </h1>
                             </div>
@@ -2628,7 +2628,7 @@ export default function Navbar({ className }) {
                           </div>
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Flooring
                               </h1>
                             </div>
@@ -2689,7 +2689,7 @@ export default function Navbar({ className }) {
                                 </li>
 
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                  <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                     Storage
                                   </h1>
                                 </div>
@@ -2763,7 +2763,7 @@ export default function Navbar({ className }) {
                           </div>
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Lamps & Lighting
                               </h1>
                             </div>
@@ -2849,7 +2849,7 @@ export default function Navbar({ className }) {
                                   </Link>
                                 </li>
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                  <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                     Curtains
                                   </h1>
                                 </div>
@@ -2877,7 +2877,7 @@ export default function Navbar({ className }) {
                           {/* Hardcoded subcategories */}
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Makeup
                               </h1>
                             </div>
@@ -3060,7 +3060,7 @@ export default function Navbar({ className }) {
 
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Skin Care
                               </h1>
                             </div>
@@ -3216,7 +3216,7 @@ export default function Navbar({ className }) {
                           </div>
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Healthcare
                               </h1>
                             </div>
@@ -3315,7 +3315,7 @@ export default function Navbar({ className }) {
                                   </Link>
                                 </li>
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                  <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                     Babycare
                                   </h1>
                                 </div>
@@ -3325,7 +3325,7 @@ export default function Navbar({ className }) {
 
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Haircare
                               </h1>
                             </div>
@@ -3480,7 +3480,7 @@ export default function Navbar({ className }) {
                           </div>
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Fragrances
                               </h1>
                             </div>
@@ -3527,7 +3527,7 @@ export default function Navbar({ className }) {
                                 </li>
 
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                  <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                     Men's Grooming
                                   </h1>
                                 </div>
@@ -3575,7 +3575,7 @@ export default function Navbar({ className }) {
                           </div>
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Beauty Gift & Makeup Set
                               </h1>
                             </div>
@@ -3631,7 +3631,7 @@ export default function Navbar({ className }) {
                           {/* Hardcoded subcategories */}
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Men Footwear
                               </h1>
                             </div>
@@ -3723,7 +3723,7 @@ export default function Navbar({ className }) {
 
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Women Footwear
                               </h1>
                             </div>
@@ -3787,7 +3787,7 @@ export default function Navbar({ className }) {
                           </div>
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Kids Footwear
                               </h1>
                             </div>
@@ -3886,7 +3886,7 @@ export default function Navbar({ className }) {
                                   </Link>
                                 </li>
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                  <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                     Socks
                                   </h1>
                                 </div>
@@ -3896,7 +3896,7 @@ export default function Navbar({ className }) {
 
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Men Bags
                               </h1>
                             </div>
@@ -3955,7 +3955,7 @@ export default function Navbar({ className }) {
                                   </Link>
                                 </li>
                                 <div className="category">
-                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                  <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                     Women Bags
                                   </h1>
                                 </div>
@@ -4016,7 +4016,7 @@ export default function Navbar({ className }) {
                           </div>
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Travel Bags, Luggage
                               </h1>
                             </div>
@@ -4080,7 +4080,7 @@ export default function Navbar({ className }) {
                           </div>
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Accessories
                               </h1>
                             </div>
@@ -4148,7 +4148,7 @@ export default function Navbar({ className }) {
                           {/* Hardcoded subcategories */}
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Men Jewellery
                               </h1>
                             </div>
@@ -4199,7 +4199,7 @@ export default function Navbar({ className }) {
 
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Women Jewellery
                               </h1>
                             </div>
@@ -4320,7 +4320,7 @@ export default function Navbar({ className }) {
                           {/* Hardcoded subcategories */}
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Gadgets
                               </h1>
                             </div>
@@ -4384,32 +4384,32 @@ export default function Navbar({ className }) {
 
                           <div className="px-10">
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Mobiles
                               </h1>
                             </div>
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Bluetooth & Headphones
                               </h1>
                             </div>
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Charging
                               </h1>
                             </div>
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Earphone
                               </h1>
                             </div>
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Mobile Cover
                               </h1>
                             </div>
                             <div className="category">
-                              <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                              <h1 className="text-[13px] font-500 text-black uppercase mb-[13px]">
                                 Accessories
                               </h1>
                             </div>
