@@ -7,6 +7,7 @@ import SectionStyleTwo from "../Helpers/SectionStyleTwo";
 import ViewMoreTitle from "../Helpers/ViewMoreTitle";
 import Layout from "../Partials/Layout";
 import Ads from "./Ads";
+import Banner from "./Banner";
 import BestSellers from "./BestSellers";
 import BrandSection from "./BrandSection";
 import CampaignCountDown from "./CampaignCountDown";
@@ -44,7 +45,7 @@ export default function Home({ homepageData }) {
     <>
       <Layout childrenClasses="pt-[30px] pb-[60px]">
         <Ads />
-        {/* {homepage && homepage.sliders.length > 0 && (
+        {homepage && homepage.sliders.length > 0 && (
           <Banner
             images={homepage.sliders}
             services={homepage.services}
@@ -62,7 +63,7 @@ export default function Home({ homepageData }) {
             }
             className="banner-wrapper md:mb-[60px] mb-[30px]"
           />
-        )} */}
+        )}
         {homepage && (
           <CategorySection
             categories={homepage.homepage_categories}

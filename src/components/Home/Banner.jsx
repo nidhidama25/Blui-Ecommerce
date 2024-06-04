@@ -77,7 +77,6 @@ export default function Banner({
                                     query: { slug: item.product_slug },
                                   }}
                                   passHref
-                                  legacyBehavior
                                 >
                                   <a rel="noopener noreferrer">
                                     <ShopNowBtn />
@@ -129,7 +128,6 @@ export default function Banner({
                             query: { category: sidebarImgOne.product_slug },
                           }}
                           passHref
-                          legacyBehavior
                         >
                           <a rel="noopener noreferrer">
                             <div className="cursor-pointer w-full relative  ">
@@ -208,7 +206,6 @@ export default function Banner({
                             query: { category: sidebarImgTwo.product_slug },
                           }}
                           passHref
-                          legacyBehavior
                         >
                           <a rel="noopener noreferrer">
                             <div className="cursor-pointer w-full relative  ">
