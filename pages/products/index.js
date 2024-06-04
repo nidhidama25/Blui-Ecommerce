@@ -10,7 +10,7 @@ export default function AllProductsPageData(data) {
     if (!data.data) {
       router.push("*");
     }
-  });
+  });               
   return (
     <>
       {data && seoSetting && (

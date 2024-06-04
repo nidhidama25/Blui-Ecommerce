@@ -105,7 +105,9 @@ export default function ProductCardRowStyleOne({ className, datas }) {
         getFirstVarients.length > 0 &&
         getFirstVarients.map((v) => (v ? v.id : null)),
     };
+
     if (auth()) {
+      // Proceed to add to cart if authenticated
       if (varients) {
         const variantQuery = data.variants.map((value, index) => {
           return value ? `variants[]=${value}` : `variants[]=-1`;
@@ -117,6 +119,7 @@ export default function ProductCardRowStyleOne({ className, datas }) {
         });
         const itemQueryStr = itemsQuery.map((value) => value + "&").join("");
         const uri = `token=${data.token}&product_id=${data.id}&${variantString}${itemQueryStr}quantity=${data.quantity}`;
+
         apiRequest
           .addToCard(uri)
           .then((res) =>
@@ -151,13 +154,26 @@ export default function ProductCardRowStyleOne({ className, datas }) {
         dispatch(fetchCart());
       }
     } else {
-      localStorage.setItem(
-        "data-hold",
-        JSON.stringify({ type: "add-to-cart", ...data })
-      );
-      loginPopupBoard.handlerPopup(true);
+      // Directly attempt to add to cart without token
+      const uri = `product_id=${data.id}&quantity=${data.quantity}`;
+      apiRequest
+        .addToCard(uri)
+        .then((res) =>
+          toast.success(<Redirect />, {
+            autoClose: 5000,
+          })
+        )
+        .catch((err) => {
+          toast.error(
+            err.response &&
+              err.response.data.message &&
+              err.response.data.message
+          );
+        });
+      dispatch(fetchCart());
     }
   };
+
   useEffect(() => {
     if (varients) {
       const prices = varients.map((v) =>

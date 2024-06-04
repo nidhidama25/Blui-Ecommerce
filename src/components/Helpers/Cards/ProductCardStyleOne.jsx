@@ -124,7 +124,7 @@ export default function ProductCardStyleOne({ datas }) {
   const addToCart = (id) => {
     const data = {
       id: id,
-      token: auth() && auth().access_token,
+      token: auth() && auth().access_token, // If the user is not logged in, this will be undefined
       quantity: 1,
       variants:
         getFirstVarients &&
@@ -134,9 +134,11 @@ export default function ProductCardStyleOne({ datas }) {
         ),
       variantItems:
         getFirstVarients &&
-        getFirstVarients.length > 0 &&
+        data.variantItems.length > 0 &&
         getFirstVarients.map((v) => (v ? v.id : null)),
     };
+
+    // If the user is logged in, use the API to add the item to the cart
     if (auth()) {
       if (varients) {
         const variantQuery = data.variants.map((value, index) => {
@@ -185,12 +187,14 @@ export default function ProductCardStyleOne({ datas }) {
           });
         dispatch(fetchCart());
       }
-    } else {
+    }
+    // If the user is not logged in, add the item to the local storage
+    else {
       localStorage.setItem(
         "data-hold",
         JSON.stringify({ type: "add-to-cart", ...data })
       );
-      loginPopupBoard.handlerPopup(true);
+      toast.success("Item added to cart");
     }
   };
 

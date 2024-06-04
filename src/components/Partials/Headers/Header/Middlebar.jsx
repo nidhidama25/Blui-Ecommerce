@@ -9,10 +9,9 @@ import Cart from "../../../Cart";
 import LoginContext from "../../../Contexts/LoginContext";
 import SearchBox from "../../../Helpers/SearchBox";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
-import Compair from "../../../Helpers/icons/Compair";
-import ThinBag from "../../../Helpers/icons/ThinBag";
-import ThinLove from "../../../Helpers/icons/ThinLove";
-import ThinPeople from "../../../Helpers/icons/ThinPeople";
+import bag from "/public/images/icons/Vector (1).png";
+import prof from "/public/images/icons/Vector (2).png";
+import wish from "/public/images/icons/Vector.png";
 export default function Middlebar({ className, settings }) {
   const router = useRouter();
   const dispatch = useDispatch();
@@ -70,7 +69,7 @@ export default function Middlebar({ className, settings }) {
               <SearchBox className="search-com" />
             </div>
             <div className="flex space-x-6 rtl:space-x-reverse items-center relative">
-              <div className="compaire relative">
+              {/* <div className="compaire relative">
                 {auth ? (
                   <Link href="/products-compaire" passHref legacyBehavior>
                     <a rel="noopener noreferrer">
@@ -92,12 +91,12 @@ export default function Middlebar({ className, settings }) {
                 <span className="w-[18px] h-[18px] rounded-full  absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px]">
                   {compareProducts ? compareProducts.products.length : 0}
                 </span>
-              </div>
+              </div> */}
               <div className="favorite relative">
                 <Link href="/wishlist" passHref legacyBehavior>
                   <a rel="noopener noreferrer">
                     <span className="cursor-pointer">
-                      <ThinLove className="fill-current" />
+                      <Image src={wish} alt="cart" width={20} height={20} />
                     </span>
                   </a>
                 </Link>
@@ -110,7 +109,7 @@ export default function Middlebar({ className, settings }) {
                   <Link href="/cart" passHref legacyBehavior>
                     <a rel="noopener noreferrer">
                       <span className="cursor-pointer">
-                        <ThinBag />
+                        <Image src={bag} alt="cart" width={20} height={20} />
                       </span>
                     </a>
                   </Link>
@@ -135,7 +134,7 @@ export default function Middlebar({ className, settings }) {
                   <Link href="/login" passHref legacyBehavior>
                     <a rel="noopener noreferrer">
                       <span className="cursor-pointer">
-                        <ThinPeople />
+                        <Image src={prof} alt="cart" width={20} height={20} />
                       </span>
                     </a>
                   </Link>

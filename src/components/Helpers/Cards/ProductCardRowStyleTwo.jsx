@@ -29,78 +29,61 @@ const Redirect = () => {
 export default function ProductCardRowStyleTwo({ className, datas }) {
   const router = useRouter();
   const dispatch = useDispatch();
-  //cart
+
+  // Cart state
   const varients = datas && datas.variants.length > 0 && datas.variants;
   const [getFirstVarients, setFirstVarients] = useState(
     varients && varients.map((v) => v.active_variant_items[0])
   );
   const [price, setPrice] = useState(null);
   const [offerPrice, setOffer] = useState(null);
-  const addToCart = (id) => {
-    if (auth()) {
-      const data = {
-        id: id,
-        token: auth() && auth().access_token,
-        quantity: 1,
-        variants:
-          getFirstVarients &&
-          getFirstVarients.length > 0 &&
-          getFirstVarients.map((v) =>
-            v ? parseInt(v.product_variant_id) : null
-          ),
-        variantItems:
-          getFirstVarients &&
-          getFirstVarients.length > 0 &&
-          getFirstVarients.map((v) => (v ? v.id : null)),
-      };
-      if (varients) {
-        const variantQuery = data.variants.map((value, index) => {
-          return value ? `variants[]=${value}` : `variants[]=-1`;
-        });
-        const variantString = variantQuery.map((value) => value + "&").join("");
 
-        const itemsQuery = data.variantItems.map((value, index) => {
-          return value ? `items[]=${value}` : `items[]=-1`;
-        });
-        const itemQueryStr = itemsQuery.map((value) => value + "&").join("");
-        const uri = `token=${data.token}&product_id=${data.id}&${variantString}${itemQueryStr}quantity=${data.quantity}`;
-        apiRequest
-          .addToCard(uri)
-          .then((res) =>
-            toast.success(<Redirect />, {
-              autoClose: 5000,
-            })
-          )
-          .catch((err) => {
-            toast.error(
-              err.response &&
-                err.response.data.message &&
-                err.response.data.message
-            );
-          });
-        dispatch(fetchCart());
-      } else {
-        const uri = `token=${data.token}&product_id=${data.id}&quantity=${data.quantity}`;
-        apiRequest
-          .addToCard(uri)
-          .then((res) =>
-            toast.success(<Redirect />, {
-              autoClose: 5000,
-            })
-          )
-          .catch((err) => {
-            toast.error(
-              err.response &&
-                err.response.data.message &&
-                err.response.data.message
-            );
-          });
-        dispatch(fetchCart());
-      }
-    } else {
-      router.push("/login");
-    }
+  const addToCart = (id) => {
+    const data = {
+      id: id,
+      token: auth() && auth().access_token,
+      quantity: 1,
+      variants:
+        getFirstVarients &&
+        getFirstVarients.length > 0 &&
+        getFirstVarients.map((v) =>
+          v ? parseInt(v.product_variant_id) : null
+        ),
+      variantItems:
+        getFirstVarients &&
+        getFirstVarients.length > 0 &&
+        getFirstVarients.map((v) => (v ? v.id : null)),
+    };
+
+    const variantQuery = data.variants.map((value, index) => {
+      return value ? `variants[]=${value}` : `variants[]=-1`;
+    });
+    const variantString = variantQuery.map((value) => value + "&").join("");
+
+    const itemsQuery = data.variantItems.map((value, index) => {
+      return value ? `items[]=${value}` : `items[]=-1`;
+    });
+    const itemQueryStr = itemsQuery.map((value) => value + "&").join("");
+
+    const uri = auth()
+      ? `token=${data.token}&product_id=${data.id}&${variantString}${itemQueryStr}quantity=${data.quantity}`
+      : `product_id=${data.id}&${variantString}${itemQueryStr}quantity=${data.quantity}`;
+
+    apiRequest
+      .addToCard(uri)
+      .then((res) =>
+        toast.success(<Redirect />, {
+          autoClose: 5000,
+        })
+      )
+      .catch((err) => {
+        toast.error(
+          err.response && err.response.data.message && err.response.data.message
+        );
+      });
+    dispatch(fetchCart());
   };
+
   useEffect(() => {
     if (varients) {
       const prices = varients.map((v) =>
@@ -128,9 +111,11 @@ export default function ProductCardRowStyleTwo({ className, datas }) {
       setOffer(datas && datas.offer_price);
     }
   }, [datas, varients]);
+
   const { currency_icon } = settings();
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
   const [isProductInFlashSale, setData] = useState(null);
+
   useEffect(() => {
     if (websiteSetup) {
       const getId = websiteSetup.payload.flashSaleProducts.find(
@@ -143,6 +128,7 @@ export default function ProductCardRowStyleTwo({ className, datas }) {
       }
     }
   }, [websiteSetup]);
+
   return (
     <Link
       href={{
@@ -157,7 +143,7 @@ export default function ProductCardRowStyleTwo({ className, datas }) {
           data-aos="fade-up"
           className={`product-card-row-two w-full  ${className || ""}`}
         >
-          <div className="w-full h-[105px] bg-white border border-primarygray px-5 ">
+          <div className="w-full h-[105px] bg-white border border-primarygray px-5">
             <div className="w-full h-full flex space-x-5 justify-center items-center">
               <div className="w-[75px] h-full relative">
                 <Image
@@ -220,6 +206,15 @@ export default function ProductCardRowStyleTwo({ className, datas }) {
                     </span>
                   )}
                 </p>
+                <button
+                  onClick={() => addToCart(datas.id)}
+                  type="button"
+                  className="w-[116px] h-[40px]"
+                >
+                  <span className="yellow-btn">
+                    {ServeLangItem()?.Add_To_Cart}
+                  </span>
+                </button>
               </div>
             </div>
           </div>
