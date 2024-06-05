@@ -40,7 +40,7 @@ export default function languageModel() {
         Kids: "Kids",
         Jewellery: "Jewellery",
         Electronics: "Electronics",
-        // Add more labels as needed
+        BE: "Become A Seller",
       };
 
       return Object.assign.apply(Object, [...generateNewArr, additionalLabels]);

@@ -122,6 +122,7 @@ export default function ProductCardStyleOne({ datas }) {
   const [price, setPrice] = useState(null);
   const [offerPrice, setOffer] = useState(null);
   const addToCart = (id) => {
+    console.log("Add to cart clicked");
     const data = {
       id: id,
       token: auth() && auth().access_token, // If the user is not logged in, this will be undefined
@@ -258,230 +259,221 @@ export default function ProductCardStyleOne({ datas }) {
     setImgSrc(value);
   };
   return (
-    <Link
-      href={{
-        pathname: "/single-product",
-        query: { slug: datas.slug },
-      }}
-      passHref
-      legacyBehavior
-    >
-      <a className="card-link">
-        <div className="main-wrapper-card relative rounded-md">
-          <div
-            className="product-card-one w-full h-[475px] bg-white relative group overflow-hidden"
-            style={{ boxShadow: "0px 15px 64px 0px rgba(0, 0, 0, 0.05)" }}
-          >
-            <div className="p-3 bg-qblue-white m-2 rounded-lg h-20">
-              <Link
-                href={{
-                  pathname: "/single-product",
-                  query: { slug: datas.slug },
-                }}
-                passHref
-                legacyBehavior
+    <a className="card-link">
+      <div className="main-wrapper-card relative rounded-md">
+        <div
+          className="product-card-one w-full h-[475px] bg-white relative group overflow-hidden"
+          style={{ boxShadow: "0px 15px 64px 0px rgba(0, 0, 0, 0.05)" }}
+        >
+          <div className="p-3 bg-qblue-white m-2 rounded-lg h-20">
+            <Link
+              href={{
+                pathname: "/single-product",
+                query: { slug: datas.slug },
+              }}
+              passHref
+              legacyBehavior
+            >
+              <a rel="noopener noreferrer">
+                <p className="title mb-2 text-[15px] font-600 text-custom-blue leading-[24px] line-clamp-2 hover:text-blue-600 cursor-pointer">
+                  {datas.title}
+                </p>
+              </a>
+            </Link>
+          </div>
+          <div className="product-card-img w-full h-[300px] -mt-2 rounded-md">
+            <div className="w-full h-full relative flex justify-center rounded-md items-center transform scale-100 group-hover:scale-110 transition duration-300 ease-in-out">
+              <Image
+                layout="fill"
+                objectFit="scale-down"
+                src={`${imgSrc ? imgSrc : "/assets/images/spinner.gif"}`}
+                alt=""
+                onLoadingComplete={() => loadImg(datas.image)}
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+          <div className="bg-custom-blue rounded-md product-card-details pb-[30px] relative pt-2">
+            {/* add to card button */}
+            <div className="absolute w-full h-10 px-[30px] left-0 top-40 group-hover:top-[10px] transition-all duration-300 ease-in-out">
+              <button
+                onClick={() => addToCart(datas.id)}
+                type="button"
+                className="bg-qblue-white rounded-xl group relative w-full h-full flex shadow justify-center items-center overflow-hidden"
               >
-                <a rel="noopener noreferrer">
-                  <p className="title mb-2 text-[15px] font-600 text-custom-blue leading-[24px] line-clamp-2 hover:text-blue-600 cursor-pointer">
-                    {datas.title}
-                  </p>
-                </a>
-              </Link>
-            </div>
-            <div className="product-card-img w-full h-[300px] -mt-2 rounded-md">
-              <div className="w-full h-full relative flex justify-center rounded-md items-center transform scale-100 group-hover:scale-110 transition duration-300 ease-in-out">
-                <Image
-                  layout="fill"
-                  objectFit="scale-down"
-                  src={`${imgSrc ? imgSrc : "/assets/images/spinner.gif"}`}
-                  alt=""
-                  onLoadingComplete={() => loadImg(datas.image)}
-                  className="w-full h-full object-contain"
-                />
-              </div>
-            </div>
-            <div className="bg-custom-blue rounded-md product-card-details pb-[30px] relative pt-2">
-              {/* add to card button */}
-              <div className="absolute w-full h-10 px-[30px] left-0 top-40 group-hover:top-[10px] transition-all duration-300 ease-in-out">
-                <button
-                  onClick={() => addToCart(datas.id)}
-                  type="button"
-                  className="bg-qblue-white rounded-xl group relative w-full h-full flex shadow justify-center items-center overflow-hidden"
-                >
-                  <div className="btn-content flex items-center space-x-3 rtl:space-x-reverse relative z-10">
-                    <span>
-                      <svg
-                        width="14"
-                        height="16"
-                        viewBox="0 0 14 16"
-                        fill="none"
-                        className="fill-current"
-                      >
-                        {/* SVG path */}
-                      </svg>
-                    </span>
-                    <span>{ServeLangItem()?.Add_To_Cart}</span>
-                  </div>
-                  <div className="bg-shape w-full h-full absolute bg-qblack"></div>
-                </button>
-              </div>
-
-              <div className="px-[30px]">
-                <p className="price">
-                  <span
-                    suppressHydrationWarning
-                    className={`main-price  font-600 text-[18px] ${
-                      offerPrice ? "line-through text-qgray" : "text-qred"
-                    }`}
-                  >
-                    {offerPrice ? (
-                      <span>{currency_icon && currency_icon + price}</span>
-                    ) : (
-                      <>
-                        {isProductInFlashSale && (
-                          <span
-                            className={`line-through text-qgray font-500 text-[16px] mr-2`}
-                          >
-                            {currency_icon &&
-                              currency_icon + parseFloat(price).toFixed(2)}
-                          </span>
-                        )}
-                        <CheckProductIsExistsInFlashSale
-                          id={datas.id}
-                          price={price}
-                        />
-                      </>
-                    )}
-                  </span>
-                  {offerPrice && (
-                    <span
-                      suppressHydrationWarning
-                      className="offer-price text-qred font-600 text-[18px] ml-2"
+                <div className="btn-content flex items-center space-x-3 rtl:space-x-reverse relative z-10">
+                  <span>
+                    <svg
+                      width="14"
+                      height="16"
+                      viewBox="0 0 14 16"
+                      fill="none"
+                      className="fill-current"
                     >
+                      {/* SVG path */}
+                    </svg>
+                  </span>
+                  <span>{ServeLangItem()?.Add_To_Cart}</span>
+                </div>
+                <div className="bg-shape w-full h-full absolute bg-qblack"></div>
+              </button>
+            </div>
+
+            <div className="px-[30px]">
+              <p className="price">
+                <span
+                  suppressHydrationWarning
+                  className={`main-price  font-600 text-[18px] ${
+                    offerPrice ? "line-through text-qgray" : "text-qred"
+                  }`}
+                >
+                  {offerPrice ? (
+                    <span>{currency_icon && currency_icon + price}</span>
+                  ) : (
+                    <>
+                      {isProductInFlashSale && (
+                        <span
+                          className={`line-through text-qgray font-500 text-[16px] mr-2`}
+                        >
+                          {currency_icon &&
+                            currency_icon + parseFloat(price).toFixed(2)}
+                        </span>
+                      )}
                       <CheckProductIsExistsInFlashSale
                         id={datas.id}
-                        price={offerPrice}
+                        price={price}
                       />
-                    </span>
+                    </>
                   )}
-                </p>
-              </div>
-              <div className="reviews flex space-x-[1px] m-4 pl-3">
-                {Array.from(Array(datas.review), () => (
-                  <span key={datas.review + Math.random()}>
-                    <Star />
-                  </span>
-                ))}
-                {datas.review < 5 && (
-                  <>
-                    {Array.from(Array(5 - datas.review), () => (
-                      <span
-                        key={datas.review + Math.random()}
-                        className="text-gray-500"
-                      >
-                        <Star defaultValue={false} />
-                      </span>
-                    ))}
-                  </>
-                )}
-              </div>
-            </div>
-            {/* quick-access-btns */}
-            <div className="quick-access-btns flex flex-col space-y-2">
-              <button
-                className=" absolute group-hover:right-4 -right-10 top-20  transition-all ease-in-out"
-                onClick={() => quickViewHandler(datas.slug)}
-                type="button"
-              >
-                <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white items-center transition-all duration-300 ease-in-out hover-bg-qyellow bg-primarygray rounded">
-                  <QuickViewIco className="fill-current" />
                 </span>
-              </button>
-              {!arWishlist ? (
-                <button
-                  className=" absolute group-hover:right-4 -right-10 top-[120px]  transition-all duration-300 ease-in-out"
-                  type="button"
-                  onClick={() => addToWishlist(datas.id)}
-                >
-                  <span className="hover:bg-qyellow w-10 h-10 flex text-black hover:text-white justify-center items-center transition-all duration-300 ease-in-out hover-bg-qyellow bg-primarygray rounded">
-                    <ThinLove className="fill-current" />
-                  </span>
-                </button>
-              ) : (
-                <button
-                  className="absolute group-hover:right-4 -right-10 top-[120px]  transition-all duration-300 ease-in-out"
-                  type="button"
-                  onClick={() => removeToWishlist(wishlisted && wishlisted.id)}
-                >
-                  <span className="hover:bg-qyellow w-10 h-10 flex justify-center items-center bg-primarygray rounded">
-                    <ThinLove fill={true} />
-                  </span>
-                </button>
-              )}
-
-              <button
-                className=" absolute group-hover:right-4 -right-10 top-[168px]  transition-all duration-500 ease-in-out"
-                type="button"
-                onClick={() => productCompare(datas.id)}
-              >
-                <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white transition-all duration-300 ease-in-out items-center hover-bg-qyellow bg-primarygray rounded">
-                  <Compair className="fill-current" />
-                </span>
-              </button>
-            </div>
-            {quickViewModal && quickViewData && (
-              <div className="quicke-view-wrapper w-full h-full flex fixed left-0 top-0 justify-center z-50 items-center ">
-                <div
-                  onClick={() => setQuickView(!quickViewModal)}
-                  className="w-full h-full fixed left-0 right-0 bg-black  bg-opacity-25"
-                ></div>
-                <div
-                  data-aos="fade-up"
-                  className=" md:mx-10 xl:mt-[100px] rounded w-full bg-white relative lg:py-[40px] pt-[80px] pb-[40px] sm:px-[38px] px-3 md:mt-12 h-full overflow-y-scroll xl:overflow-hidden xl:mt-0 "
-                  style={{ zIndex: "999" }}
-                >
-                  <div className="w-full h-full overflow-y-scroll overflow-style-none">
-                    <ProductView
-                      images={
-                        quickViewData.gellery.length > 0
-                          ? quickViewData.gellery
-                          : []
-                      }
-                      product={quickViewData.product}
-                    />
-                  </div>
-                  <button
-                    onClick={() => setQuickView(!quickViewModal)}
-                    type="button"
-                    className="absolute right-3 top-3"
+                {offerPrice && (
+                  <span
+                    suppressHydrationWarning
+                    className="offer-price text-qred font-600 text-[18px] ml-2"
                   >
-                    <span className="text-red-500 w-12 h-12 flex justify-center items-center rounded border border-qred">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        strokeWidth="1.5"
-                        stroke="currentColor"
-                        className="w-10 h-10"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          d="M6 18L18 6M6 6l12 12"
-                        ></path>
-                      </svg>
+                    <CheckProductIsExistsInFlashSale
+                      id={datas.id}
+                      price={offerPrice}
+                    />
+                  </span>
+                )}
+              </p>
+            </div>
+            <div className="reviews flex space-x-[1px] m-4 pl-3">
+              {Array.from(Array(datas.review), () => (
+                <span key={datas.review + Math.random()}>
+                  <Star />
+                </span>
+              ))}
+              {datas.review < 5 && (
+                <>
+                  {Array.from(Array(5 - datas.review), () => (
+                    <span
+                      key={datas.review + Math.random()}
+                      className="text-gray-500"
+                    >
+                      <Star defaultValue={false} />
                     </span>
-                  </button>
-                </div>
-              </div>
-            )}
+                  ))}
+                </>
+              )}
+            </div>
           </div>
-          {/* <span className="anim bottom"></span>
+          {/* quick-access-btns */}
+          <div className="quick-access-btns flex flex-col space-y-2">
+            <button
+              className=" absolute group-hover:right-4 -right-10 top-20  transition-all ease-in-out"
+              onClick={() => quickViewHandler(datas.slug)}
+              type="button"
+            >
+              <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white items-center transition-all duration-300 ease-in-out hover-bg-qyellow bg-primarygray rounded">
+                <QuickViewIco className="fill-current" />
+              </span>
+            </button>
+            {!arWishlist ? (
+              <button
+                className=" absolute group-hover:right-4 -right-10 top-[120px]  transition-all duration-300 ease-in-out"
+                type="button"
+                onClick={() => addToWishlist(datas.id)}
+              >
+                <span className="hover:bg-qyellow w-10 h-10 flex text-black hover:text-white justify-center items-center transition-all duration-300 ease-in-out hover-bg-qyellow bg-primarygray rounded">
+                  <ThinLove className="fill-current" />
+                </span>
+              </button>
+            ) : (
+              <button
+                className="absolute group-hover:right-4 -right-10 top-[120px]  transition-all duration-300 ease-in-out"
+                type="button"
+                onClick={() => removeToWishlist(wishlisted && wishlisted.id)}
+              >
+                <span className="hover:bg-qyellow w-10 h-10 flex justify-center items-center bg-primarygray rounded">
+                  <ThinLove fill={true} />
+                </span>
+              </button>
+            )}
+
+            <button
+              className=" absolute group-hover:right-4 -right-10 top-[168px]  transition-all duration-500 ease-in-out"
+              type="button"
+              onClick={() => productCompare(datas.id)}
+            >
+              <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white transition-all duration-300 ease-in-out items-center hover-bg-qyellow bg-primarygray rounded">
+                <Compair className="fill-current" />
+              </span>
+            </button>
+          </div>
+          {quickViewModal && quickViewData && (
+            <div className="quicke-view-wrapper w-full h-full flex fixed left-0 top-0 justify-center z-50 items-center ">
+              <div
+                onClick={() => setQuickView(!quickViewModal)}
+                className="w-full h-full fixed left-0 right-0 bg-black  bg-opacity-25"
+              ></div>
+              <div
+                data-aos="fade-up"
+                className=" md:mx-10 xl:mt-[100px] rounded w-full bg-white relative lg:py-[40px] pt-[80px] pb-[40px] sm:px-[38px] px-3 md:mt-12 h-full overflow-y-scroll xl:overflow-hidden xl:mt-0 "
+                style={{ zIndex: "999" }}
+              >
+                <div className="w-full h-full overflow-y-scroll overflow-style-none">
+                  <ProductView
+                    images={
+                      quickViewData.gellery.length > 0
+                        ? quickViewData.gellery
+                        : []
+                    }
+                    product={quickViewData.product}
+                  />
+                </div>
+                <button
+                  onClick={() => setQuickView(!quickViewModal)}
+                  type="button"
+                  className="absolute right-3 top-3"
+                >
+                  <span className="text-red-500 w-12 h-12 flex justify-center items-center rounded border border-qred">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="w-10 h-10"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      ></path>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
+        {/* <span className="anim bottom"></span>
           <span className="anim right"></span>
           <span className="anim top"></span>
           <span className="anim left"></span> */}
-        </div>
-      </a>
-    </Link>
+      </div>
+    </a>
   );
 }
