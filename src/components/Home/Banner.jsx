@@ -33,10 +33,10 @@ export default function Banner({
       <div className={`w-full ${className || ""}`}>
         <div className="container-x mx-auto">
           <div className="main-wrapper w-full">
-            <div className="banner-card xl:flex xl:space-x-[30px] rtl:space-x-0 xl:h-[600px] ">
+            <div className="banner-card xl:flex xl:space-x-[30px] rtl:space-x-0 xl:h-[400px] ">
               <div
                 data-aos="fade-right"
-                className={`rtl:ml-[30px] ltr:ml-0 w-full xl:w-[80%] md:h-[600px] xl:mb-0 mb-2 ${
+                className={`rtl:ml-[30px] ltr:ml-0 w-full xl:w-[80%] md:h-[300px] xl:mb-0 mb-2 ${
                   sidebarImgOne || sidebarImgTwo ? " w-full" : "w-full"
                 }`}
               >
