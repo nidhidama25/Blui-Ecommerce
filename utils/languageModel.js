@@ -41,6 +41,7 @@ export default function languageModel() {
         Jewellery: "Jewellery",
         Electronics: "Electronics",
         BE: "Become A Seller",
+        OF: "Offer Zone",
       };
 
       return Object.assign.apply(Object, [...generateNewArr, additionalLabels]);

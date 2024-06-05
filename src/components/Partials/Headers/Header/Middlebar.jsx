@@ -75,18 +75,33 @@ export default function Middlebar({ className, settings }) {
             </div>
 
             <div className="flex flex-row ">
+              <div className="block py-3 px-2 ">
+                <Link href="/become-seller" passHref legacyBehavior>
+                  <a rel="noopener noreferrer">
+                    <span className="text-MD  text-black p-2  font-500 cursor-pointer rounded-md">
+                      {ServeLangItem()?.OF}
+                    </span>
+                  </a>
+                </Link>
+              </div>
+              <div className=" border-l-2 border-[#93939c] h-[30px] mt-2">
+                <span className="sr-only ">Vertical line</span>
+              </div>
               {Multivendor() === 1 && (
-                <div className="block py-3 px-5 ">
+                <div className="block py-3 px-2 ">
                   <Link href="/become-seller" passHref legacyBehavior>
                     <a rel="noopener noreferrer">
-                      <span className="text-sm  text-black p-5  font-500 cursor-pointer rounded-md">
+                      <span className="text-md  text-black p-2  font-500 cursor-pointer rounded-md">
                         {ServeLangItem()?.BE}
                       </span>
                     </a>
                   </Link>
                 </div>
               )}
-              <div className="flex space-x-6 rtl:space-x-reverse items-center relative">
+              <div className=" border-l-2 border-[#93939c] h-[30px] mt-2">
+                <span className="sr-only ">Vertical line</span>
+              </div>
+              <div className="flex space-x-6 rtl:space-x-reverse items-center relative pl-3">
                 {/* <div className="compaire relative">
                 {auth ? (
                   <Link href="/products-compaire" passHref legacyBehavior>

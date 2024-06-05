@@ -61,7 +61,7 @@ export default function Home({ homepageData }) {
                 ? homepage.sliderBannerTwo
                 : null
             }
-            className="banner-wrapper md:mb-[60px] mb-[30px]"
+            className="banner-wrapper  "
           />
         )}
 
