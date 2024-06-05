@@ -6,7 +6,7 @@ function CategorySection({ sectionTitle, categories }) {
   return (
     <div data-aos="fade-up" className="category-section-wrapper w-full">
       <div className="container-x mx-auto pb-[60px]  ">
-        <div className="bg-qblue-white p-20 rounded-md w-full md:grid xl:grid-cols-3 md:grid-cols-3 grid-cols-1 gap-[30px] md:flex md:flex-row w-70 h-70">
+        <div className="bg-[#FFF4D4] p-20 rounded-md w-full md:grid xl:grid-cols-3 md:grid-cols-3 grid-cols-1 gap-[30px] md:flex md:flex-row w-70 h-70">
           {/* Add the following div for the Trending Category heading */}
           <div className="col-span-3 text-center p-5">
             <h2 className="text-3xl font-extrabold text-gray-800">
