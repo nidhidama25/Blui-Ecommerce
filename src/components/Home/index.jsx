@@ -45,9 +45,9 @@ export default function Home({ homepageData }) {
     <>
       <Layout childrenClasses="pt-[30px] pb-[60px]">
         <Ads />
-        {homepage && homepage.sliders.length > 0 && (
+        {homepage && (
           <Banner
-            images={homepage.sliders}
+            images={homepage.sliders || []} // use an empty array as a fallback
             services={homepage.services}
             sidebarImgOne={
               homepage.sliderBannerOne &&
@@ -64,6 +64,7 @@ export default function Home({ homepageData }) {
             className="banner-wrapper md:mb-[60px] mb-[30px]"
           />
         )}
+
         {homepage && (
           <CategorySection
             categories={homepage.homepage_categories}

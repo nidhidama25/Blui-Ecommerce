@@ -1,14 +1,13 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 import PageHead from "../../src/components/Helpers/PageHead";
 import SingleProductPage from "../../src/components/SingleProductPage";
 const SingleProduct = ({ data }) => {
   const router = useRouter();
-  useEffect(() => {
-    if (router && !router.query.slug) {
-      router.push("*");
-    }
-  });
+  // useEffect(() => {
+  //   if (router && !router.query.slug) {
+  //     router.push("*");
+  //   }
+  // });
 
   return (
     <>

@@ -10,6 +10,7 @@ const initialState = {
 //fetch data from api
 export const fetchCart = createAsyncThunk("CART/fetchCart", async () => {
   if (auth()) {
+    // Fetch the cart data from the server if the user is authenticated
     const res = await fetch(
       `${process.env.NEXT_PUBLIC_BASE_URL}api/cart?token=${
         auth().access_token
@@ -23,9 +24,16 @@ export const fetchCart = createAsyncThunk("CART/fetchCart", async () => {
     );
     const data = await res.json();
     return data;
+  } else {
+    // Retrieve the cart data from local storage if the user is not authenticated
+    const cartData = localStorage.getItem("cart");
+    if (cartData) {
+      return JSON.parse(cartData);
+    }
+    return null;
   }
-  return false;
 });
+
 //create action and reducer
 export const cart = createSlice({
   name: CART,

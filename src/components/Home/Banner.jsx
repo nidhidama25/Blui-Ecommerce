@@ -1,16 +1,16 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect } from "react";
 import settings from "../../../utils/settings";
 import ShopNowBtn from "../Helpers/Buttons/ShopNowBtn";
 import ServeLangItem from "../Helpers/ServeLangItem";
 import SimpleSlider from "../Helpers/SliderCom";
-import FontAwesomeCom from "../Helpers/icons/FontAwesomeCom";
+import user from "/public/images/icons/user.png";
 export default function Banner({
   className,
   images = [],
   sidebarImgOne,
   sidebarImgTwo,
-  services = [],
 }) {
   const settingBanner = {
     infinite: true,
@@ -77,6 +77,7 @@ export default function Banner({
                                     query: { slug: item.product_slug },
                                   }}
                                   passHref
+                                  legacyBehavior
                                 >
                                   <a rel="noopener noreferrer">
                                     <ShopNowBtn />
@@ -90,10 +91,30 @@ export default function Banner({
                   </SimpleSlider>
                 </div>
               </div>
-              <div
-                data-aos="fade-left"
-                className="flex-1 flex xl:flex-col flex-row  xl:space-y-[30px] xl:h-full md:h-[350px] h-[150px]"
-              >
+              <div className="flex-1 flex xl:flex-col flex-row  xl:space-y-[30px] xl:h-full md:h-[350px] h-[150px]">
+                <div className="sidebar-header flex flex-col  bg-qblue-white  rounded-lg p-5">
+                  <div className="flex flex-row ">
+                    <Image
+                      className="mr-2"
+                      src={user}
+                      alt="cart"
+                      width={50}
+                      height={10}
+                    />
+                    <p>
+                      Hi,user <br></br> lets get started
+                    </p>
+                  </div>
+                  <div className="buttons flex flex-col   justify-center items-center space-x-2">
+                    <button className="bg-custom-blue text-qblue-white text-qblue py-2  rounded-md m-2  w-full">
+                      Register
+                    </button>
+                    <button className="bg-custom-blue text-qblue-white text-qblue py-2  rounded-md m-2  w-full">
+                      Login
+                    </button>
+                  </div>
+                </div>
+
                 {sidebarImgOne && (
                   <div
                     className="w-full xl:h-1/2 xl:mr-0 mr-2 relative flex items-center group rtl:md:pr-[40px] ltr:md:pl-[40px] rtl:pr-[30] ltr:pl-[30px]"
@@ -128,6 +149,7 @@ export default function Banner({
                             query: { category: sidebarImgOne.product_slug },
                           }}
                           passHref
+                          legacyBehavior
                         >
                           <a rel="noopener noreferrer">
                             <div className="cursor-pointer w-full relative  ">
@@ -206,6 +228,7 @@ export default function Banner({
                             query: { category: sidebarImgTwo.product_slug },
                           }}
                           passHref
+                          legacyBehavior
                         >
                           <a rel="noopener noreferrer">
                             <div className="cursor-pointer w-full relative  ">
@@ -250,33 +273,6 @@ export default function Banner({
                   </div>
                 )}
               </div>
-            </div>
-            <div
-              data-aos="fade-up"
-              className="best-services w-full bg-white flex flex-col space-y-10 lg:space-y-0 lg:flex-row lg:justify-between lg:items-center lg:h-[110px] px-10 lg:py-0 py-10"
-            >
-              {services.map((service) => (
-                <div key={service.id} className="item">
-                  <div className="flex space-x-5 rtl:space-x-reverse items-center">
-                    <div>
-                      <span className="w-10 h-10 text-qyellow">
-                        <FontAwesomeCom
-                          className="w-8 h-8"
-                          icon={service.icon}
-                        />
-                      </span>
-                    </div>
-                    <div>
-                      <p className="text-black text-[15px] font-700 tracking-wide mb-1">
-                        {service.title}
-                      </p>
-                      <p className="text-sm text-qgray line-clamp-1">
-                        {service.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
             </div>
           </div>
         </div>
