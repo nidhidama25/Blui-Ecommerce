@@ -27,6 +27,8 @@ module.exports = {
         "qblue-white": "#CBECFF",
         "qh2-green": "#2D6F6D",
         "custom-blue": "#0B3B72",
+        gg: "rgba(0, 0, 0, 0.65)",
+        trend: "#OB3B72",
       },
       scale: {
         60: "0.6",

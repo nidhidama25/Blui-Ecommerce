@@ -78,20 +78,20 @@ export default function Middlebar({ className, settings }) {
               <div className="block py-3 px-2 ">
                 <Link href="/become-seller" passHref legacyBehavior>
                   <a rel="noopener noreferrer">
-                    <span className="text-MD  text-black p-2  font-500 cursor-pointer rounded-md">
+                    <span className="text-[22px]  text-gg p-2  font-500 cursor-pointer rounded-md">
                       {ServeLangItem()?.OF}
                     </span>
                   </a>
                 </Link>
               </div>
-              <div className=" border-l-2 border-[#93939c] h-[30px] mt-2">
+              <div className=" border-l-2 border-[#93939c] h-[40px] mt-2">
                 <span className="sr-only ">Vertical line</span>
               </div>
               {Multivendor() === 1 && (
                 <div className="block py-3 px-2 ">
                   <Link href="/become-seller" passHref legacyBehavior>
                     <a rel="noopener noreferrer">
-                      <span className="text-md  text-black p-2  font-500 cursor-pointer rounded-md">
+                      <span className="text-[22px]  text-gg p-2  font-500 cursor-pointer rounded-md">
                         {ServeLangItem()?.BE}
                       </span>
                     </a>
@@ -102,29 +102,6 @@ export default function Middlebar({ className, settings }) {
                 <span className="sr-only ">Vertical line</span>
               </div>
               <div className="flex space-x-6 rtl:space-x-reverse items-center relative pl-3">
-                {/* <div className="compaire relative">
-                {auth ? (
-                  <Link href="/products-compaire" passHref legacyBehavior>
-                    <a rel="noopener noreferrer">
-                      <span className="cursor-pointer">
-                        <Compair className="fill-current" />
-                      </span>
-                    </a>
-                  </Link>
-                ) : (
-                  <Link href="/login" passHref legacyBehavior>
-                    <a rel="noopener noreferrer">
-                      <span className="cursor-pointer">
-                        <Compair className="fill-current" />
-                      </span>
-                    </a>
-                  </Link>
-                )}
-
-                <span className="w-[18px] h-[18px] rounded-full  absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px]">
-                  {compareProducts ? compareProducts.products.length : 0}
-                </span>
-              </div> */}
                 <div className="favorite relative">
                   <Link href="/wishlist" passHref legacyBehavior>
                     <a rel="noopener noreferrer">

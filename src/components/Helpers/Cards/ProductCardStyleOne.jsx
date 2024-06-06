@@ -156,6 +156,7 @@ export default function ProductCardStyleOne({ datas }) {
         apiRequest
           .addToCard(uri)
           .then((res) =>
+             console.log("Add to cart response:", res.data),
             toast.success(<Redirect />, {
               autoClose: 5000,
             })

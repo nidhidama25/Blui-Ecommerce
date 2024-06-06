@@ -18,6 +18,7 @@ export default function Cart({ className }) {
   const [getAllPrice, setGetAllPrice] = useState(null);
   const [totalPrice, setTotalPrice] = useState(null);
   useEffect(() => {
+    console.log("Cart items:", getCarts);
     setTotalPrice(
       getAllPrice &&
         getAllPrice.reduce((prev, curr) => parseFloat(prev) + parseFloat(curr))

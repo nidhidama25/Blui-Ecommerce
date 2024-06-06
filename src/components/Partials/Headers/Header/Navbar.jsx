@@ -21,21 +21,21 @@ export default function Navbar({ className }) {
       style={{ height: "60px" }}
     >
       <div className="container-x mx-auto h-full">
-        <div className="w-full h-full flex items-center">
-          <ul className="flex justify-center space-x-7">
+        <div className="w-full h-full flex justify-center items-center">
+          <ul className="flex items-center justify-center text-gg space-x-7">
             {categories.map((category) => (
               <li
                 key={category.id}
                 onMouseEnter={() => handleMouseEnter(category)}
                 onMouseLeave={handleMouseLeave}
-                className="relative group"
+                className="relative group "
               >
                 <Link
                   href={`/products?category=${category.slug}`}
                   passHref
                   legacyBehavior
                 >
-                  <a>{category.name}</a>
+                  <a className="text-[22px] ">{category.name}</a>
                 </Link>
                 {hoveredCategory && hoveredCategory.id === category.id && (
                   <div className="mega-menu absolute top-full">
