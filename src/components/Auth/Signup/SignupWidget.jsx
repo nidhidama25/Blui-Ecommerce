@@ -155,6 +155,7 @@ function SignupWidget({ redirect = true, signupActionPopup, changeContent }) {
             <button
               onClick={rememberMe}
               type="button"
+              name="agree"
               className="w-5 h-5 text-qblack flex justify-center items-center border border-light-gray"
             >
               {checked && (
