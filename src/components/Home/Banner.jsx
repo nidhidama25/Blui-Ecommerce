@@ -48,20 +48,22 @@ export default function Banner({
                           key={i}
                           className="item w-full h-full group flex flex-col justify-center items-center align-items flex-start"
                         >
-                          <Image
-                            src={item.image}
-                            alt={item.alt}
-                            layout="responsive" // use "responsive" layout
-                            width={1920} // set the maximum width
-                            height={400} // set the height to 400px
-                            className="w-full h-auto object-contain" // use "object-contain" to maintain the aspect ratio
-                          />
+                          <div
+                            style={{
+                              backgroundImage: `url(${
+                                process.env.NEXT_PUBLIC_BASE_URL + item.image
+                              })`,
+                              backgroundSize: "contain", // modified to "contain"
+                              backgroundRepeat: "no-repeat",
+                              height: "400px",
+                            }}
+                            className="flex w-full max-w-full h-full relative items-center rtl:pr-[30px] ltr:pl-[30px] justify-center"
+                          ></div>
                         </div>
                       ))}
                   </SimpleSlider>
                 </div>
               </div>
-
               <div className="xl:w-[20%] flex flex-col xl:space-y-[10px] h-full w-full">
                 <div className="sidebar-header flex flex-col bg-[#DEE2E7] rounded-lg p-3 h-[120px] ">
                   <div className="flex flex-row">
