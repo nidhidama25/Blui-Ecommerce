@@ -237,7 +237,7 @@ export default function SallerPage() {
                     </svg>
                   </button>
                 </div>
-                <div className="grid xl:grid-cols-4 sm:grid-cols-3 grid-cols-1  xl:gap-[30px] gap-5 mb-[40px]">
+                <div className="grid xl:grid-cols-4 sm:grid-cols-3 grid-cols-1  xl:gap-0 gap-0 mb-[40px]">
                   <DataIteration datas={products} startLength={0} endLength={6}>
                     {({ datas }) => (
                       <div data-aos="fade-up" key={datas.id}>

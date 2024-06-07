@@ -253,16 +253,16 @@ export default function ProductCardStyleOne({ datas }) {
     setImgSrc(value);
   };
   return (
-    <div className="main-wrapper-card relative">
+    <div className="main-wrapper-card relative border-4 border-bb">
       <div
         className="product-card-one w-full h-[370px] bg-white relative group overflow-hidden border border-gray-900"
         style={{ boxShadow: "0px 15px 64px 0px rgba(0, 0, 0, 0.05)" }}
       >
         <div
-          className="product-card-img w-full h-[300px] -mt-2"
+          className="product-card-img w-full h-[300px] py-1 px-2"
           style={{ border: "none" }}
         >
-          <div className="w-full h-full relative flex justify-center items-center border-none ">
+          <div className="w-full h-full relative flex justify-center items-center border-none p-10 ">
             <Image
               layout="fill"
               objectFit="scale-down"
@@ -325,7 +325,7 @@ export default function ProductCardStyleOne({ datas }) {
                   {Array.from(Array(5 - datas.review), () => (
                     <span
                       key={datas.review + Math.random()}
-                      className="text-gray-500"
+                      className="text-star"
                     >
                       <Star defaultValue={false} />
                     </span>
@@ -361,7 +361,7 @@ export default function ProductCardStyleOne({ datas }) {
                 {offerPrice && (
                   <span
                     suppressHydrationWarning
-                    className="offer-price text-qred font-600 text-[15px] ml-2"
+                    className="offer-price text-black font-600 text-[18px] ml-2"
                   >
                     <CheckProductIsExistsInFlashSale
                       id={datas.id}
