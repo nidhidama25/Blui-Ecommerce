@@ -98,8 +98,9 @@ export default function SearchBox({ className }) {
             value={searchKey}
             onChange={(e) => setSearchkey(e.target.value)}
             type="text"
-            className=" text-md pl-2 " // Add left padding to accommodate the icon
+            className=" text-md pl-2 border-none outline-none " // Add left padding to accommodate the icon
             placeholder={ServeLangItem()?.Search}
+            style={{ width: "100%" }}
           />
         </div>
       </div>

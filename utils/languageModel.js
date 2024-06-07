@@ -42,6 +42,7 @@ export default function languageModel() {
         Electronics: "Electronics",
         BE: "Become A Seller",
         OF: "Offer Zone",
+        Search: "Search/Products/Categories...",
       };
 
       return Object.assign.apply(Object, [...generateNewArr, additionalLabels]);

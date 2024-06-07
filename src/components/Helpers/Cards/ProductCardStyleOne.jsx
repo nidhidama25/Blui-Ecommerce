@@ -253,216 +253,225 @@ export default function ProductCardStyleOne({ datas }) {
     setImgSrc(value);
   };
   return (
-    <div className="main-wrapper-card relative border-4 border-bb">
-      <div
-        className="product-card-one w-full h-[370px] bg-white relative group overflow-hidden border border-gray-900"
-        style={{ boxShadow: "0px 15px 64px 0px rgba(0, 0, 0, 0.05)" }}
-      >
+    <Link
+      href={{ pathname: "/single-product", query: { slug: datas.slug } }}
+      passHref
+      legacyBehavior
+    >
+      <div className="main-wrapper-card relative border-4 border-bb">
         <div
-          className="product-card-img w-full h-[300px] py-1 px-2"
-          style={{ border: "none" }}
+          className="product-card-one w-full h-[370px] bg-white relative group overflow-hidden border border-gray-900"
+          style={{ boxShadow: "0px 15px 64px 0px rgba(0, 0, 0, 0.05)" }}
         >
-          <div className="w-full h-full relative flex justify-center items-center border-none p-10 ">
-            <Image
-              layout="fill"
-              objectFit="scale-down"
-              src={`${imgSrc ? imgSrc : "/assets/images/spinner.gif"}`}
-              alt=""
-              onLoadingComplete={() => loadImg(datas.image)}
-              className="w-full h-full object-contain border-none"
-            />
-          </div>
-        </div>
-        <div className="product-card-details px-[20px] pb-[10px] relative pt-2">
-          {/* add to card button */}
-          <div className="absolute w-full h-10 px-[30px] left-0 top-60 group-hover:top-[30px] transition-all duration-300 ease-in-out">
-            <button
-              onClick={() => addToCart(datas.id)}
-              type="button"
-              className="bg-custom-blue group relative w-full h-full flex shadow  justify-center items-center overflow-hidden"
-            >
-              <div className="btn-content flex items-center space-x-3 rtl:space-x-reverse relative z-10">
-                <span>
-                  <svg
-                    width="14"
-                    height="16"
-                    viewBox="0 0 14 16"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="fill-current text-white"
-                  >
-                    <path d="M12.5664 4.14176C12.4665 3.87701 12.2378 3.85413 11.1135 3.85413H10.1792V3.43576C10.1792 2.78532 10.089 2.33099 9.86993 1.86359C9.47367 1.01704 8.81003 0.425438 7.94986 0.150881C7.53106 0.0201398 6.90607 -0.0354253 6.52592 0.0234083C5.47246 0.193372 4.57364 0.876496 4.11617 1.85052C3.89389 2.32772 3.80368 2.78532 3.80368 3.43576V3.8574H2.8662C1.74187 3.8574 1.51313 3.88028 1.41326 4.15483C1.36172 4.32807 0.878481 8.05093 0.6723 9.65578C0.491891 11.0547 0.324369 12.3752 0.201948 13.3688C-0.0106763 15.0815 -0.00423318 15.1077 0.00220999 15.1371V15.1404C0.0312043 15.2515 0.317925 15.5424 0.404908 15.6274L0.781834 16H13.1785L13.4588 15.7483C13.5844 15.6339 14 15.245 14 15.0521C14 14.9214 12.5922 4.21694 12.5664 4.14176ZM12.982 14.8037C12.9788 14.8266 12.953 14.8952 12.9079 14.9443L12.8435 15.0162H1.13943L0.971907 14.8331L1.63233 9.82901C1.86429 8.04766 2.07047 6.4951 2.19289 5.56684C2.24766 5.16154 2.27343 4.95563 2.28631 4.8543C2.72123 4.85103 4.62196 4.84776 6.98661 4.84776H11.6901L11.6966 4.88372C11.7481 5.1452 12.9594 14.5128 12.982 14.8037ZM4.77338 3.8574V3.48479C4.77338 3.23311 4.80559 2.88664 4.84103 2.72649C5.03111 1.90935 5.67864 1.24584 6.48726 1.03339C6.82553 0.948403 7.37964 0.97782 7.71791 1.10202H7.72113C8.0755 1.22296 8.36545 1.41907 8.63284 1.71978C9.06453 2.19698 9.2095 2.62516 9.2095 3.41615V3.8574H4.77338Z" />
-                  </svg>
-                </span>
-                <span className="text-white">
-                  {ServeLangItem()?.Add_To_Cart}
-                </span>
-              </div>
-              <div className="bg-shape w-full h-full absolute  bg-custom-blue text-white"></div>
-            </button>
-          </div>
-
-          <Link
-            href={{ pathname: "/single-product", query: { slug: datas.slug } }}
-            passHref
-            legacyBehavior
+          <div
+            className="product-card-img w-full h-[300px] py-1 px-2"
+            style={{ border: "none" }}
           >
-            <a rel="noopener noreferrer">
-              <p className="title mb-2 text-[15px] font-600 text-gray-600 leading-[24px] line-clamp-2 hover:text-custom-blue cursor-pointer">
-                {datas.title}
-              </p>
-            </a>
-          </Link>
-          <div className="flex justify-between items-center mt-2">
-            <div className="reviews flex space-x-[1px]   ">
-              {Array.from(Array(datas.review), () => (
-                <span key={datas.review + Math.random()}>
-                  <Star />
-                </span>
-              ))}
-              {datas.review < 5 && (
-                <>
-                  {Array.from(Array(5 - datas.review), () => (
-                    <span
-                      key={datas.review + Math.random()}
-                      className="text-star"
-                    >
-                      <Star defaultValue={false} />
-                    </span>
-                  ))}
-                </>
-              )}
-              <p className="price pl-8">
-                <span
-                  suppressHydrationWarning
-                  className={`main-price  font-600 text-[15px] ${
-                    offerPrice ? "line-through text-qgray" : "text-qred"
-                  }`}
-                >
-                  {offerPrice ? (
-                    <span>{currency_icon && currency_icon + price}</span>
-                  ) : (
-                    <>
-                      {isProductInFlashSale && (
-                        <span
-                          className={`line-through text-qgray font-500 text-[15px] mr-2`}
-                        >
-                          {currency_icon &&
-                            currency_icon + parseFloat(price).toFixed(2)}
-                        </span>
-                      )}
-                      <CheckProductIsExistsInFlashSale
-                        id={datas.id}
-                        price={price}
-                      />
-                    </>
-                  )}
-                </span>
-                {offerPrice && (
-                  <span
-                    suppressHydrationWarning
-                    className="offer-price text-black font-600 text-[18px] ml-2"
-                  >
-                    <CheckProductIsExistsInFlashSale
-                      id={datas.id}
-                      price={offerPrice}
-                    />
-                  </span>
-                )}
-              </p>
+            <div className="w-full h-full relative flex justify-center items-center border-none p-10 ">
+              <Image
+                layout="fill"
+                objectFit="scale-down"
+                src={`${imgSrc ? imgSrc : "/assets/images/spinner.gif"}`}
+                alt=""
+                onLoadingComplete={() => loadImg(datas.image)}
+                className="w-full h-full object-contain border-none"
+              />
             </div>
           </div>
-        </div>
-        {/* quick-access-btns */}
-        <div className="quick-access-btns flex flex-col space-y-2">
-          <button
-            className=" absolute group-hover:right-4 -right-10 top-20  transition-all ease-in-out"
-            onClick={() => quickViewHandler(datas.slug)}
-            type="button"
-          >
-            <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white items-center transition-all duration-300 ease-in-out hover-bg-qyellow bg-primarygray rounded">
-              <QuickViewIco className="fill-current" />
-            </span>
-          </button>
-          {!arWishlist ? (
-            <button
-              className=" absolute group-hover:right-4 -right-10 top-[120px]  transition-all duration-300 ease-in-out"
-              type="button"
-              onClick={() => addToWishlist(datas.id)}
-            >
-              <span className="hover:bg-qyellow w-10 h-10 flex text-black hover:text-white justify-center items-center transition-all duration-300 ease-in-out hover-bg-qyellow bg-primarygray rounded">
-                <ThinLove className="fill-current" />
-              </span>
-            </button>
-          ) : (
-            <button
-              className="absolute group-hover:right-4 -right-10 top-[120px]  transition-all duration-300 ease-in-out"
-              type="button"
-              onClick={() => removeToWishlist(wishlisted && wishlisted.id)}
-            >
-              <span className="hover:bg-qyellow w-10 h-10 flex justify-center items-center bg-primarygray rounded">
-                <ThinLove fill={true} />
-              </span>
-            </button>
-          )}
-
-          <button
-            className=" absolute group-hover:right-4 -right-10 top-[168px]  transition-all duration-500 ease-in-out"
-            type="button"
-            onClick={() => productCompare(datas.id)}
-          >
-            <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white transition-all duration-300 ease-in-out items-center hover-bg-qyellow bg-primarygray rounded">
-              <Compair className="fill-current" />
-            </span>
-          </button>
-        </div>
-        {quickViewModal && quickViewData && (
-          <div className="quicke-view-wrapper w-full h-full flex fixed left-0 top-0 justify-center z-50 items-center ">
-            <div
-              onClick={() => setQuickView(!quickViewModal)}
-              className="w-full h-full fixed left-0 right-0 bg-black  bg-opacity-25"
-            ></div>
-            <div
-              data-aos="fade-up"
-              className=" md:mx-10 xl:mt-[100px] rounded w-full bg-white relative lg:py-[40px] pt-[80px] pb-[40px] sm:px-[38px] px-3 md:mt-12 h-full overflow-y-scroll xl:overflow-hidden xl:mt-0 "
-              style={{ zIndex: "999" }}
-            >
-              <div className="w-full h-full overflow-y-scroll overflow-style-none">
-                <ProductView
-                  images={
-                    quickViewData.gellery.length > 0
-                      ? quickViewData.gellery
-                      : []
-                  }
-                  product={quickViewData.product}
-                />
-              </div>
+          <div className="product-card-details px-[20px] pb-[10px] relative pt-2">
+            {/* add to card button */}
+            <div className="absolute w-full h-10 px-[30px] left-0 top-60 group-hover:top-[30px] transition-all duration-300 ease-in-out">
               <button
-                onClick={() => setQuickView(!quickViewModal)}
+                onClick={() => addToCart(datas.id)}
                 type="button"
-                className="absolute right-3 top-3"
+                className="bg-custom-blue group relative w-full h-full flex shadow  justify-center items-center overflow-hidden"
               >
-                <span className="text-red-500 w-12 h-12 flex justify-center items-center rounded border border-qred">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth="1.5"
-                    stroke="currentColor"
-                    className="w-10 h-10"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M6 18L18 6M6 6l12 12"
-                    ></path>
-                  </svg>
-                </span>
+                <div className="btn-content flex items-center space-x-3 rtl:space-x-reverse relative z-10">
+                  <span>
+                    <svg
+                      width="14"
+                      height="16"
+                      viewBox="0 0 14 16"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="fill-current text-white"
+                    >
+                      <path d="M12.5664 4.14176C12.4665 3.87701 12.2378 3.85413 11.1135 3.85413H10.1792V3.43576C10.1792 2.78532 10.089 2.33099 9.86993 1.86359C9.47367 1.01704 8.81003 0.425438 7.94986 0.150881C7.53106 0.0201398 6.90607 -0.0354253 6.52592 0.0234083C5.47246 0.193372 4.57364 0.876496 4.11617 1.85052C3.89389 2.32772 3.80368 2.78532 3.80368 3.43576V3.8574H2.8662C1.74187 3.8574 1.51313 3.88028 1.41326 4.15483C1.36172 4.32807 0.878481 8.05093 0.6723 9.65578C0.491891 11.0547 0.324369 12.3752 0.201948 13.3688C-0.0106763 15.0815 -0.00423318 15.1077 0.00220999 15.1371V15.1404C0.0312043 15.2515 0.317925 15.5424 0.404908 15.6274L0.781834 16H13.1785L13.4588 15.7483C13.5844 15.6339 14 15.245 14 15.0521C14 14.9214 12.5922 4.21694 12.5664 4.14176ZM12.982 14.8037C12.9788 14.8266 12.953 14.8952 12.9079 14.9443L12.8435 15.0162H1.13943L0.971907 14.8331L1.63233 9.82901C1.86429 8.04766 2.07047 6.4951 2.19289 5.56684C2.24766 5.16154 2.27343 4.95563 2.28631 4.8543C2.72123 4.85103 4.62196 4.84776 6.98661 4.84776H11.6901L11.6966 4.88372C11.7481 5.1452 12.9594 14.5128 12.982 14.8037ZM4.77338 3.8574V3.48479C4.77338 3.23311 4.80559 2.88664 4.84103 2.72649C5.03111 1.90935 5.67864 1.24584 6.48726 1.03339C6.82553 0.948403 7.37964 0.97782 7.71791 1.10202H7.72113C8.0755 1.22296 8.36545 1.41907 8.63284 1.71978C9.06453 2.19698 9.2095 2.62516 9.2095 3.41615V3.8574H4.77338Z" />
+                    </svg>
+                  </span>
+                  <span className="text-white">
+                    {ServeLangItem()?.Add_To_Cart}
+                  </span>
+                </div>
+                <div className="bg-shape w-full h-full absolute  bg-custom-blue text-white"></div>
               </button>
             </div>
+
+            <Link
+              href={{
+                pathname: "/single-product",
+                query: { slug: datas.slug },
+              }}
+              passHref
+              legacyBehavior
+            >
+              <a rel="noopener noreferrer">
+                <p className="title mb-2 text-[15px] font-600 text-gray-600 leading-[24px] line-clamp-2 hover:text-custom-blue cursor-pointer">
+                  {datas.title}
+                </p>
+              </a>
+            </Link>
+            <div className="flex justify-between items-center mt-2">
+              <div className="reviews flex space-x-[1px]   ">
+                {Array.from(Array(datas.review), () => (
+                  <span key={datas.review + Math.random()}>
+                    <Star />
+                  </span>
+                ))}
+                {datas.review < 5 && (
+                  <>
+                    {Array.from(Array(5 - datas.review), () => (
+                      <span
+                        key={datas.review + Math.random()}
+                        className="text-star"
+                      >
+                        <Star defaultValue={false} />
+                      </span>
+                    ))}
+                  </>
+                )}
+                <p className="price pl-8">
+                  <span
+                    suppressHydrationWarning
+                    className={`main-price  font-600 text-[15px] ${
+                      offerPrice ? "line-through text-qgray" : "text-qred"
+                    }`}
+                  >
+                    {offerPrice ? (
+                      <span>{currency_icon && currency_icon + price}</span>
+                    ) : (
+                      <>
+                        {isProductInFlashSale && (
+                          <span
+                            className={`line-through text-qgray font-500 text-[15px] mr-2`}
+                          >
+                            {currency_icon &&
+                              currency_icon + parseFloat(price).toFixed(2)}
+                          </span>
+                        )}
+                        <CheckProductIsExistsInFlashSale
+                          id={datas.id}
+                          price={price}
+                        />
+                      </>
+                    )}
+                  </span>
+                  {offerPrice && (
+                    <span
+                      suppressHydrationWarning
+                      className="offer-price text-black font-600 text-[18px] ml-2"
+                    >
+                      <CheckProductIsExistsInFlashSale
+                        id={datas.id}
+                        price={offerPrice}
+                      />
+                    </span>
+                  )}
+                </p>
+              </div>
+            </div>
           </div>
-        )}
+          {/* quick-access-btns */}
+          <div className="quick-access-btns flex flex-col space-y-2">
+            <button
+              className=" absolute group-hover:right-4 -right-10 top-20  transition-all ease-in-out"
+              onClick={() => quickViewHandler(datas.slug)}
+              type="button"
+            >
+              <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white items-center transition-all duration-300 ease-in-out hover-bg-qyellow bg-primarygray rounded">
+                <QuickViewIco className="fill-current" />
+              </span>
+            </button>
+            {!arWishlist ? (
+              <button
+                className=" absolute group-hover:right-4 -right-10 top-[120px]  transition-all duration-300 ease-in-out"
+                type="button"
+                onClick={() => addToWishlist(datas.id)}
+              >
+                <span className="hover:bg-qyellow w-10 h-10 flex text-black hover:text-white justify-center items-center transition-all duration-300 ease-in-out hover-bg-qyellow bg-primarygray rounded">
+                  <ThinLove className="fill-current" />
+                </span>
+              </button>
+            ) : (
+              <button
+                className="absolute group-hover:right-4 -right-10 top-[120px]  transition-all duration-300 ease-in-out"
+                type="button"
+                onClick={() => removeToWishlist(wishlisted && wishlisted.id)}
+              >
+                <span className="hover:bg-qyellow w-10 h-10 flex justify-center items-center bg-primarygray rounded">
+                  <ThinLove fill={true} />
+                </span>
+              </button>
+            )}
+
+            <button
+              className=" absolute group-hover:right-4 -right-10 top-[168px]  transition-all duration-500 ease-in-out"
+              type="button"
+              onClick={() => productCompare(datas.id)}
+            >
+              <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white transition-all duration-300 ease-in-out items-center hover-bg-qyellow bg-primarygray rounded">
+                <Compair className="fill-current" />
+              </span>
+            </button>
+          </div>
+          {quickViewModal && quickViewData && (
+            <div className="quicke-view-wrapper w-full h-full flex fixed left-0 top-0 justify-center z-50 items-center ">
+              <div
+                onClick={() => setQuickView(!quickViewModal)}
+                className="w-full h-full fixed left-0 right-0 bg-black  bg-opacity-25"
+              ></div>
+              <div
+                data-aos="fade-up"
+                className=" md:mx-10 xl:mt-[100px] rounded w-full bg-white relative lg:py-[40px] pt-[80px] pb-[40px] sm:px-[38px] px-3 md:mt-12 h-full overflow-y-scroll xl:overflow-hidden xl:mt-0 "
+                style={{ zIndex: "999" }}
+              >
+                <div className="w-full h-full overflow-y-scroll overflow-style-none">
+                  <ProductView
+                    images={
+                      quickViewData.gellery.length > 0
+                        ? quickViewData.gellery
+                        : []
+                    }
+                    product={quickViewData.product}
+                  />
+                </div>
+                <button
+                  onClick={() => setQuickView(!quickViewModal)}
+                  type="button"
+                  className="absolute right-3 top-3"
+                >
+                  <span className="text-red-500 w-12 h-12 flex justify-center items-center rounded border border-qred">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      className="w-10 h-10"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M6 18L18 6M6 6l12 12"
+                      ></path>
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
       </div>
-    </div>
+    </Link>
   );
 }

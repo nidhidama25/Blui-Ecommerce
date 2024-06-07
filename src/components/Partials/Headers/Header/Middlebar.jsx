@@ -50,7 +50,7 @@ export default function Middlebar({ className, settings }) {
       <div className="container-x mx-auto h-full">
         <div className="relative h-full">
           <div className="flex  justify-between items-center h-full space-x-4">
-            <div className="flex flex-row space-x-7">
+            <div className="flex flex-row space-x-7 ml-7">
               <div className="relative">
                 <Link href="/" passHref legacyBehavior>
                   <a rel="noopener noreferrer">
@@ -68,7 +68,7 @@ export default function Middlebar({ className, settings }) {
                   </a>
                 </Link>
               </div>
-              <div className="w-[517px] h-[44px]">
+              <div className="w-[480px] h-[40px] pl-9">
                 <SearchBox className="search-com" />
               </div>
             </div>
