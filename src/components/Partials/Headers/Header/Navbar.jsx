@@ -17,12 +17,17 @@ export default function Navbar({ className }) {
 
   return (
     <nav
-      className={`nav-widget-wrapper relative z-30 ${className || ""}`}
-      style={{ height: "60px" }}
+      className={`nav-widget-wrapper relative z-30  ${className || ""}`}
+      style={{
+        height: "60px",
+        borderTop: "1px solid #6B7280",
+        borderBottom: "1px solid #6B7280",
+        margin: "0 3.5rem",
+      }}
     >
-      <div className="container-x mx-auto h-full">
+      <div className="container-x mx-auto h-full ">
         <div className="w-full h-full flex justify-center items-center">
-          <ul className="flex items-center justify-center text-gg space-x-7">
+          <ul className="flex items-center justify-center text-gray-500 space-x-7">
             {categories.map((category) => (
               <li
                 key={category.id}

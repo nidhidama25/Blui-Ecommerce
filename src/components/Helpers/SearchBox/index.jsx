@@ -1,12 +1,11 @@
-// import Link from "next/link";
+import Image from "next/image";
+import { useRouter } from "next/router";
 import { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-// import axios from "axios";
-import { useRouter } from "next/router";
 import auth from "../../../../utils/auth";
 import LoginContext from "../../Contexts/LoginContext";
 import ServeLangItem from "../ServeLangItem";
-
+import search from "/public/images/icons/search.png";
 export default function SearchBox({ className }) {
   const router = useRouter();
   const [toggleCat, setToggleCat] = useState(false);
@@ -18,6 +17,7 @@ export default function SearchBox({ className }) {
   const [selectedSubCat, setSelectedSubCat] = useState(null);
   const [searchKey, setSearchkey] = useState("");
   const loginPopupBoard = useContext(LoginContext);
+
   useEffect(() => {
     if (router && router.route && router.route === "/search") {
       setSearchkey(router.query ? router.query.search : "");
@@ -26,6 +26,7 @@ export default function SearchBox({ className }) {
       setSearchkey("");
     };
   }, [router]);
+
   const categoryHandler = (value) => {
     setSelectedCat(value);
     setSubCategoris(
@@ -35,11 +36,12 @@ export default function SearchBox({ className }) {
     );
     setToggleCat(!toggleCat);
   };
+
   const subCategoryHandler = (value) => {
     setSelectedSubCat(value);
-
     setSubToggleCat(!subToggleCat);
   };
+
   useEffect(() => {
     if (websiteSetup) {
       setCategories(
@@ -47,7 +49,9 @@ export default function SearchBox({ className }) {
       );
     }
   }, [websiteSetup]);
-  const searchHandler = () => {
+
+  const handleSearch = (e) => {
+    e.preventDefault();
     if (auth()) {
       if (searchKey !== "") {
         if (selectedCat) {
@@ -75,33 +79,30 @@ export default function SearchBox({ className }) {
   };
 
   return (
-    <>
-      <div
-        className={`w-full h-full flex items-center  border border-qgray-border bg-white rounded-md  ${
-          className || ""
-        }`}
-      >
-        <div className="flex-1 border  h-full rounded-md">
-          <div className="h-full ">
-            <input
-              value={searchKey}
-              onKeyDown={(e) => e.key === "Enter" && searchHandler()}
-              onChange={(e) => setSearchkey(e.target.value)}
-              type="text"
-              className="search-input"
-              placeholder={ServeLangItem()?.Search_products + "..."}
-            />
-          </div>
+    <form
+      onSubmit={handleSearch}
+      className={`w-full h-full flex items-center border border-qgray-border bg-white rounded-md  ${
+        className || ""
+      }`}
+    >
+      <div className="flex-1 border h-full rounded-md relative">
+        <div className="h-full flex items-center">
+          <Image
+            src={search}
+            alt="Search Icon"
+            width={15}
+            height={5}
+            className="ml-4"
+          />
+          <input
+            value={searchKey}
+            onChange={(e) => setSearchkey(e.target.value)}
+            type="text"
+            className=" text-md pl-2 " // Add left padding to accommodate the icon
+            placeholder={ServeLangItem()?.Search}
+          />
         </div>
-
-        <button
-          onClick={searchHandler}
-          className="search-btn w-[93px] h-full text-sm font-600 rounded-full bg-blue-900 text-white"
-          type="button"
-        >
-          {ServeLangItem()?.Search}
-        </button>
       </div>
-    </>
+    </form>
   );
 }

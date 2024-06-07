@@ -5,7 +5,6 @@ import { useContext, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import apiRequest from "../../../../../utils/apiRequest";
 import { fetchWishlist } from "../../../../store/wishlistData";
-import Cart from "../../../Cart";
 import LoginContext from "../../../Contexts/LoginContext";
 import SearchBox from "../../../Helpers/SearchBox";
 import ServeLangItem from "../../../Helpers/ServeLangItem";
@@ -75,61 +74,33 @@ export default function Middlebar({ className, settings }) {
             </div>
 
             <div className="flex flex-row ">
-              <div className="block py-3 px-2 ">
+              <div className="block py-8 px-2 ">
                 <Link href="/become-seller" passHref legacyBehavior>
                   <a rel="noopener noreferrer">
-                    <span className="text-[22px]  text-gg p-2  font-500 cursor-pointer rounded-md">
+                    <span className="text-[22px]  text-gray-500 p-2  font-500 cursor-pointer rounded-md">
                       {ServeLangItem()?.OF}
                     </span>
                   </a>
                 </Link>
               </div>
-              <div className=" border-l-2 border-[#93939c] h-[40px] mt-2">
+              <div className=" border-l-2 border-[#93939c] h-[35px] mt-8">
                 <span className="sr-only ">Vertical line</span>
               </div>
               {Multivendor() === 1 && (
-                <div className="block py-3 px-2 ">
+                <div className="block py-8 px-2 ">
                   <Link href="/become-seller" passHref legacyBehavior>
                     <a rel="noopener noreferrer">
-                      <span className="text-[22px]  text-gg p-2  font-500 cursor-pointer rounded-md">
+                      <span className="text-[22px]  text-gray-500 p-2  font-500 cursor-pointer rounded-md ">
                         {ServeLangItem()?.BE}
                       </span>
                     </a>
                   </Link>
                 </div>
               )}
-              <div className=" border-l-2 border-[#93939c] h-[30px] mt-2">
+              <div className=" border-l-2 border-[#93939c] h-[35px] mt-8">
                 <span className="sr-only ">Vertical line</span>
               </div>
               <div className="flex space-x-6 rtl:space-x-reverse items-center relative pl-3">
-                <div className="favorite relative">
-                  <Link href="/wishlist" passHref legacyBehavior>
-                    <a rel="noopener noreferrer">
-                      <span className="cursor-pointer">
-                        <Image src={wish} alt="cart" width={20} height={20} />
-                      </span>
-                    </a>
-                  </Link>
-                  <span className="w-[18px] h-[18px] rounded-full  absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px]">
-                    {wishlists ? wishlists.data.length : 0}
-                  </span>
-                </div>
-                <div className="cart-wrapper group relative py-4">
-                  <div className="cart relative cursor-pointer">
-                    <Link href="/cart" passHref legacyBehavior>
-                      <a rel="noopener noreferrer">
-                        <span className="cursor-pointer">
-                          <Image src={bag} alt="cart" width={20} height={20} />
-                        </span>
-                      </a>
-                    </Link>
-                    <span className="w-[18px] h-[18px] rounded-full  absolute -top-2.5 -right-2.5 flex justify-center items-center text-[9px]">
-                      {cartItems ? cartItems.length : 0}
-                    </span>
-                  </div>
-
-                  <Cart className="absolute ltr:-right-[45px] rtl:-left-[45px] top-11 z-50 hidden group-hover:block" />
-                </div>
                 <div>
                   {auth ? (
                     <button onClick={profilehandler} type="button">
@@ -141,14 +112,62 @@ export default function Middlebar({ className, settings }) {
                       </span>
                     </button>
                   ) : (
-                    <Link href="/login" passHref legacyBehavior>
+                    <div className="flex flex-col items-center ml-2">
+                      <Link href="/login" passHref legacyBehavior>
+                        <a rel="noopener noreferrer">
+                          <span className="cursor-pointer">
+                            <Image
+                              src={prof}
+                              alt="cart"
+                              width={20}
+                              height={20}
+                            />
+                          </span>
+                        </a>
+                      </Link>
+                      <span className="text-sm font-500 text-gray-500 mt-1">
+                        Profile
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                <div className=" py-3  flex flex-col items-center relative">
+                  <Link href="/wishlist" passHref legacyBehavior>
+                    <a rel="noopener noreferrer">
+                      <span className="cursor-pointer">
+                        <Image
+                          src={wish}
+                          alt="Wishlist"
+                          width={20}
+                          height={20}
+                        />
+                      </span>
+                    </a>
+                  </Link>
+                  <span className="text-sm font-500 text-gray-500 mt-2">
+                    Wishlist
+                  </span>
+                  {/* <span className="w-[18px] h-[18px] rounded-full absolute -top-2.5 -right-0.5 flex justify-center items-center text-xs py-5">
+                    {wishlists ? wishlists.data.length : 0}
+                  </span> */}
+                </div>
+                <div className="cart-wrapper group relative py-4">
+                  <div className="flex flex-col items-center relative py-3">
+                    <Link href="/cart" passHref legacyBehavior>
                       <a rel="noopener noreferrer">
                         <span className="cursor-pointer">
-                          <Image src={prof} alt="cart" width={20} height={20} />
+                          <Image src={bag} alt="Cart" width={20} height={20} />
                         </span>
                       </a>
                     </Link>
-                  )}
+                    <span className="text-sm font-500 text-gray-500 mt-1 ">
+                      Cart
+                    </span>
+                    {/* <span className="w-[18px] h-[18px] rounded-full absolute -top-2.5 -right-2.5 flex justify-center items-center text-xs py-5">
+                      {cartItems ? cartItems.length : 0}
+                    </span> */}
+                  </div>
                 </div>
 
                 {profile && (
