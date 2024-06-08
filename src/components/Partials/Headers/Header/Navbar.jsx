@@ -55,11 +55,17 @@ export default function Navbar({ className }) {
                         {category.active_sub_categories &&
                           category.active_sub_categories.map((sub_category) => (
                             <div key={sub_category.id} className="p-4">
-                              <div className="category">
-                                <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
-                                  {sub_category.name}
-                                </h1>
-                              </div>
+                              <Link
+                                href={`/products?category=${sub_category.slug}`}
+                                passHref
+                                legacyBehavior
+                              >
+                                <a>
+                                  <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
+                                    {sub_category.name}
+                                  </h1>
+                                </a>
+                              </Link>
                               <div className="category-items">
                                 <ul className="flex flex-col space-y-2">
                                   {sub_category.active_child_categories &&
