@@ -1,23 +1,27 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 
 export default function Navbar({ className }) {
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
   const categories = websiteSetup?.payload?.productCategories || [];
   const [hoveredCategory, setHoveredCategory] = useState(null);
+  const timer = useRef(null);
 
   const handleMouseEnter = (category) => {
+    clearTimeout(timer.current);
     setHoveredCategory(category);
   };
 
   const handleMouseLeave = () => {
-    setHoveredCategory(null);
+    timer.current = setTimeout(() => {
+      setHoveredCategory(null);
+    }, 200); // Delay to handle quick mouse movements
   };
 
   return (
     <nav
-      className={`nav-widget-wrapper relative z-30  ${className || ""}`}
+      className={`nav-widget-wrapper relative z-30 ${className || ""}`}
       style={{
         height: "60px",
         borderTop: "1px solid #6B7280",
@@ -25,7 +29,7 @@ export default function Navbar({ className }) {
         margin: "0 3.5rem",
       }}
     >
-      <div className="container-x mx-auto h-full ">
+      <div className="container-x mx-auto h-full">
         <div className="w-full h-full flex justify-center items-center">
           <ul className="flex items-center justify-center text-gray-500 space-x-7">
             {categories.map((category) => (
@@ -43,7 +47,12 @@ export default function Navbar({ className }) {
                   <a className="text-[22px]">{category.name}</a>
                 </Link>
                 {hoveredCategory && hoveredCategory.id === category.id && (
-                  <div className="sub-menu fixed top-[140px] left-0 w-full z-40">
+                  <div
+                    className="sub-menu fixed top-[140px] left-0 w-full z-40 transition-opacity duration-200 ease-in-out"
+                    onMouseEnter={() => handleMouseEnter(category)}
+                    onMouseLeave={handleMouseLeave}
+                    style={{ opacity: hoveredCategory ? 1 : 0 }}
+                  >
                     <div
                       className="mega-menu-wrapper w-full bg-white p-[30px] flex justify-between items-center"
                       style={{
