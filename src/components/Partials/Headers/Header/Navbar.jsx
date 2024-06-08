@@ -53,32 +53,27 @@ export default function Navbar({ className }) {
                     >
                       <div className="categories-wrapper flex-1 h-full flex justify-around">
                         {category.active_sub_categories &&
-                          category.active_sub_categories.map((subCategory) => (
-                            <div key={subCategory.id} className="p-4">
+                          category.active_sub_categories.map((sub_category) => (
+                            <div key={sub_category.id} className="p-4">
                               <div className="category">
                                 <h1 className="text-[13px] font-700 text-qblack uppercase mb-[13px]">
-                                  {subCategory.name}
+                                  {sub_category.name}
                                 </h1>
                               </div>
                               <div className="category-items">
                                 <ul className="flex flex-col space-y-2">
-                                  {subCategory.active_child_categories &&
-                                    subCategory.active_child_categories.map(
-                                      (childCategory) => (
-                                        <li key={childCategory.id}>
+                                  {sub_category.active_child_categories &&
+                                    sub_category.active_child_categories.map(
+                                      (child_category) => (
+                                        <li key={child_category.id}>
                                           <Link
-                                            href={{
-                                              pathname: "/products",
-                                              query: {
-                                                category: childCategory.slug,
-                                              },
-                                            }}
+                                            href={`/products?child_category=${child_category.slug}`}
                                             passHref
                                             legacyBehavior
                                           >
                                             <a rel="noopener noreferrer">
                                               <span className="text-qgray text-sm font-400 border-b border-transparent hover:border-qyellow hover:text-qyellow cursor-pointer">
-                                                {childCategory.name}
+                                                {child_category.name}
                                               </span>
                                             </a>
                                           </Link>
