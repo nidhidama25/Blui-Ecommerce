@@ -1,10 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import { useEffect } from "react";
 import settings from "../../../utils/settings";
 import SimpleSlider from "../Helpers/SliderCom";
 import get from "/public/images/icons/Get2.png";
 import send from "/public/images/icons/send1.png";
-
 import user from "/public/images/icons/user.png";
 
 export default function Banner({
@@ -79,12 +79,16 @@ export default function Banner({
                     </p>
                   </div>
                   <div className="flex flex-col items-center">
-                    <button className="bg-custom-blue text-qblue-white text-qblue text-xs py-1 px-2 rounded-md m-1 w-full">
-                      Register
-                    </button>
-                    <button className="bg-white text-custom-blue text-qblue text-xs py-1 px-2 rounded-md m-1 w-full">
-                      Login
-                    </button>
+                    <Link href="/signup" passHref className="w-full">
+                      <button className="bg-custom-blue text-qblue-white text-xs py-1 px-2 rounded-md m-1 w-full">
+                        Register
+                      </button>
+                    </Link>
+                    <Link href="/login" passHref className="w-full">
+                      <button className="bg-white text-custom-blue text-xs py-1 px-2 rounded-md m-1 w-full">
+                        Login
+                      </button>
+                    </Link>
                   </div>
                 </div>
 
