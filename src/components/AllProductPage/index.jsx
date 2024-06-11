@@ -336,16 +336,6 @@ export default function AllProductPage({ response, sellerInfo }) {
                   backgroundSize: "cover",
                 }}
               >
-                {/*<div className="store-status w-[230px] h-[60px] bg-qyellow flex justify-end items-center rounded-full absolute top-[30px] -left-[30px]">*/}
-                {/*  <span className="text-[26px] font-600 mr-[30px]">*/}
-                {/*    {sellerInfo &&*/}
-                {/*      shopStatus(*/}
-                {/*        sellerInfo.seller.open_at,*/}
-                {/*        sellerInfo.seller.closed_at*/}
-                {/*      )}*/}
-                {/*  </span>*/}
-                {/*</div>*/}
-
                 <div className="saller-text-details  w-72">
                   <ul>
                     <li className="text-black flex space-x-5 rtl:space-x-reverse items-center leading-9 text-base font-normal">
@@ -675,7 +665,7 @@ export default function AllProductPage({ response, sellerInfo }) {
                       </button>
                     </div>
                     {products && cardViewStyle === "col" && (
-                      <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1  xl:gap-[30px] gap-5 mb-[40px]">
+                      <div className="grid xl:grid-cols-3 sm:grid-cols-2 grid-cols-1   gap-0 mb-[40px]">
                         <DataIteration
                           datas={products && products}
                           startLength={0}

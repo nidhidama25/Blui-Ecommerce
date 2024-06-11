@@ -1,8 +1,8 @@
+import RangeSlider from "react-range-slider-input";
+import "react-range-slider-input/dist/style.css";
+import settings from "../../../utils/settings";
 import Checkbox from "../Helpers/Checkbox";
 import ServeLangItem from "../Helpers/ServeLangItem";
-import RangeSlider from 'react-range-slider-input';
-import 'react-range-slider-input/dist/style.css';
-import settings from "../../../utils/settings";
 export default function ProductsFilter({
   categories,
   categoryHandler,
@@ -22,7 +22,7 @@ export default function ProductsFilter({
   return (
     <>
       <div
-        className={`filter-widget w-full fixed lg:relative left-0 top-0 h-screen z-10 lg:h-auto overflow-y-scroll lg:overflow-y-auto bg-white px-[30px] pt-[40px] ${
+        className={`filter-widget w-full fixed lg:relative left-0 top-0 h-screen z-10 lg:h-auto overflow-y-scroll lg:overflow-y-auto bg-[#F2F4F5] px-[30px] pt-[40px] ${
           className || ""
         }  ${filterToggle ? "block" : "hidden lg:block"}`}
       >
@@ -70,10 +70,16 @@ export default function ProductsFilter({
           {volume && (
             <>
               <div className="price-range mb-5">
-                <RangeSlider value={volume} onInput={volumeHandler} min={priceMin} max={priceMax} />
+                <RangeSlider
+                  value={volume}
+                  onInput={volumeHandler}
+                  min={priceMin}
+                  max={priceMax}
+                />
               </div>
               <p className="text-xs text-qblack font-400">
-                {ServeLangItem()?.Price}: {currency_icon+volume[0]} - ${currency_icon+volume[1]}
+                {ServeLangItem()?.Price}: {currency_icon + volume[0]} - $
+                {currency_icon + volume[1]}
               </p>
             </>
           )}
