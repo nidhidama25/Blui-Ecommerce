@@ -272,7 +272,7 @@ export default function ProductCardStyleOne({ datas }) {
                     <Image
                       layout="fill"
                       objectFit="scale-down"
-                      src={`/${image}`}
+                      src={datas.images}
                       alt={datas.name}
                       className="w-full h-full"
                     />
