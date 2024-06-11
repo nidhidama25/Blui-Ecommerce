@@ -249,7 +249,7 @@ export default function ProductCardStyleOne({ datas }) {
 
   return (
     <Link
-      href={{ pathname: "/single-product", query: { slug: datas.images } }}
+      href={{ pathname: "/single-product", query: { slug: datas.slug } }}
       passHref
       legacyBehavior
     >
