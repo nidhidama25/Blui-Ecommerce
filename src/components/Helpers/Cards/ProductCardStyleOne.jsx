@@ -19,7 +19,9 @@ import Star from "../icons/Star";
 const Redirect = () => {
   return (
     <div className="flex space-x-2 items-center">
-      <span className="text-sm text-gray-500">{ServeLangItem()?.Item_added}</span>
+      <span className="text-sm text-gray-500">
+        {ServeLangItem()?.Item_added}
+      </span>
       <Link href="/cart">
         <span className="text-xs border-b border-blue-600 text-blue-600 mr-2 cursor-pointer">
           {ServeLangItem()?.Go_To_Cart}
@@ -34,7 +36,8 @@ export default function ProductCardStyleOne({ datas }) {
   const dispatch = useDispatch();
   const { wishlistData } = useSelector((state) => state.wishlistData);
   const wishlist = wishlistData && wishlistData.wishlists;
-  const wishlisted = wishlist && wishlist.data.find((id) => id.product.id === datas.id);
+  const wishlisted =
+    wishlist && wishlist.data.find((id) => id.product.id === datas.id);
   const { websiteSetup } = useSelector((state) => state.websiteSetup);
   const [isProductInFlashSale, setData] = useState(null);
   const loginPopupBoard = useContext(LoginContext);
@@ -89,7 +92,10 @@ export default function ProductCardStyleOne({ datas }) {
     }
   }, [wishlisted]);
 
-  const available = (datas.cam_product_sale / (datas.cam_product_available + datas.cam_product_sale)) * 100;
+  const available =
+    (datas.cam_product_sale /
+      (datas.cam_product_available + datas.cam_product_sale)) *
+    100;
 
   const addToWishlist = (id) => {
     if (auth()) {
@@ -113,7 +119,9 @@ export default function ProductCardStyleOne({ datas }) {
 
   // Cart
   const varients = datas && datas.variants.length > 0 && datas.variants;
-  const [getFirstVarients, setFirstVarients] = useState(varients && varients.map((v) => v.active_variant_items[0]));
+  const [getFirstVarients, setFirstVarients] = useState(
+    varients && varients.map((v) => v.active_variant_items[0])
+  );
   const [price, setPrice] = useState(null);
   const [offerPrice, setOffer] = useState(null);
 
@@ -122,14 +130,26 @@ export default function ProductCardStyleOne({ datas }) {
       id: id,
       token: auth() && auth().access_token,
       quantity: 1,
-      variants: getFirstVarients && getFirstVarients.length > 0 && getFirstVarients.map((v) => (v ? parseInt(v.product_variant_id) : null)),
-      variantItems: getFirstVarients && getFirstVarients.length > 0 && getFirstVarients.map((v) => (v ? v.id : null)),
+      variants:
+        getFirstVarients &&
+        getFirstVarients.length > 0 &&
+        getFirstVarients.map((v) =>
+          v ? parseInt(v.product_variant_id) : null
+        ),
+      variantItems:
+        getFirstVarients &&
+        getFirstVarients.length > 0 &&
+        getFirstVarients.map((v) => (v ? v.id : null)),
     };
     if (auth()) {
       if (varients) {
-        const variantQuery = data.variants.map((value, index) => (value ? `variants[]=${value}` : `variants[]=-1`));
+        const variantQuery = data.variants.map((value, index) =>
+          value ? `variants[]=${value}` : `variants[]=-1`
+        );
         const variantString = variantQuery.map((value) => value + "&").join("");
-        const itemsQuery = data.variantItems.map((value, index) => (value ? `items[]=${value}` : `items[]=-1`));
+        const itemsQuery = data.variantItems.map((value, index) =>
+          value ? `items[]=${value}` : `items[]=-1`
+        );
         const itemQueryStr = itemsQuery.map((value) => value + "&").join("");
         const uri = `token=${data.token}&product_id=${data.id}&${variantString}${itemQueryStr}quantity=${data.quantity}`;
         apiRequest
@@ -141,7 +161,11 @@ export default function ProductCardStyleOne({ datas }) {
           )
           .catch((err) => {
             console.log(err);
-            toast.error(err.response && err.response.data.message && err.response.data.message);
+            toast.error(
+              err.response &&
+                err.response.data.message &&
+                err.response.data.message
+            );
           });
         dispatch(fetchCart());
       } else {
@@ -155,26 +179,43 @@ export default function ProductCardStyleOne({ datas }) {
           )
           .catch((err) => {
             console.log(err);
-            toast.error(err.response && err.response.data.message && err.response.data.message);
+            toast.error(
+              err.response &&
+                err.response.data.message &&
+                err.response.data.message
+            );
           });
         dispatch(fetchCart());
       }
     } else {
-      localStorage.setItem("data-hold", JSON.stringify({ type: "add-to-cart", ...data }));
+      localStorage.setItem(
+        "data-hold",
+        JSON.stringify({ type: "add-to-cart", ...data })
+      );
       loginPopupBoard.handlerPopup(true);
     }
   };
 
   useEffect(() => {
     if (varients) {
-      const prices = varients.map((v) => (v.active_variant_items.length > 0 && v.active_variant_items[0].price ? v.active_variant_items[0].price : 0));
+      const prices = varients.map((v) =>
+        v.active_variant_items.length > 0 && v.active_variant_items[0].price
+          ? v.active_variant_items[0].price
+          : 0
+      );
 
       if (datas.offer_price) {
-        const sumOfferPrice = parseFloat(prices.reduce((prev, curr) => parseInt(prev) + parseInt(curr), 0) + parseFloat(datas.offer_price));
+        const sumOfferPrice = parseFloat(
+          prices.reduce((prev, curr) => parseInt(prev) + parseInt(curr), 0) +
+            parseFloat(datas.offer_price)
+        );
         setPrice(datas.price);
         setOffer(sumOfferPrice);
       } else {
-        const sumPrice = parseFloat(prices.reduce((prev, curr) => parseInt(prev) + parseInt(curr), 0) + parseFloat(datas.price));
+        const sumPrice = parseFloat(
+          prices.reduce((prev, curr) => parseInt(prev) + parseInt(curr), 0) +
+            parseFloat(datas.price)
+        );
         setPrice(sumPrice);
       }
     } else {
@@ -204,22 +245,41 @@ export default function ProductCardStyleOne({ datas }) {
   const { currency_icon } = settings();
 
   // Split the images string into an array
-  const imageArray = datas.images ? datas.images.split(',') : [];
+  const imageArray = datas.images ? datas.images.split(",") : [];
 
   return (
-    <Link href={{ pathname: "/single-product", query: { slug: datas.slug } }} passHref legacyBehavior>
+    <Link
+      href={{ pathname: "/single-product", query: { slug: datas.slug } }}
+      passHref
+      legacyBehavior
+    >
       <div className="main-wrapper-card relative border-2 border-bb">
-        <div className="product-card-one w-full h-[370px] bg-white relative group overflow-hidden border border-gray-900" style={{ boxShadow: "0px 15px 64px 0px rgba(0, 0, 0, 0.05)" }}>
-          <div className="product-card-img w-full h-[300px] py-1 px-2" style={{ border: "none" }}>
+        <div
+          className="product-card-one w-full h-[370px] bg-white relative group overflow-hidden border border-gray-900"
+          style={{ boxShadow: "0px 15px 64px 0px rgba(0, 0, 0, 0.05)" }}
+        >
+          <div
+            className="product-card-img w-full h-[300px] py-1 px-2"
+            style={{ border: "none" }}
+          >
             <div className="w-full h-full relative flex justify-center items-center border-none p-10">
               {imageArray.length > 0 ? (
                 imageArray.map((image, index) => (
-                  <div key={index} className="w-full h-full object-contain border-none">
-                    <Image layout="fill" objectFit="scale-down" src={`/${image}`} alt={datas.name} className="w-full h-full" />
+                  <div
+                    key={index}
+                    className="w-full h-full object-contain border-none"
+                  >
+                    <Image
+                      layout="fill"
+                      objectFit="scale-down"
+                      src={`/${image}`}
+                      alt={datas.name}
+                      className="w-full h-full"
+                    />
                   </div>
                 ))
               ) : (
-                <Image layout="fill" objectFit="scale-down" src="/assets/images/spinner.gif" alt="Loading..." className="w-full h-full" />
+                <div className="w-full h-full"></div>
               )}
             </div>
           </div>
@@ -237,7 +297,14 @@ export default function ProductCardStyleOne({ datas }) {
               </button>
             </div>
 
-            <Link href={{ pathname: "/single-product", query: { slug: datas.slug } }} passHref legacyBehavior>
+            <Link
+              href={{
+                pathname: "/single-product",
+                query: { slug: datas.slug },
+              }}
+              passHref
+              legacyBehavior
+            >
               <a rel="noopener noreferrer">
                 <p className="title mb-2 text-[15px] font-600 text-gray-600 leading-[24px] line-clamp-2 hover:text-custom-blue cursor-pointer">
                   {datas.title}
@@ -258,23 +325,40 @@ export default function ProductCardStyleOne({ datas }) {
                     </span>
                   ))}
                 <p className="price pl-8">
-                  <span suppressHydrationWarning className={`main-price font-600 text-[15px] ${offerPrice ? "line-through text-qgray" : "text-qred"}`}>
+                  <span
+                    suppressHydrationWarning
+                    className={`main-price font-600 text-[15px] ${
+                      offerPrice ? "line-through text-qgray" : "text-qred"
+                    }`}
+                  >
                     {offerPrice ? (
                       <span>{currency_icon && currency_icon + price}</span>
                     ) : (
                       <>
                         {isProductInFlashSale && (
-                          <span className={`line-through text-qgray font-500 text-[15px] mr-2`}>
-                            {currency_icon && currency_icon + parseFloat(price).toFixed(2)}
+                          <span
+                            className={`line-through text-qgray font-500 text-[15px] mr-2`}
+                          >
+                            {currency_icon &&
+                              currency_icon + parseFloat(price).toFixed(2)}
                           </span>
                         )}
-                        <CheckProductIsExistsInFlashSale id={datas.id} price={price} />
+                        <CheckProductIsExistsInFlashSale
+                          id={datas.id}
+                          price={price}
+                        />
                       </>
                     )}
                   </span>
                   {offerPrice && (
-                    <span suppressHydrationWarning className="offer-price text-black font-600 text-[18px] ml-2">
-                      <CheckProductIsExistsInFlashSale id={datas.id} price={offerPrice} />
+                    <span
+                      suppressHydrationWarning
+                      className="offer-price text-black font-600 text-[18px] ml-2"
+                    >
+                      <CheckProductIsExistsInFlashSale
+                        id={datas.id}
+                        price={offerPrice}
+                      />
                     </span>
                   )}
                 </p>
