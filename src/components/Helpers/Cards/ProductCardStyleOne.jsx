@@ -249,7 +249,7 @@ export default function ProductCardStyleOne({ datas }) {
 
   return (
     <Link
-      href={{ pathname: "/single-product", query: { slug: datas.slug } }}
+      href={{ pathname: "/single-product", query: { slug: datas.images } }}
       passHref
       legacyBehavior
     >
@@ -272,7 +272,7 @@ export default function ProductCardStyleOne({ datas }) {
                     <Image
                       layout="fill"
                       objectFit="scale-down"
-                      src={datas.images}
+                      src={`/${image}`}
                       alt={datas.name}
                       className="w-full h-full"
                     />
