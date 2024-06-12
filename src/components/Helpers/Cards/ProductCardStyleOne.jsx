@@ -243,10 +243,11 @@ export default function ProductCardStyleOne({ datas }) {
   };
 
   const { currency_icon } = settings();
-
-  // Split the images string into an array
-  const imageArray = datas.images ? datas.images.split(",") : [];
-
+ const [imgSrc, setImgSrc] = useState(null);
+  const loadImg = (value) => {
+    
+    setImgSrc(value);
+  };
   return (
     <Link
       href={{ pathname: "/single-product", query: { slug: datas.slug } }}
@@ -258,29 +259,16 @@ export default function ProductCardStyleOne({ datas }) {
           className="product-card-one w-full h-[370px] bg-white relative group overflow-hidden border border-gray-900"
           style={{ boxShadow: "0px 15px 64px 0px rgba(0, 0, 0, 0.05)" }}
         >
-          <div
-            className="product-card-img w-full h-[300px] py-1 px-2"
-            style={{ border: "none" }}
-          >
-            <div className="w-full h-full relative flex justify-center items-center border-none p-10">
-              {imageArray.length > 0 ? (
-                imageArray.map((image, index) => (
-                  <div
-                    key={index}
-                    className="w-full h-full object-contain border-none"
-                  >
-                    <Image
-                      layout="fill"
-                      objectFit="scale-down"
-                      src={`/${image}`}
-                      alt={datas.name}
-                      className="w-full h-full"
-                    />
-                  </div>
-                ))
-              ) : (
-                <div className="w-full h-full"></div>
-              )}
+          <div className="product-card-img w-full h-[300px] -mt-2">
+            <div className="w-full h-full relative flex justify-center items-center transform scale-100 group-hover:scale-110 transition duration-300 ease-in-out">
+              <Image
+                layout="fill"
+                objectFit="scale-down"
+                src={`${imgSrc ? imgSrc : "/assets/images/spinner.gif"}`}
+                alt=""
+                onLoadingComplete={() => loadImg(datas.image)}
+                className="w-full h-full object-contain"
+              />
             </div>
           </div>
           <div className="product-card-details px-[20px] pb-[10px] relative pt-2">
