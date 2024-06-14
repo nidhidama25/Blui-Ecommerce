@@ -30,6 +30,8 @@ module.exports = {
         gg: "rgba(0, 0, 0, 0.65)",
         star: "#FD9500",
         bb: "E4E7E9",
+        "gradient-start": "#1C86FF",
+        "gradient-end": "#0B3B72",
       },
       scale: {
         60: "0.6",

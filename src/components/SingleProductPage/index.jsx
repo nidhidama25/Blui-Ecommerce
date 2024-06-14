@@ -121,8 +121,8 @@ export default function SingleProductPage({ details }) {
                       paths={[
                         { name: ServeLangItem()?.home, path: "/" },
                         {
-                          name: details.product.id,
-                          path: `/single-product?id=${details.product.id}`,
+                          name: details.product.slug,
+                          path: `/single-product?slug=${details.product.slug}`,
                         },
                       ]}
                     />
