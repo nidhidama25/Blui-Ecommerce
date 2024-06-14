@@ -13,8 +13,12 @@ import { fetchCompareProducts } from "../../../store/compareProduct";
 import { fetchWishlist } from "../../../store/wishlistData";
 import LoginContext from "../../Contexts/LoginContext";
 import CheckProductIsExistsInFlashSale from "../../Shared/CheckProductIsExistsInFlashSale";
+import ProductView from "../../SingleProductPage/ProductView";
 import ServeLangItem from "../ServeLangItem";
+import Compair from "../icons/Compair";
+import QuickViewIco from "../icons/QuickViewIco";
 import Star from "../icons/Star";
+import ThinLove from "../icons/ThinLove";
 
 const Redirect = () => {
   return (
@@ -243,9 +247,8 @@ export default function ProductCardStyleOne({ datas }) {
   };
 
   const { currency_icon } = settings();
- const [imgSrc, setImgSrc] = useState(null);
+  const [imgSrc, setImgSrc] = useState(null);
   const loadImg = (value) => {
-    
     setImgSrc(value);
   };
   return (
@@ -351,6 +354,96 @@ export default function ProductCardStyleOne({ datas }) {
                   )}
                 </p>
               </div>
+              <div className="quick-access-btns flex flex-col space-y-2">
+                <button
+                  className=" absolute group-hover:right-4 -right-10 top-20  transition-all ease-in-out"
+                  onClick={() => quickViewHandler(datas.slug)}
+                  type="button"
+                >
+                  <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white items-center transition-all duration-300 ease-in-out hover-bg-qyellow bg-primarygray rounded">
+                    <QuickViewIco className="fill-current" />
+                  </span>
+                </button>
+                {!arWishlist ? (
+                  <button
+                    className=" absolute group-hover:right-4 -right-10 top-[120px]  transition-all duration-300 ease-in-out"
+                    type="button"
+                    onClick={() => addToWishlist(datas.id)}
+                  >
+                    <span className="hover:bg-qyellow w-10 h-10 flex text-black hover:text-white justify-center items-center transition-all duration-300 ease-in-out hover-bg-qyellow bg-primarygray rounded">
+                      <ThinLove className="fill-current" />
+                    </span>
+                  </button>
+                ) : (
+                  <button
+                    className="absolute group-hover:right-4 -right-10 top-[120px]  transition-all duration-300 ease-in-out"
+                    type="button"
+                    onClick={() =>
+                      removeToWishlist(wishlisted && wishlisted.id)
+                    }
+                  >
+                    <span className="hover:bg-qyellow w-10 h-10 flex justify-center items-center bg-primarygray rounded">
+                      <ThinLove fill={true} />
+                    </span>
+                  </button>
+                )}
+
+                <button
+                  className=" absolute group-hover:right-4 -right-10 top-[168px]  transition-all duration-500 ease-in-out"
+                  type="button"
+                  onClick={() => productCompare(datas.id)}
+                >
+                  <span className="hover:bg-qyellow w-10 h-10 flex justify-center text-black hover:text-white transition-all duration-300 ease-in-out items-center hover-bg-qyellow bg-primarygray rounded">
+                    <Compair className="fill-current" />
+                  </span>
+                </button>
+              </div>
+              {quickViewModal && quickViewData && (
+                <div className="quicke-view-wrapper w-full h-full flex fixed left-0 top-0 justify-center z-50 items-center ">
+                  <div
+                    onClick={() => setQuickView(!quickViewModal)}
+                    className="w-full h-full fixed left-0 right-0 bg-black  bg-opacity-25"
+                  ></div>
+                  <div
+                    data-aos="fade-up"
+                    className=" md:mx-10 xl:mt-[100px] rounded w-full bg-white relative lg:py-[40px] pt-[80px] pb-[40px] sm:px-[38px] px-3 md:mt-12 h-full overflow-y-scroll xl:overflow-hidden xl:mt-0 "
+                    style={{ zIndex: "999" }}
+                  >
+                    <div className="w-full h-full overflow-y-scroll overflow-style-none">
+                      <ProductView
+                        images={
+                          quickViewData.gellery.length > 0
+                            ? quickViewData.gellery
+                            : []
+                        }
+                        product={quickViewData.product}
+                      />
+                    </div>
+                    <button
+                      onClick={() => setQuickView(!quickViewModal)}
+                      type="button"
+                      className="absolute right-3 top-3"
+                    >
+                      <span className="text-red-500 w-12 h-12 flex justify-center items-center rounded border border-qred">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          className="w-10 h-10"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            d="M6 18L18 6M6 6l12 12"
+                          ></path>
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

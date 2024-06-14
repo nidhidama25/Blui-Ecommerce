@@ -1,33 +1,21 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 import apiRequest from "../../../utils/apiRequest";
 import auth from "../../../utils/auth";
 import settings from "../../../utils/settings";
+import { fetchCart } from "../../store/Cart";
 import { fetchWishlist } from "../../store/wishlistData";
-import CheckProductIsExistsInFlashSale from "../Shared/CheckProductIsExistsInFlashSale";
 import ServeLangItem from "../Helpers/ServeLangItem";
-import { useRouter } from "next/router";
-
-export default function ProductsTable({ className, products }) {
+import CheckProductIsExistsInFlashSale from "../Shared/CheckProductIsExistsInFlashSale";
+export default function ProductsTable({ className, products, datas }) {
   const dispatch = useDispatch();
   const router = useRouter();
   const [mainProduct, setMainProducts] = useState(null);
-  // const calcTotalPrice = (id, qyt) => {
-  //   setMainProducts(
-  //     mainProduct &&
-  //       mainProduct.map((obj) => {
-  //         if (obj.product.id === id) {
-  //           return {
-  //             ...obj,
-  //             totalPrice: obj.product.price * qyt,
-  //           };
-  //         }
-  //         return obj;
-  //       })
-  //   );
-  // };
+
   const price = (item) => {
     if (item) {
       if (item.product.offer_price) {
@@ -44,7 +32,7 @@ export default function ProductsTable({ className, products }) {
                 )
               : 0
           );
-          const sumVarient = prices.reduce((p, c) => p + c);
+          const sumVarient = prices.reduce((p, c) => p + c, 0);
           return parseInt(item.product.offer_price) + sumVarient;
         } else {
           return parseInt(item.product.offer_price);
@@ -63,7 +51,7 @@ export default function ProductsTable({ className, products }) {
                 )
               : 0
           );
-          const sumVarient = prices.reduce((p, c) => p + c);
+          const sumVarient = prices.reduce((p, c) => p + c, 0);
           return parseInt(item.product.price) + sumVarient;
         } else {
           return item.product.price;
@@ -71,16 +59,14 @@ export default function ProductsTable({ className, products }) {
       }
     }
   };
+
   useEffect(() => {
     if (products) {
       setMainProducts(
-        products &&
-          products.data.map((item) => {
-            return {
-              ...item,
-              totalPrice: item.product.price,
-            };
-          })
+        products.data.map((item) => ({
+          ...item,
+          totalPrice: item.product.price,
+        }))
       );
     } else {
       setMainProducts(null);
@@ -95,34 +81,106 @@ export default function ProductsTable({ className, products }) {
       router.push("/login");
     }
   };
+
+  const Redirect = () => (
+    <div className="flex space-x-2 items-center">
+      <span className="text-sm text-gray-500">
+        {ServeLangItem()?.Item_added}
+      </span>
+      <Link href="/cart">
+        <span className="text-xs border-b border-blue-600 text-blue-600 mr-2 cursor-pointer">
+          {ServeLangItem()?.Go_To_Cart}
+        </span>
+      </Link>
+    </div>
+  );
+  const varients = datas && datas.variants.length > 0 && datas.variants;
+  const [getFirstVarients, setFirstVarients] = useState(
+    varients && varients.map((v) => v.active_variant_items[0])
+  );
+
+  const [offerPrice, setOffer] = useState(null);
+  const addToCart = (id) => {
+    const data = {
+      id: id,
+      token: auth() && auth().access_token,
+      quantity: 1,
+      variants:
+        getFirstVarients &&
+        getFirstVarients.length > 0 &&
+        getFirstVarients.map((v) =>
+          v ? parseInt(v.product_variant_id) : null
+        ),
+      variantItems:
+        getFirstVarients &&
+        getFirstVarients.length > 0 &&
+        getFirstVarients.map((v) => (v ? v.id : null)),
+    };
+
+    if (auth()) {
+      if (varients) {
+        const variantQuery = data.variants
+          .map((value) => (value ? `variants[]=${value}` : `variants[]=-1`))
+          .join("&");
+        const itemsQuery = data.variantItems
+          .map((value) => (value ? `items[]=${value}` : `items[]=-1`))
+          .join("&");
+        const uri = `token=${data.token}&product_id=${data.id}&${variantQuery}&${itemsQuery}&quantity=${data.quantity}`;
+
+        apiRequest
+          .addToCard(uri)
+          .then((res) => toast.success(<Redirect />, { autoClose: 5000 }))
+          .catch((err) => {
+            console.error(err);
+            toast.error(err.response?.data?.message);
+          });
+
+        dispatch(fetchCart());
+      } else {
+        const uri = `token=${data.token}&product_id=${data.id}&quantity=${data.quantity}`;
+        apiRequest
+          .addToCard(uri)
+          .then((res) => toast.success(<Redirect />, { autoClose: 5000 }))
+          .catch((err) => {
+            console.error(err);
+            toast.error(err.response?.data?.message);
+          });
+
+        dispatch(fetchCart());
+      }
+    } else {
+      localStorage.setItem(
+        "data-hold",
+        JSON.stringify({ type: "add-to-cart", ...data })
+      );
+      loginPopupBoard.handlerPopup(true);
+    }
+  };
+
   const { currency_icon } = settings();
   return (
     <div className={`w-full ${className || ""}`}>
       <div className="relative w-full overflow-x-auto border border-[#EDEDED]">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <tbody>
-            {/* table heading */}
-            <tr className="text-[13px] font-medium text-black bg-[#F6F6F6] whitespace-nowrap px-2 border-b default-border-bottom uppercase">
+            <tr className="text-[13px] font-medium text-black  whitespace-nowrap px-2 border-b default-border-bottom uppercase">
               <td className="py-4 capitalize pl-10 block whitespace-nowrap">
                 {ServeLangItem()?.Product}
               </td>
-
               <td className="py-4 capitalize whitespace-nowrap text-center">
                 {ServeLangItem()?.Price}
               </td>
-
               <td className="py-4 capitalize whitespace-nowrap text-center block">
                 {ServeLangItem()?.Action}
               </td>
             </tr>
-            {/*table heading end*/}
             {mainProduct &&
               mainProduct.map((item) => (
                 <tr
                   key={item.id}
                   className="bg-white border-b hover:bg-gray-50"
                 >
-                  <td className="ltr:pl-10 rtl:pr-10  py-4 capitalize  w-[380px] ">
+                  <td className="ltr:pl-10 rtl:pr-10 py-4 capitalize w-[380px]">
                     <div className="flex space-x-6 rtl:space-x-reverse items-center">
                       <div className="w-[80px] h-[80px] overflow-hidden flex justify-center items-center border border-[#EDEDED] relative">
                         <Image
@@ -149,24 +207,28 @@ export default function ProductsTable({ className, products }) {
                       </div>
                     </div>
                   </td>
-
                   <td className="text-center py-4 capitalize px-2">
                     <div className="flex space-x-1 rtl:space-x-reverse items-center justify-center">
                       <span
                         suppressHydrationWarning
                         className="text-[15px] font-normal"
                       >
-                        {
-                          <CheckProductIsExistsInFlashSale
-                            id={item.product_id}
-                            price={price(item)}
-                          />
-                        }
+                        <CheckProductIsExistsInFlashSale
+                          id={item.product_id}
+                          price={price(item)}
+                        />
                       </span>
                     </div>
                   </td>
                   <td className="text-right py-4 capitalize">
                     <div className="flex space-x-1 items-center justify-center">
+                      <button
+                        onClick={() => addToCart(item.id, item.product)}
+                        type="button"
+                        className="h-[35px] px-4 bg-custom-blue text-white rounded-md mr-3"
+                      >
+                        Add To Cart
+                      </button>
                       <span
                         className="cursor-pointer"
                         onClick={() => removeToWishlist(item.id)}

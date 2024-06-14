@@ -189,12 +189,7 @@ function CardPage() {
                     ${/* Add your tax value here */}
                   </span>
                 </div>
-                <div className="flex justify-between mb-2">
-                  <span className="text-sm text-gray-600 ">Shipping</span>
-                  <span className="text-sm">
-                    ${/* Add your shipping value here */}
-                  </span>
-                </div>
+
                 <div className="flex justify-between font-semibold">
                   <span className="text-lg text-gray-600 ">Total</span>
                   <span className="text-lg">

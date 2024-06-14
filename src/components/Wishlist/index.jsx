@@ -1,15 +1,15 @@
+import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import isAuth from "../../../Middleware/isAuth";
+import apiRequest from "../../../utils/apiRequest";
+import auth from "../../../utils/auth";
+import { fetchWishlist } from "../../store/wishlistData";
 import BreadcrumbCom from "../BreadcrumbCom";
 import EmptyWishlistError from "../EmptyWishlistError";
 import PageTitle from "../Helpers/PageTitle";
-import ProductsTable from "./ProductsTable";
-import { useDispatch, useSelector } from "react-redux";
-import Link from "next/link";
-import auth from "../../../utils/auth";
-import apiRequest from "../../../utils/apiRequest";
-import { toast } from "react-toastify";
-import { fetchWishlist } from "../../store/wishlistData";
-import isAuth from "../../../Middleware/isAuth";
 import ServeLangItem from "../Helpers/ServeLangItem";
+import ProductsTable from "./ProductsTable";
 
 function Wishlist() {
   const dispatch = useDispatch();
@@ -63,17 +63,15 @@ function Wishlist() {
                 <div className="w-full mt-[30px] flex sm:justify-end justify-start">
                   <div className="sm:flex sm:space-x-[30px] rtl:space-x-reverse items-center">
                     <button onClick={() => clearList()} type="button">
-                      <div className="w-full text-sm font-semibold text-qred mb-5 sm:mb-0">
+                      <div className="w-[120px] h-[40px] flex justify-center items-center bg-[#d3d0d0] rounded-md text-grey-900 text-sm font-semibold mb-5 sm:mb-0">
                         {ServeLangItem()?.Clean_Wishlist}
                       </div>
                     </button>
                     <Link href="/cart">
-                      <div className="w-[180px] h-[50px] cursor-pointer">
-                        <div className="yellow-btn flex justify-center">
-                          <span className="w-full text-sm font-semibold text-center">
-                            {ServeLangItem()?.View_Cards}
-                          </span>
-                        </div>
+                      <div className="w-[120px] h-[40px] flex justify-center items-center bg-[#d3d0d0] rounded-md text-grey-900 cursor-pointer">
+                        <span className="text-sm font-semibold text-center">
+                          {ServeLangItem()?.View_Cards}
+                        </span>
                       </div>
                     </Link>
                   </div>
