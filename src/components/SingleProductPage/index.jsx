@@ -112,152 +112,172 @@ export default function SingleProductPage({ details }) {
     <>
       <Layout childrenClasses="pt-0 pb-0">
         <>
-          <div className=" w-full">
-            <div className="single-product-wrapper p-10 w-full flex flex-col lg:flex-col m-5 bg-white ">
-              <div className="product-view-main-wrapper  bg-white pt-[30px] w-full">
-                <div className="breadcrumb-wrapper w-full ">
-                  <div className="container-x mx-auto">
-                    <BreadcrumbCom
-                      paths={[
-                        { name: ServeLangItem()?.home, path: "/" },
-                        {
-                          name: details.product.slug,
-                          path: `/single-product?slug=${details.product.slug}`,
-                        },
-                      ]}
-                    />
-                  </div>
-                </div>
-                <div className="w-full bg-white">
-                  <div className="container-x mx-auto">
-                    {/*key name spelling not correct (gellery)*/}
-                    <ProductView
-                      product={details.product}
-                      images={details.gellery}
-                      reportHandler={ReportHandler}
-                      seller={details.seller ? details.seller : false}
-                    />
-                  </div>
+          <div className="single-product-wrapper w-full ">
+            <div className="product-view-main-wrapper bg-white pt-[30px] w-full">
+              <div className="breadcrumb-wrapper w-full ">
+                <div className="container-x mx-auto">
+                  <BreadcrumbCom
+                    paths={[
+                      { name: ServeLangItem()?.home, path: "/" },
+                      {
+                        name: details.product.slug,
+                        path: `/single-product?slug=${details.product.slug}`,
+                      },
+                    ]}
+                  />
                 </div>
               </div>
-              <div className="flex justify-end ">
-                <div
-                  className="product-des-wrapper  w-[500px]   relative right-40 p-2 "
-                  ref={reviewElement}
-                >
-                  <div className="tab-buttons w-full mb-10 mt-5 sm:mt-0">
-                    <div className="container-x mx-auto">
-                      <ul className="flex space-x-12 ">
-                        <li>
-                          <span
-                            onClick={() => setTab("des")}
-                            className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer ${
-                              tab === "des"
-                                ? "border-qyellow text-qblack "
-                                : "border-transparent text-qgray"
-                            }`}
-                          >
-                            {ServeLangItem()?.Description}
-                          </span>
-                        </li>
-                        <li>
-                          <span
-                            onClick={() => setTab("review")}
-                            className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer ${
-                              tab === "review"
-                                ? "border-qyellow text-qblack "
-                                : "border-transparent text-qgray"
-                            }`}
-                          >
-                            {ServeLangItem()?.Reviews}
-                          </span>
-                        </li>
-                      </ul>
-                    </div>
-                    <div className="w-full h-[1px] bg-[#E8E8E8] absolute left-0 sm:top-[50px] top-[36px] -z-10"></div>
-                  </div>
-                  <div className="tab-contents w-full ">
-                    <div className="container-x mx-auto">
-                      {tab === "des" && (
-                        <>
-                          <h6 className="text-[20px] font-bold text-qblack mb-5">
-                            {ServeLangItem()?.Introduction}
-                          </h6>
-                          <div
-                            className="product-detail-des mb-10"
-                            dangerouslySetInnerHTML={{
-                              __html: details.product.long_description,
-                            }}
-                          ></div>
+              <div className="w-full bg-white pb-[60px]">
+                <div className="container-x mx-auto">
+                  {/*key name spelling not correct (gellery)*/}
+                  <ProductView
+                    product={details.product}
+                    images={details.gellery}
+                    reportHandler={ReportHandler}
+                    seller={details.seller ? details.seller : false}
+                  />
+                </div>
+              </div>
+            </div>
 
-                          {details.specifications &&
-                            details.specifications.length > 0 && (
-                              <div className="product-specifications">
-                                <h6 className="text-[20px] font-bold mb-4">
-                                  {ServeLangItem()?.Features} :
-                                </h6>
-                                <ul className="">
-                                  {details.specifications.map((item, i) => (
-                                    <li
-                                      key={i}
-                                      className=" leading-9 flex space-x-3 items-center"
-                                    >
-                                      <span className="text-qblack font-medium capitalize">
-                                        {" "}
-                                        {item.key.key}:
-                                      </span>
-                                      <span className="font-normal text-qgray">
-                                        {item.specification}
-                                      </span>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            )}
-                          {/*</div>*/}
-                        </>
-                      )}
-                      {tab === "review" && (
-                        <div
-                          data-aos="fade-up"
-                          className="w-full tab-content-item"
-                        >
-                          <h6 className="text-[20px] font-bold text-qblack mb-2">
-                            {ServeLangItem()?.Reviews}
-                          </h6>
-                          {/* review-comments */}
-                          <div className="w-full">
-                            <Reviews
-                              comments={
-                                commnets.length > 0 && commnets.slice(0, 2)
-                              }
-                            />
+            <div
+              className="product-des-wrapper w-full relative pb-[60px]"
+              ref={reviewElement}
+            >
+              <div className="tab-buttons w-full mb-10 mt-5 sm:mt-0">
+                <div className="container-x mx-auto">
+                  <ul className="flex space-x-12 ">
+                    <li>
+                      <span
+                        onClick={() => setTab("des")}
+                        className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer ${
+                          tab === "des"
+                            ? "border-qyellow text-qblack "
+                            : "border-transparent text-qgray"
+                        }`}
+                      >
+                        {ServeLangItem()?.Description}
+                      </span>
+                    </li>
+                    <li>
+                      <span
+                        onClick={() => setTab("review")}
+                        className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer ${
+                          tab === "review"
+                            ? "border-qyellow text-qblack "
+                            : "border-transparent text-qgray"
+                        }`}
+                      >
+                        {ServeLangItem()?.Reviews}
+                      </span>
+                    </li>
+                    {/*{Multivendor() === 1 && details.is_seller_product && (*/}
+                    {/*  <li>*/}
+                    {/*    <span*/}
+                    {/*      onClick={() => setTab("info")}*/}
+                    {/*      className={`py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer ${*/}
+                    {/*        tab === "info"*/}
+                    {/*          ? "border-qyellow text-qblack "*/}
+                    {/*          : "border-transparent text-qgray"*/}
+                    {/*      }`}*/}
+                    {/*    >*/}
+                    {/*      {ServeLangItem()?.Seller_Info}*/}
+                    {/*    </span>*/}
+                    {/*  </li>*/}
+                    {/*)}*/}
+                  </ul>
+                </div>
+                <div className="w-full h-[1px] bg-[#E8E8E8] absolute left-0 sm:top-[50px] top-[36px] -z-10"></div>
+              </div>
+              <div className="tab-contents w-full ">
+                <div className="container-x mx-auto">
+                  {tab === "des" && (
+                    <>
+                      <h6 className="text-[20px] font-bold text-qblack mb-5">
+                        {ServeLangItem()?.Introduction}
+                      </h6>
+                      <div
+                        className="product-detail-des mb-10"
+                        dangerouslySetInnerHTML={{
+                          __html: details.product.long_description,
+                        }}
+                      ></div>
+                      {/*<div data-aos="fade-up" className="w-full tab-content-item">*/}
+                      {/*  <h6 className="text-[18px] font-medium text-qblack mb-2">*/}
+                      {/*    Introduction*/}
+                      {/*  </h6>*/}
+                      {/*  <p className="text-[15px] text-qgray text-normal mb-10">*/}
+                      {/*    Lorem Ipsum is simply dummy text of the printing and*/}
+                      {/*    typesetting industry. Lorem Ipsum has been the industrys*/}
+                      {/*    standard dummy text ever since the 1500s, when an unknown*/}
+                      {/*    printer took a galley of type and scrambled it to make a*/}
+                      {/*    type specimen book. It has survived not only five*/}
+                      {/*    centuries but also the on leap into electronic*/}
+                      {/*    typesetting, remaining essentially unchanged. It wasn’t*/}
+                      {/*    popularised in the 1960s with the release of Letraset*/}
+                      {/*    sheets containing Lorem Ipsum passages, andei more*/}
+                      {/*    recently with desktop publishing software like Aldus*/}
+                      {/*    PageMaker including versions of Lorem Ipsum to make a type*/}
+                      {/*    specimen book.*/}
+                      {/*  </p>*/}
+                      {details.specifications &&
+                        details.specifications.length > 0 && (
+                          <div className="product-specifications">
+                            <h6 className="text-[20px] font-bold mb-4">
+                              {ServeLangItem()?.Features} :
+                            </h6>
+                            <ul className="">
+                              {details.specifications.map((item, i) => (
+                                <li
+                                  key={i}
+                                  className=" leading-9 flex space-x-3 items-center"
+                                >
+                                  <span className="text-qblack font-medium capitalize">
+                                    {" "}
+                                    {item.key.key}:
+                                  </span>
+                                  <span className="font-normal text-qgray">
+                                    {item.specification}
+                                  </span>
+                                </li>
+                              ))}
+                            </ul>
                           </div>
-                        </div>
-                      )}
-                      {tab === "info" && (
-                        <div
-                          data-aos="fade-up"
-                          className="w-full tab-content-item"
-                        >
-                          {details.seller && (
-                            <SallerInfo
-                              sellerInfo={sellerInfo}
-                              products={
-                                details.this_seller_products.length > 0 &&
-                                details.this_seller_products.slice(
-                                  0,
-                                  details.this_seller_products.length > 8
-                                    ? 8
-                                    : details.this_seller_products.length
-                                )
-                              }
-                            />
-                          )}
-                        </div>
+                        )}
+                      {/*</div>*/}
+                    </>
+                  )}
+                  {tab === "review" && (
+                    <div data-aos="fade-up" className="w-full tab-content-item">
+                      <h6 className="text-[20px] font-bold text-qblack mb-2">
+                        {ServeLangItem()?.Reviews}
+                      </h6>
+                      {/* review-comments */}
+                      <div className="w-full">
+                        <Reviews
+                          comments={commnets.length > 0 && commnets.slice(0, 2)}
+                        />
+                      </div>
+                    </div>
+                  )}
+                  {tab === "info" && (
+                    <div data-aos="fade-up" className="w-full tab-content-item">
+                      {details.seller && (
+                        <SallerInfo
+                          sellerInfo={sellerInfo}
+                          products={
+                            details.this_seller_products.length > 0 &&
+                            details.this_seller_products.slice(
+                              0,
+                              details.this_seller_products.length > 8
+                                ? 8
+                                : details.this_seller_products.length
+                            )
+                          }
+                        />
                       )}
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
             </div>
@@ -270,7 +290,7 @@ export default function SingleProductPage({ details }) {
                     </h1>
                     <div
                       data-aos="fade-up"
-                      className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-3 grid-cols-1 xl:gap-[30px] gap-5"
+                      className="grid xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 xl:gap-[30px] gap-5"
                     >
                       <DataIteration
                         datas={relatedProducts}
